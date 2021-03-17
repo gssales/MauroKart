@@ -33,6 +33,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "input.h"
+#include "camera.h"
 
 // S.O. callbacks
 void ErrorCallback(int error, const char* description);
@@ -102,9 +103,15 @@ int main()
 
     GLuint program_id = CreateGpuProgram(vertex_shader_id, fragment_shader_id);
 
+    GLint model_uniform           = glGetUniformLocation(program_id, "model");
+    GLint view_uniform            = glGetUniformLocation(program_id, "view");
+    GLint projection_uniform      = glGetUniformLocation(program_id, "projection");
+    GLint render_as_black_uniform = glGetUniformLocation(program_id, "render_as_black");
+
     glEnable(GL_DEPTH_TEST);
 
     /* Load game assets and setup logic */
+    Camera active_cam;
 
     double curr_time, dt;
     while (!glfwWindowShouldClose(window))
@@ -123,6 +130,8 @@ int main()
                 printf("W Released!\n");
         }
 
+        active_cam.Update();
+
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -130,6 +139,11 @@ int main()
         glUseProgram(program_id);
 
         /* draw/render */
+
+        glm::mat4 view = active_cam.View();
+        glm::mat4 projection = active_cam.Projection(g_ScreenRatio);
+        glUniformMatrix4fv(view_uniform       , 1 , GL_FALSE , glm::value_ptr(view));
+        glUniformMatrix4fv(projection_uniform , 1 , GL_FALSE , glm::value_ptr(projection));
 
         /* build matrix */
 
