@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1615950811 source:c:\users\gssales\projects\maurokart\src\main.cpp
+1616021211 source:c:\users\gssales\projects\maurokart\src\main.cpp
 	<cmath>
 	<cstdio>
 	<cstdlib>
@@ -928,18 +928,22 @@
 	"utils.h"
 	"matrices.h"
 
-1615947313 c:\users\gssales\projects\maurokart\include\matrices.h
-	<cstdio>
-	<cstdlib>
+1616023480 c:\users\gssales\projects\maurokart\include\matrices.h
 	<glm/mat4x4.hpp>
 	<glm/vec4.hpp>
-	<glm/gtc/matrix_transform.hpp>
 
-1615945384 c:\users\gssales\projects\maurokart\include\input.h
+1616021487 c:\users\gssales\projects\maurokart\include\input.h
 	<map>
 	<GLFW/glfw3.h>
 
-1615950910 c:\users\gssales\projects\maurokart\include\camera.h
+1616021170 c:\users\gssales\projects\maurokart\include\camera.h
+	<glm/mat4x4.hpp>
 	<glm/vec4.hpp>
+
+1616021439 source:c:\users\gssales\projects\maurokart\src\camera.cpp
+	"camera.h"
 	"matrices.h"
+
+1616021504 source:c:\users\gssales\projects\maurokart\src\input.cpp
+	"input.h"
 

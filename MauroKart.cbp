@@ -483,11 +483,15 @@
 		<Unit filename="include/glm/vector_relational.hpp" />
 		<Unit filename="include/input.h" />
 		<Unit filename="include/matrices.h" />
+		<Unit filename="include/tinyobjloader/tiny_obj_loader.h" />
 		<Unit filename="include/utils.h" />
+		<Unit filename="src/camera.cpp" />
 		<Unit filename="src/glad.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/input.cpp" />
 		<Unit filename="src/main.cpp" />
+		<Unit filename="src/matrices.cpp" />
 		<Unit filename="src/shader_fragment.glsl" />
 		<Unit filename="src/shader_vertex.glsl" />
 		<Extensions />
