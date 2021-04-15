@@ -41,7 +41,16 @@ void ErrorCallback(int error, const char* description);
 void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
 void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
 
+void LoadGpuProgram(const char* vertex_shader_filename, const char* fragment_shader_filename);
 GLuint CreateGpuProgram(GLuint vertex_shader_id, GLuint fragment_shader_id);
+
+GLuint vertex_shader_id;
+GLuint fragment_shader_id;
+GLuint program_id = 0;
+GLint model_uniform;
+GLint view_uniform;
+GLint projection_uniform;
+GLint object_id_uniform;
 
 float g_ScreenRatio = 16/9;
 
@@ -95,16 +104,7 @@ int main()
 
     printf("GPU: %s, %s, OpenGL %s, GLSL %s\n", vendor, renderer, glversion, glslversion);
 
-
-    GLuint vertex_shader_id = LoadShader_Vertex("../../res/shaders/shader_vertex.glsl");
-    GLuint fragment_shader_id = LoadShader_Fragment("../../res/shaders/shader_fragment.glsl");
-
-    GLuint program_id = CreateGpuProgram(vertex_shader_id, fragment_shader_id);
-
-    GLint model_uniform           = glGetUniformLocation(program_id, "model");
-    GLint view_uniform            = glGetUniformLocation(program_id, "view");
-    GLint projection_uniform      = glGetUniformLocation(program_id, "projection");
-    GLint render_as_black_uniform = glGetUniformLocation(program_id, "render_as_black");
+    LoadGpuProgram("../../res/shaders/shader_vertex.glsl", "../../res/shaders/shader_fragment.glsl");
 
     glEnable(GL_DEPTH_TEST);
 
@@ -194,6 +194,22 @@ GLuint CreateGpuProgram(GLuint vertex_shader_id, GLuint fragment_shader_id)
     }
 
     return program_id;
+}
+
+void LoadGpuProgram(const char* vertex_shader_filename, const char* fragment_shader_filename)
+{
+    vertex_shader_id = LoadShader_Vertex("../../res/shaders/shader_vertex.glsl");
+    fragment_shader_id = LoadShader_Fragment("../../res/shaders/shader_fragment.glsl");
+
+    if ( program_id != 0 )
+        glDeleteProgram(program_id);
+
+    program_id = CreateGpuProgram(vertex_shader_id, fragment_shader_id);
+
+    model_uniform           = glGetUniformLocation(program_id, "model");
+    view_uniform            = glGetUniformLocation(program_id, "view");
+    projection_uniform      = glGetUniformLocation(program_id, "projection");
+    object_id_uniform       = glGetUniformLocation(program_id, "object_id");
 }
 
 void ErrorCallback(int error, const char* description)
