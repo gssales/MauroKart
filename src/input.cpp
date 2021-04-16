@@ -14,6 +14,9 @@ void Input::Update()
 
         it++;
     }
+
+    cursor_changed = false;
+    scroll_changed = false;
 }
 
 void Input::KeyCallback(int key, int action, int mod)

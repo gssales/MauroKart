@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1618528505 source:c:\users\gssales\projects\maurokart\src\main.cpp
+1618538333 source:c:\users\gssales\projects\maurokart\src\main.cpp
 	<cmath>
 	<cstdio>
 	<cstdlib>
@@ -13,9 +13,12 @@
 	<glm/mat4x4.hpp>
 	<glm/vec4.hpp>
 	<glm/gtc/type_ptr.hpp>
+	"matrices.h"
 	"loaders.h"
-	"input.h"
 	"camera.h"
+	"scene.h"
+	"model.h"
+	"gamestate.h"
 
 1598444805 c:\users\gssales\projects\maurokart\include\glad\glad.h
 	<windows.h>
@@ -933,19 +936,20 @@
 	<glm/mat4x4.hpp>
 	<glm/vec4.hpp>
 
-1616021487 c:\users\gssales\projects\maurokart\include\input.h
+1618536066 c:\users\gssales\projects\maurokart\include\input.h
 	<map>
 	<GLFW/glfw3.h>
 
-1616021170 c:\users\gssales\projects\maurokart\include\camera.h
+1618536796 c:\users\gssales\projects\maurokart\include\camera.h
+	<cstdio>
 	<glm/mat4x4.hpp>
 	<glm/vec4.hpp>
 
-1616021439 source:c:\users\gssales\projects\maurokart\src\camera.cpp
+1618537483 source:c:\users\gssales\projects\maurokart\src\camera.cpp
 	"camera.h"
 	"matrices.h"
 
-1616021504 source:c:\users\gssales\projects\maurokart\src\input.cpp
+1618536155 source:c:\users\gssales\projects\maurokart\src\input.cpp
 	"input.h"
 
 1616023481 source:c:\users\gssales\projects\maurokart\src\matrices.cpp
@@ -981,8 +985,8 @@
 	<intrin.h>
 	<arm_neon.h>
 
-1616178829 source:c:\users\gssales\projects\maurokart\src\tiny_obj_loader\tiny_obj_loader.cpp
-	"tinyobjloader/tiny_obj_loader.h"
+1618533874 source:c:\users\gssales\projects\maurokart\src\tiny_obj_loader\tiny_obj_loader.cpp
+	"tiny_obj_loader.h"
 
 1616122874 c:\users\gssales\projects\maurokart\include\tinyobjloader\tiny_obj_loader.h
 	<map>
@@ -1098,4 +1102,41 @@
 
 1600011606 c:\users\gssales\projects\maurokart\include\glm\ext\scalar_uint_sized.hpp
 	"../detail/setup.hpp"
+
+1618534140 source:c:\users\gssales\projects\maurokart\src\scene.cpp
+	"scene.h"
+
+1618534096 c:\users\gssales\projects\maurokart\include\scene.h
+	<cstdlib>
+	<map>
+	<stack>
+	<glad/glad.h>
+	<glm/mat4x4.hpp>
+	"model.h"
+
+1618533622 c:\users\gssales\projects\maurokart\include\model.h
+	<stdlib.h>
+	<tiny_obj_loader.h>
+	<glm/vec4.hpp>
+	"matrices.h"
+
+1616122874 c:\users\gssales\projects\maurokart\include\tiny_obj_loader.h
+	<map>
+	<string>
+	<vector>
+	<cassert>
+	<cctype>
+	<cmath>
+	<cstddef>
+	<cstdlib>
+	<cstring>
+	<utility>
+	<fstream>
+	<sstream>
+
+1618533725 source:c:\users\gssales\projects\maurokart\src\model.cpp
+	"model.h"
+
+1618535270 c:\users\gssales\projects\maurokart\include\gamestate.h
+	"input.h"
 

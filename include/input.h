@@ -2,7 +2,7 @@
 #define _INPUT_H
 
 #include <map>
-#include <GLFW/glfw3.h>  // Criação de janelas do sistema operacional
+#include <GLFW/glfw3.h>  // CriaÃ§Ã£o de janelas do sistema operacional
 
 struct KeyState
 {
@@ -13,10 +13,20 @@ struct KeyState
     int modifiers = 0;
 };
 
+struct PairState
+{
+    double xvalue = 0.0;
+    double yvalue = 0.0;
+};
+
 class Input
 {
 public:
     std::map<int, KeyState> key_states;
+    PairState scroll_state;
+    PairState cursor_state;
+    bool scroll_changed = false;
+    bool cursor_changed = false;
 
     void Update();
     void KeyCallback(int key, int action, int mod);

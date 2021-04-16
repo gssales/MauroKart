@@ -1,6 +1,8 @@
 #ifndef _CAMERA_H
 #define _CAMERA_H
 
+#include <cstdio>
+
 #include <glm/mat4x4.hpp>
 #include <glm/vec4.hpp>
 
