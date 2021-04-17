@@ -118,3 +118,17 @@ void AddModelToScene(ObjModel* model) {
     
     glBindVertexArray(0);
 }
+
+void DrawVirtualObject(const char* object_name)
+{
+    glBindVertexArray(virtualScene[object_name].vertex_array_object_id);
+
+    glDrawElements(
+        virtualScene[object_name].rendering_mode,
+        virtualScene[object_name].num_indices,
+        GL_UNSIGNED_INT,
+        (void*)(virtualScene[object_name].first_index * sizeof(GLuint))
+    );
+
+    glBindVertexArray(0);
+}

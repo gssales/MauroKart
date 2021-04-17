@@ -106,6 +106,9 @@
 		<Unit filename="include/GLFW/glfw3native.h" />
 		<Unit filename="include/KHR/khrplatform.h" />
 		<Unit filename="include/camera.h" />
+		<Unit filename="include/game.h" />
+		<Unit filename="include/game_objects/bunny.h" />
+		<Unit filename="include/gamestate.h" />
 		<Unit filename="include/glad/glad.h" />
 		<Unit filename="include/glm/common.hpp" />
 		<Unit filename="include/glm/detail/_features.hpp" />
@@ -348,22 +351,30 @@
 		<Unit filename="include/glm/vec3.hpp" />
 		<Unit filename="include/glm/vec4.hpp" />
 		<Unit filename="include/glm/vector_relational.hpp" />
+		<Unit filename="include/gpu_program.h" />
 		<Unit filename="include/input.h" />
 		<Unit filename="include/loaders.h" />
 		<Unit filename="include/matrices.h" />
-		<Unit filename="include/node.h" />
+		<Unit filename="include/model.h" />
+		<Unit filename="include/scene.h" />
 		<Unit filename="include/stb/stb_image.h" />
-		<Unit filename="include/tinyobjloader/tiny_obj_loader.h" />
 		<Unit filename="include/utils.h" />
 		<Unit filename="res/shaders/shader_fragment.glsl" />
 		<Unit filename="res/shaders/shader_vertex.glsl" />
 		<Unit filename="src/camera.cpp" />
+		<Unit filename="src/game.cpp" />
+		<Unit filename="src/game_objects/bunny.cpp" />
+		<Unit filename="src/gamestate.cpp" />
 		<Unit filename="src/glad/glad.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/gpu_program.cpp" />
 		<Unit filename="src/input.cpp" />
+		<Unit filename="src/loaders.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/matrices.cpp" />
+		<Unit filename="src/model.cpp" />
+		<Unit filename="src/scene.cpp" />
 		<Unit filename="src/stb/stb_image.cpp" />
 		<Unit filename="src/tiny_obj_loader/tiny_obj_loader.cpp" />
 		<Extensions />

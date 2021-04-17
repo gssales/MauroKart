@@ -21,5 +21,6 @@ struct SceneObject
 extern std::map<std::string, SceneObject> virtualScene;
 
 void AddModelToScene(ObjModel *model);
+void DrawVirtualObject(const char* object_name);
 
 #endif // _SCENE_H

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1618538333 source:c:\users\gssales\projects\maurokart\src\main.cpp
+1618630368 source:c:\users\gssales\projects\maurokart\src\main.cpp
 	<cmath>
 	<cstdio>
 	<cstdlib>
@@ -14,13 +14,9 @@
 	<glm/vec4.hpp>
 	<glm/gtc/type_ptr.hpp>
 	"matrices.h"
-	"loaders.h"
-	"camera.h"
-	"scene.h"
-	"model.h"
-	"gamestate.h"
+	"game.h"
 
-1598444805 c:\users\gssales\projects\maurokart\include\glad\glad.h
+1618630638 c:\users\gssales\projects\maurokart\include\glad\glad.h
 	<windows.h>
 	<stddef.h>
 	<KHR/khrplatform.h>
@@ -932,7 +928,7 @@
 	"utils.h"
 	"matrices.h"
 
-1616023480 c:\users\gssales\projects\maurokart\include\matrices.h
+1618626791 c:\users\gssales\projects\maurokart\include\matrices.h
 	<glm/mat4x4.hpp>
 	<glm/vec4.hpp>
 
@@ -958,7 +954,7 @@
 	<cstdlib>
 	<glm/gtc/matrix_transform.hpp>
 
-1598444805 source:c:\users\gssales\projects\maurokart\src\glad\glad.c
+1618602436 source:c:\users\gssales\projects\maurokart\src\glad\glad.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -1002,7 +998,7 @@
 	<fstream>
 	<sstream>
 
-1618528263 c:\users\gssales\projects\maurokart\include\loaders.h
+1618630729 c:\users\gssales\projects\maurokart\include\loaders.h
 	<sstream>
 	<fstream>
 	<glad/glad.h>
@@ -1103,10 +1099,10 @@
 1600011606 c:\users\gssales\projects\maurokart\include\glm\ext\scalar_uint_sized.hpp
 	"../detail/setup.hpp"
 
-1618534140 source:c:\users\gssales\projects\maurokart\src\scene.cpp
+1618604351 source:c:\users\gssales\projects\maurokart\src\scene.cpp
 	"scene.h"
 
-1618534096 c:\users\gssales\projects\maurokart\include\scene.h
+1618630764 c:\users\gssales\projects\maurokart\include\scene.h
 	<cstdlib>
 	<map>
 	<stack>
@@ -1137,6 +1133,62 @@
 1618533725 source:c:\users\gssales\projects\maurokart\src\model.cpp
 	"model.h"
 
-1618535270 c:\users\gssales\projects\maurokart\include\gamestate.h
+1618688883 c:\users\gssales\projects\maurokart\include\gamestate.h
+	<ctime>
+	<map>
+	<string>
+	<glm/vec3.hpp>
+	<glm/gtc/type_ptr.hpp>
+	"matrices.h"
 	"input.h"
+	"gpu_program.h"
+	"scene.h"
+
+1618629927 source:c:\users\gssales\projects\maurokart\src\gamestate.cpp
+	"gamestate.h"
+
+1618600931 c:\users\gssales\projects\maurokart\include\gameobject.h
+	<map>
+	<string>
+	<glm/mat4x4.hpp>
+	<glm/vec3.hpp>
+	<glm/gtc/type_ptr.hpp>
+	"gpu_program.h"
+	"matrices.h"
+	"scene.h"
+
+1618630740 c:\users\gssales\projects\maurokart\include\gpu_program.h
+	<map>
+	<string>
+	<glad/glad.h>
+	"loaders.h"
+
+1618599328 c:\users\gssales\projects\maurokart\include\gameobjects\bunny.h
+	<string>
+	"gameobject.h"
+
+1618598272 source:c:\users\gssales\projects\maurokart\src\gpu_program.cpp
+	"gpu_program.h"
+
+1618602388 c:\users\gssales\projects\maurokart\include\graphics.h
+	<glad/glad.h>
+	<GLFW/glfw3.h>
+
+1618688651 c:\users\gssales\projects\maurokart\include\game.h
+	<cstdlib>
+	"camera.h"
+	"gamestate.h"
+	"scene.h"
+	"game_objects/bunny.h"
+
+1618688254 c:\users\gssales\projects\maurokart\include\game_objects\bunny.h
+	<string>
+	<algorithm>
+	"gamestate.h"
+
+1618688846 source:c:\users\gssales\projects\maurokart\src\game.cpp
+	"game.h"
+
+1618688251 source:c:\users\gssales\projects\maurokart\src\game_objects\bunny.cpp
+	"game_objects/bunny.h"
 
