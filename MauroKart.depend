@@ -936,19 +936,19 @@
 	<map>
 	<GLFW/glfw3.h>
 
-1618536796 c:\users\gssales\projects\maurokart\include\camera.h
+1618709779 c:\users\gssales\projects\maurokart\include\camera.h
 	<cstdio>
 	<glm/mat4x4.hpp>
 	<glm/vec4.hpp>
 
-1618537483 source:c:\users\gssales\projects\maurokart\src\camera.cpp
+1618711325 source:c:\users\gssales\projects\maurokart\src\camera.cpp
 	"camera.h"
 	"matrices.h"
 
 1618536155 source:c:\users\gssales\projects\maurokart\src\input.cpp
 	"input.h"
 
-1616023481 source:c:\users\gssales\projects\maurokart\src\matrices.cpp
+1618714213 source:c:\users\gssales\projects\maurokart\src\matrices.cpp
 	"matrices.h"
 	<cstdio>
 	<cstdlib>
@@ -1133,10 +1133,11 @@
 1618533725 source:c:\users\gssales\projects\maurokart\src\model.cpp
 	"model.h"
 
-1618688883 c:\users\gssales\projects\maurokart\include\gamestate.h
+1618714374 c:\users\gssales\projects\maurokart\include\gamestate.h
 	<ctime>
 	<map>
 	<string>
+	<glm/mat4x4.hpp>
 	<glm/vec3.hpp>
 	<glm/gtc/type_ptr.hpp>
 	"matrices.h"
@@ -1144,7 +1145,7 @@
 	"gpu_program.h"
 	"scene.h"
 
-1618629927 source:c:\users\gssales\projects\maurokart\src\gamestate.cpp
+1618708141 source:c:\users\gssales\projects\maurokart\src\gamestate.cpp
 	"gamestate.h"
 
 1618600931 c:\users\gssales\projects\maurokart\include\gameobject.h
@@ -1167,28 +1168,37 @@
 	<string>
 	"gameobject.h"
 
-1618598272 source:c:\users\gssales\projects\maurokart\src\gpu_program.cpp
+1618714652 source:c:\users\gssales\projects\maurokart\src\gpu_program.cpp
 	"gpu_program.h"
 
 1618602388 c:\users\gssales\projects\maurokart\include\graphics.h
 	<glad/glad.h>
 	<GLFW/glfw3.h>
 
-1618688651 c:\users\gssales\projects\maurokart\include\game.h
+1618714104 c:\users\gssales\projects\maurokart\include\game.h
 	<cstdlib>
 	"camera.h"
 	"gamestate.h"
 	"scene.h"
 	"game_objects/bunny.h"
+	"game_objects/cube.h"
 
-1618688254 c:\users\gssales\projects\maurokart\include\game_objects\bunny.h
+1618715958 c:\users\gssales\projects\maurokart\include\game_objects\bunny.h
 	<string>
 	<algorithm>
 	"gamestate.h"
+	"camera.h"
 
-1618688846 source:c:\users\gssales\projects\maurokart\src\game.cpp
+1618716212 source:c:\users\gssales\projects\maurokart\src\game.cpp
 	"game.h"
 
-1618688251 source:c:\users\gssales\projects\maurokart\src\game_objects\bunny.cpp
+1618716061 source:c:\users\gssales\projects\maurokart\src\game_objects\bunny.cpp
 	"game_objects/bunny.h"
+
+1618712157 c:\users\gssales\projects\maurokart\include\game_objects\cube.h
+	<string>
+	"gamestate.h"
+
+1618714873 source:c:\users\gssales\projects\maurokart\src\game_objects\cube.cpp
+	"game_objects/cube.h"
 

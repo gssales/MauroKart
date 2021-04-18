@@ -6,12 +6,14 @@
 #include "gamestate.h"
 #include "scene.h"
 #include "game_objects/bunny.h"
+#include "game_objects/cube.h"
 
 class Game : public GameState {
 public:
     std::map<std::string, GameObject*> game_objects;
     Bunny bunny;
-    Camera active_cam;
+    Cube cube;
+    Camera* active_cam;
     double g_LastCursorPosX, g_LastCursorPosY;
 
     void Load();

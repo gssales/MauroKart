@@ -7,11 +7,21 @@ void Game::Load() {
     ObjModel bunnymodel("../../res/models/bunny.obj");
     AddModelToScene(&bunnymodel);
 
-    active_cam.free = false;
-    active_cam.distance = 2.5;
+    ObjModel cubemodel("../../res/models/cube.obj");
+    AddModelToScene(&cubemodel);
+
+    cube = Cube();
 
     bunny = Bunny();
+    // printf("b %d\n", bunny.creation_time);
+    // printf("c %d\n", cube.creation_time);
     game_objects["bunny"] = &bunny;
+    game_objects["cube"] = &cube;
+
+    active_cam = &(bunny.camera);
+    
+    active_cam->free = false;
+    active_cam->distance = 2.5;
     printf("load finalizado %d\n", game_objects.size());
 }
 
@@ -28,17 +38,17 @@ void Game::Update(double dt) {
         float dx = cursor.xvalue - g_LastCursorPosX;
         float dy = cursor.yvalue - g_LastCursorPosY;
 
-        active_cam.theta -= dx * dt;
-        active_cam.phi += dy * dt;
+        active_cam->theta -= dx * dt * 0.1;
+        active_cam->phi += dy * dt * 0.1;
 
         float phimax = 3.141592f/2;
         float phimin = -phimax;
     
-        if (active_cam.phi > phimax)
-            active_cam.phi = phimax;
+        if (active_cam->phi > phimax)
+            active_cam->phi = phimax;
     
-        if (active_cam.phi < phimin)
-            active_cam.phi = phimin;
+        if (active_cam->phi < phimin)
+            active_cam->phi = phimin;
 
         g_LastCursorPosX = cursor.xvalue;
         g_LastCursorPosY = cursor.yvalue;
@@ -46,19 +56,19 @@ void Game::Update(double dt) {
     if (input.scroll_changed) {
         // printf("scrolling camera\n");
         PairState scroll = input.scroll_state;
-        // printf("scrolling camera %f\n", active_cam.distance);
-        active_cam.distance -= scroll.yvalue * dt;
-        // printf("scrolling camera %f\n", active_cam.distance);
+        // printf("scrolling camera %f\n", active_cam->distance);
+        active_cam->distance -= active_cam->distance * scroll.yvalue * dt;
+        // printf("scrolling camera %f\n", active_cam->distance);
         
         const float verysmallnumber = std::numeric_limits<float>::epsilon();
-        if (active_cam.distance < verysmallnumber)
-            active_cam.distance = verysmallnumber;
+        if (active_cam->distance < verysmallnumber)
+            active_cam->distance = verysmallnumber;
     }
 
     // bunny.Update(dt);
-    active_cam.lookat = glm::vec4(bunny.position.x, bunny.position.y, bunny.position.z, 1.0);
+    // active_cam->lookat = glm::vec4(bunny.position.x, bunny.position.y, bunny.position.z, 1.0);
 
-    active_cam.Update();
+    active_cam->Update();
 
     std::map<std::string, GameObject*>::iterator it;
     for (it = game_objects.begin(); it != game_objects.end(); it++)
@@ -75,8 +85,8 @@ void Game::Update(double dt) {
 
 void Game::Render() {
     // printf("Render iniciado %d\n", game_objects.size());
-    glm::mat4 view = active_cam.View();
-    glm::mat4 projection = active_cam.Projection(g_ScreenRatio);
+    glm::mat4 view = active_cam->View();
+    glm::mat4 projection = active_cam->Projection(g_ScreenRatio);
     glUniformMatrix4fv(view_uniform       , 1 , GL_FALSE , glm::value_ptr(view));
     glUniformMatrix4fv(projection_uniform , 1 , GL_FALSE , glm::value_ptr(projection));
 
@@ -85,7 +95,8 @@ void Game::Render() {
     for (it = game_objects.begin(); it != game_objects.end(); it++)
     {
         GameObject* game_object = it->second;
-        game_object->Render();
+        glm::mat4 model = Matrix_Identity();
+        game_object->Render(model);
         // printf("%s renderizado\n", it->first.c_str());
     }
 }

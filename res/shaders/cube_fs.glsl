@@ -17,19 +17,17 @@ void main()
     vec4 p = position_world;
     
     vec4 n = normalize(normal);
-
+    
     vec4 l = normalize(vec4(1.0,1.0,0.5,0.0)); // sentido da fonte de luz em relação ao ponto atual
     
     vec4 v = normalize(camera_position - p); // sentido da câmera em relação ao ponto atual
     
-    vec4 h = normalize(l + v);
-    
     vec4 r = -l + 2 * n * dot(n,l); // reflectancia especular ideal
 
-    vec3 Kd = vec3(0.15625, 0.1171875, 0.078125); // Refletância difusa
-    vec3 Ks = vec3(0.078125, 0.058593, 0.0390625); // Refletância especular
-    vec3 Ka = vec3(0.078125, 0.058593, 0.0390625); // Refletância ambiente
-    float q = 80.0; // Expoente especular para o modelo de iluminação de Phong
+    vec3 Kd = vec3(0.0, 3.0 ,8.0); // Refletância difusa
+    vec3 Ks = vec3(0.0, 1.0 ,0.0); // Refletância especular
+    vec3 Ka = vec3(0.5, 0.5, 0.5); // Refletância ambiente
+    float q = 10.0; // Expoente especular para o modelo de iluminação de Phong
     
     // Espectro da fonte de iluminação
     vec3 I = vec3(1.0, 1.0 ,1.0);
@@ -44,7 +42,7 @@ void main()
     vec3 ambient_term = Ka * Ia;
 
     // Termo especular utilizando o modelo de iluminação de Phong
-    vec3 phong_specular_term  = Ks * I * pow(max(0, dot(n, h)), q);
+    vec3 phong_specular_term  = Ks * I * pow(max(0, dot(r, v)), q);
 
     // Cor final do fragmento calculada com uma combinação dos termos difuso,
     // especular, e ambiente. Veja slide 129 do documento Aula_17_e_18_Modelos_de_Iluminacao.pdf.

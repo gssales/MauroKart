@@ -16,7 +16,7 @@ void Camera::Update()
         float z = r*cos(phi)*cos(theta);
         float x = r*cos(phi)*sin(theta);
 
-        position = glm::vec4(x,y,z,1.0f);
+        position = lookat + glm::vec4(x,y,z,0.0f);
         view_vector = lookat - position;
     }
 
