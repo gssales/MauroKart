@@ -1,10 +1,8 @@
 #include "game_objects/bunny.h"
 
 // Bunny::Bunny(GameState* game_state) : GameObject(game_state) {
-Bunny::Bunny() {
-    time_t t;
-    time(&t);
-    creation_time = t;
+Bunny::Bunny() : GameObject()
+{
     model_name = "bunny";
     fragment_shader = "../../res/shaders/bunny_fs.glsl";
 
@@ -39,7 +37,7 @@ void Bunny::Update(double dt) {
         movement_vec = movement_vec + glm::vec3(0.0,0.0,-1.0);
     }
 
-    if (glm::length(movement_vec) != 0.0) 
+    if (glm::length(movement_vec) != 0.0)
         movement_vec = glm::normalize(movement_vec);
 
     if (accel)
@@ -49,7 +47,7 @@ void Bunny::Update(double dt) {
 
     speed = std::min((float)(speed + acceleration*dt), max_speed);
     position = position + (movement_vec * speed);
-    
+
     if (input.GetKeyState(GLFW_KEY_E).is_down) {
         ry += (3.1415/6) * dt;
     }
@@ -61,20 +59,25 @@ void Bunny::Update(double dt) {
     // camera.Update();
 }
 
-void Bunny::Render(glm::mat4 model) {
+void Bunny::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection)
+{
 
-    model = model * Matrix_Translate(position.x, position.y, position.z);
-    PushMatrix(model);
-        model = model
+    *model = *model * Matrix_Translate(position.x, position.y, position.z);
+    camera.position = *model * camera.position;
+    PushMatrix(*model);
+        *model = *model
               * Matrix_Rotate_Z(0.0)
               * Matrix_Rotate_Y(ry)
               * Matrix_Rotate_X(0.0);
-        PushMatrix(model);
-            model = model * Matrix_Scale(1.0, 1.0, 1.0);
-                    glUniformMatrix4fv(model_uniform, 1 , GL_FALSE , glm::value_ptr(model));
-                    LoadGpuProgram(default_vs_filename.c_str(), fragment_shader.c_str());
-                    DrawVirtualObject(model_name.c_str());
-        PopMatrix(model);
+        PushMatrix(*model);
+            *model = *model * Matrix_Scale(1.0, 1.0, 1.0);
+            LoadGpuProgram(default_vs_filename.c_str(), fragment_shader.c_str());
+            glUseProgram(program_id);
+            glUniformMatrix4fv(view_uniform       , 1 , GL_FALSE , glm::value_ptr(*view));
+            glUniformMatrix4fv(projection_uniform , 1 , GL_FALSE , glm::value_ptr(*projection));
+            glUniformMatrix4fv(model_uniform      , 1 , GL_FALSE , glm::value_ptr(*model));
+            DrawVirtualObject(model_name.c_str());
+        PopMatrix(*model);
 
         // std::list<BodyPart>::iterator it = part.children.begin();
         // while (it != part.children.end())
@@ -84,7 +87,7 @@ void Bunny::Render(glm::mat4 model) {
         //     PopMatrix(model);
         //     it++;
         // }
-    PopMatrix(model);
+    PopMatrix(*model);
 }
 
 void Bunny::Destroy() {

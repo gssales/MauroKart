@@ -2,7 +2,6 @@
 
 void Game::Load() {
     printf("Load iniciado\n");
-    LoadGpuProgram(default_vs_filename.c_str(), default_fs_filename.c_str());
 
     ObjModel bunnymodel("../../res/models/bunny.obj");
     AddModelToScene(&bunnymodel);
@@ -19,7 +18,7 @@ void Game::Load() {
     game_objects["cube"] = &cube;
 
     active_cam = &(bunny.camera);
-    
+
     active_cam->free = false;
     active_cam->distance = 2.5;
     printf("load finalizado %d\n", game_objects.size());
@@ -43,10 +42,10 @@ void Game::Update(double dt) {
 
         float phimax = 3.141592f/2;
         float phimin = -phimax;
-    
+
         if (active_cam->phi > phimax)
             active_cam->phi = phimax;
-    
+
         if (active_cam->phi < phimin)
             active_cam->phi = phimin;
 
@@ -59,7 +58,7 @@ void Game::Update(double dt) {
         // printf("scrolling camera %f\n", active_cam->distance);
         active_cam->distance -= active_cam->distance * scroll.yvalue * dt;
         // printf("scrolling camera %f\n", active_cam->distance);
-        
+
         const float verysmallnumber = std::numeric_limits<float>::epsilon();
         if (active_cam->distance < verysmallnumber)
             active_cam->distance = verysmallnumber;
@@ -87,16 +86,13 @@ void Game::Render() {
     // printf("Render iniciado %d\n", game_objects.size());
     glm::mat4 view = active_cam->View();
     glm::mat4 projection = active_cam->Projection(g_ScreenRatio);
-    glUniformMatrix4fv(view_uniform       , 1 , GL_FALSE , glm::value_ptr(view));
-    glUniformMatrix4fv(projection_uniform , 1 , GL_FALSE , glm::value_ptr(projection));
 
-    // bunny.Render();
     std::map<std::string, GameObject*>::iterator it;
     for (it = game_objects.begin(); it != game_objects.end(); it++)
     {
         GameObject* game_object = it->second;
         glm::mat4 model = Matrix_Identity();
-        game_object->Render(model);
+        game_object->Render(&model, &view, &projection);
         // printf("%s renderizado\n", it->first.c_str());
     }
 }

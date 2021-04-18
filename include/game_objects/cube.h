@@ -12,7 +12,7 @@ public:
 
     Cube();
     void Update(double dt);
-    void Render(glm::mat4 model);
+    void Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection);
     void Destroy();
 };
 

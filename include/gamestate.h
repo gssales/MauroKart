@@ -4,6 +4,7 @@
 #include <ctime>
 #include <map>
 #include <string>
+#include <GLFW/glfw3.h>
 #include <glm/mat4x4.hpp>
 #include <glm/vec3.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -34,9 +35,9 @@ public:
     glm::vec3 position;
     bool dead = false;
 
-    // GameObject(GameState* game_state);
+    GameObject();
     virtual void Update(double dt) = 0;
-    virtual void Render(glm::mat4 model) = 0;
+    virtual void Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection) = 0;
     virtual void Destroy() = 0;
 };
 

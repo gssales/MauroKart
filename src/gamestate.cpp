@@ -25,8 +25,9 @@ void PopMatrix(glm::mat4& M)
     }
 }
 
-// GameObject::GameObject(GameState *game_state) {
-//     this->game_state = game_state;
-// }
+GameObject::GameObject()
+{
+    creation_time = glfwGetTime()*1000;
+}
 
 
