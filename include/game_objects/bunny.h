@@ -9,6 +9,7 @@
 class Bunny: public GameObject
 {
 public:
+    GpuProgram shader;
     Camera camera;
     std::string model_name;
     std::string fragment_shader;
@@ -21,7 +22,7 @@ public:
     // Bunny(GameState* game_state);
     Bunny();
     void Update(double dt);
-    void Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection);
+    void Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader);
     void Destroy();
 };
 

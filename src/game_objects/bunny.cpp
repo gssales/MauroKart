@@ -5,6 +5,9 @@ Bunny::Bunny() : GameObject()
 {
     model_name = "bunny";
     fragment_shader = "../../res/shaders/bunny_fs.glsl";
+    if (default_vs_filename.c_str()) {
+        shader = GpuProgram(default_vs_filename.c_str(), "../../res/shaders/bunny_fs.glsl");
+    }
 
     position = glm::vec3(0.0,0.0,0.0);
 
@@ -59,8 +62,13 @@ void Bunny::Update(double dt) {
     // camera.Update();
 }
 
-void Bunny::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection)
+void Bunny::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader)
 {
+    GpuProgram s;
+    if (!shader.program_id)
+        s = *default_shader;
+    else
+        s = shader;
 
     *model = *model * Matrix_Translate(position.x, position.y, position.z);
     camera.position = *model * camera.position;
@@ -71,11 +79,10 @@ void Bunny::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection)
               * Matrix_Rotate_X(0.0);
         PushMatrix(*model);
             *model = *model * Matrix_Scale(1.0, 1.0, 1.0);
-            LoadGpuProgram(default_vs_filename.c_str(), fragment_shader.c_str());
-            glUseProgram(program_id);
-            glUniformMatrix4fv(view_uniform       , 1 , GL_FALSE , glm::value_ptr(*view));
-            glUniformMatrix4fv(projection_uniform , 1 , GL_FALSE , glm::value_ptr(*projection));
-            glUniformMatrix4fv(model_uniform      , 1 , GL_FALSE , glm::value_ptr(*model));
+            glUseProgram(s.program_id);
+            glUniformMatrix4fv(s.view_uniform       , 1 , GL_FALSE , glm::value_ptr(*view));
+            glUniformMatrix4fv(s.projection_uniform , 1 , GL_FALSE , glm::value_ptr(*projection));
+            glUniformMatrix4fv(s.model_uniform      , 1 , GL_FALSE , glm::value_ptr(*model));
             DrawVirtualObject(model_name.c_str());
         PopMatrix(*model);
 

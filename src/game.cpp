@@ -3,6 +3,8 @@
 void Game::Load() {
     printf("Load iniciado\n");
 
+    default_shader = GpuProgram(default_vs_filename.c_str(), default_fs_filename.c_str());
+
     ObjModel bunnymodel("../../res/models/bunny.obj");
     AddModelToScene(&bunnymodel);
 
@@ -92,7 +94,7 @@ void Game::Render() {
     {
         GameObject* game_object = it->second;
         glm::mat4 model = Matrix_Identity();
-        game_object->Render(&model, &view, &projection);
+        game_object->Render(&model, &view, &projection, &default_shader);
         // printf("%s renderizado\n", it->first.c_str());
     }
 }

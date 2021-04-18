@@ -94,8 +94,6 @@ int main()
 
     printf("GPU: %s, %s, OpenGL %s, GLSL %s\n", vendor, renderer, glversion, glslversion);
 
-    LoadGpuProgram(default_vs_filename.c_str(), default_fs_filename.c_str());
-
     glEnable(GL_DEPTH_TEST);
     
     glEnable(GL_CULL_FACE);
@@ -118,8 +116,6 @@ int main()
         glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        glUseProgram(program_id);
 
         /* draw/render */
         game.Render();

@@ -37,7 +37,7 @@ public:
 
     GameObject();
     virtual void Update(double dt) = 0;
-    virtual void Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection) = 0;
+    virtual void Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader) = 0;
     virtual void Destroy() = 0;
 };
 
