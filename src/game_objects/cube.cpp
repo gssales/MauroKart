@@ -2,7 +2,7 @@
 
 Cube::Cube() : GameObject()
 {
-    model_name = "cube";
+    model_name = "sphere";
     fragment_shader = "../../res/shaders/cube_fs.glsl";
     if (default_vs_filename.c_str()) {
         shader = GpuProgram(default_vs_filename.c_str(), fragment_shader.c_str());
@@ -12,16 +12,17 @@ Cube::Cube() : GameObject()
 }
 
 void Cube::Update(double dt) {
-    // printf("teste\n");
+    light.position = glm::vec4(position.x, position.y, position.z-2.0, 1.0f);
 }
 
-void Cube::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader) 
+void Cube::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader, LightSet* lighting) 
 {
     GpuProgram s;
     if (!shader.program_id)
         s = *default_shader;
     else
         s = shader;
+
 
     *model = *model * Matrix_Translate(position.x, position.y, position.z);
     PushMatrix(*model);
@@ -35,6 +36,9 @@ void Cube::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuP
             glUniformMatrix4fv(s.view_uniform       , 1 , GL_FALSE , glm::value_ptr(*view));
             glUniformMatrix4fv(s.projection_uniform , 1 , GL_FALSE , glm::value_ptr(*projection));
             glUniformMatrix4fv(s.model_uniform      , 1 , GL_FALSE , glm::value_ptr(*model));
+            glUniform1ui(s.n_lights_uniform , lighting->n_lights);
+            glUniform4fv(s.lights_uniform      , 1 , glm::value_ptr(lighting->positions[0]));
+            glUniform3fv(s.colors_uniform      , 1 , glm::value_ptr(lighting->colors[0]));
             DrawVirtualObject(model_name.c_str());
         PopMatrix(*model);
     PopMatrix(*model);

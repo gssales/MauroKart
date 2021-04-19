@@ -12,6 +12,7 @@ class Game : public GameState {
 public:
     std::map<std::string, GameObject*> game_objects;
     GpuProgram default_shader;
+    LightSet lighting;
     Bunny bunny;
     Cube cube;
     Camera* active_cam;

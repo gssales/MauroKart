@@ -3,6 +3,7 @@
 
 #include <ctime>
 #include <map>
+#include <vector>
 #include <string>
 #include <GLFW/glfw3.h>
 #include <glm/mat4x4.hpp>
@@ -12,6 +13,7 @@
 #include "input.h"
 #include "gpu_program.h"
 #include "scene.h"
+#include "lighting/light.h"
 
 extern Input input;
 extern float g_ScreenRatio;
@@ -25,6 +27,14 @@ void PushMatrix(glm::mat4 M);
 // Função que remove a matriz atualmente no topo da pilha e armazena a mesma na variável M
 void PopMatrix(glm::mat4& M);
 
+class LightSet
+{
+public:
+    std::vector<glm::vec4> positions;
+    std::vector<glm::vec3> colors;
+    int n_lights;
+};
+
 class GameState;
 
 class GameObject
@@ -37,7 +47,7 @@ public:
 
     GameObject();
     virtual void Update(double dt) = 0;
-    virtual void Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader) = 0;
+    virtual void Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader, LightSet* lighting) = 0;
     virtual void Destroy() = 0;
 };
 

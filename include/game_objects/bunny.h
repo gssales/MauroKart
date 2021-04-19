@@ -22,7 +22,7 @@ public:
     // Bunny(GameState* game_state);
     Bunny();
     void Update(double dt);
-    void Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader);
+    void Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader, LightSet* lighting);
     void Destroy();
 };
 

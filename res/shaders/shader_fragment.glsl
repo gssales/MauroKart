@@ -7,6 +7,10 @@ uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
+uniform int n_lights;
+uniform vec4 lights;
+uniform vec3 colors;
+
 out vec3 color;
 
 void main()
@@ -15,35 +19,38 @@ void main()
     vec4 camera_position = inverse(view) * origin;
 
     vec4 p = position_world;
-    
     vec4 n = normalize(normal);
-    
-    vec4 l = normalize(vec4(1.0,1.0,0.5,0.0)); // sentido da fonte de luz em relação ao ponto atual
-    
     vec4 v = normalize(camera_position - p); // sentido da câmera em relação ao ponto atual
-    
-    vec4 r = -l + 2 * n * dot(n,l); // reflectancia especular ideal
 
     vec3 Kd = vec3(1.0, 1.0 ,1.0); // Refletância difusa
     vec3 Ks = vec3(1.0, 1.0 ,0.0); // Refletância especular
     vec3 Ka = vec3(0.5, 0.5, 0.5); // Refletância ambiente
     float q = 10.0; // Expoente especular para o modelo de iluminação de Phong
     
-    // Espectro da fonte de iluminação
-    vec3 I = vec3(1.0, 1.0 ,1.0);
-
     // Espectro da luz ambiente
     vec3 Ia = vec3(0.2, 0.2, 0.2);
 
-    // Termo difuso utilizando a lei dos cossenos de Lambert
+    // vec3 lambert_diffuse_term = vec4(0.0, 0.0, 0.0);
+    // vec3 phong_specular_term = vec4(0.0, 0.0, 0.0);
+    // for (int i = 0; i < n_lights; i++)
+    // {
+    //     vec4 l = normalize(lights[i] - p);
+    //     vec4 h = normalize(l + v);
+    //     vec3 I = color[i];
+    //     lambert_diffuse_term = lambert_diffuse_term + Kd * I * max(0, dot(n, l));
+    //     phong_specular_term = phong_specular_term + Ks * I * pow(max(0, dot(n, h)), q)
+    // }
+    
+    vec4 l = normalize(lights - p);
+    vec4 h = normalize(l + v);
+    vec3 I = colors;
+
     vec3 lambert_diffuse_term = Kd * I * max(0, dot(n, l));
+    vec3 phong_specular_term = Ks * I * pow(max(0, dot(n, h)), q);
 
     // Termo ambiente
     vec3 ambient_term = Ka * Ia;
-
-    // Termo especular utilizando o modelo de iluminação de Phong
-    vec3 phong_specular_term  = Ks * I * pow(max(0, dot(r, v)), q);
-
+    
     // Cor final do fragmento calculada com uma combinação dos termos difuso,
     // especular, e ambiente. Veja slide 129 do documento Aula_17_e_18_Modelos_de_Iluminacao.pdf.
     color = lambert_diffuse_term + ambient_term + phong_specular_term;

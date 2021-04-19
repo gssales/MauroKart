@@ -1133,9 +1133,10 @@
 1618533725 source:c:\users\gssales\projects\maurokart\src\model.cpp
 	"model.h"
 
-1618781052 c:\users\gssales\projects\maurokart\include\gamestate.h
+1618791206 c:\users\gssales\projects\maurokart\include\gamestate.h
 	<ctime>
 	<map>
+	<vector>
 	<string>
 	<GLFW/glfw3.h>
 	<glm/mat4x4.hpp>
@@ -1145,6 +1146,7 @@
 	"input.h"
 	"gpu_program.h"
 	"scene.h"
+	"lighting/light.h"
 
 1618776044 source:c:\users\gssales\projects\maurokart\src\gamestate.cpp
 	"gamestate.h"
@@ -1159,7 +1161,7 @@
 	"matrices.h"
 	"scene.h"
 
-1618780809 c:\users\gssales\projects\maurokart\include\gpu_program.h
+1618790004 c:\users\gssales\projects\maurokart\include\gpu_program.h
 	<map>
 	<string>
 	<glad/glad.h>
@@ -1169,14 +1171,14 @@
 	<string>
 	"gameobject.h"
 
-1618781603 source:c:\users\gssales\projects\maurokart\src\gpu_program.cpp
+1618787607 source:c:\users\gssales\projects\maurokart\src\gpu_program.cpp
 	"gpu_program.h"
 
 1618602388 c:\users\gssales\projects\maurokart\include\graphics.h
 	<glad/glad.h>
 	<GLFW/glfw3.h>
 
-1618780974 c:\users\gssales\projects\maurokart\include\game.h
+1618787851 c:\users\gssales\projects\maurokart\include\game.h
 	<cstdlib>
 	"camera.h"
 	"gamestate.h"
@@ -1184,22 +1186,26 @@
 	"game_objects/bunny.h"
 	"game_objects/cube.h"
 
-1618781985 c:\users\gssales\projects\maurokart\include\game_objects\bunny.h
+1618787965 c:\users\gssales\projects\maurokart\include\game_objects\bunny.h
 	<string>
 	<algorithm>
 	"gamestate.h"
 	"camera.h"
 
-1618782687 source:c:\users\gssales\projects\maurokart\src\game.cpp
+1618791951 source:c:\users\gssales\projects\maurokart\src\game.cpp
 	"game.h"
 
-1618782591 source:c:\users\gssales\projects\maurokart\src\game_objects\bunny.cpp
+1618791189 source:c:\users\gssales\projects\maurokart\src\game_objects\bunny.cpp
 	"game_objects/bunny.h"
 
-1618781386 c:\users\gssales\projects\maurokart\include\game_objects\cube.h
+1618787960 c:\users\gssales\projects\maurokart\include\game_objects\cube.h
 	<string>
 	"gamestate.h"
 
-1618782513 source:c:\users\gssales\projects\maurokart\src\game_objects\cube.cpp
+1618792035 source:c:\users\gssales\projects\maurokart\src\game_objects\cube.cpp
 	"game_objects/cube.h"
+
+1618791167 c:\users\gssales\projects\maurokart\include\lighting\light.h
+	<glm/vec4.hpp>
+	<glm/vec3.hpp>
 

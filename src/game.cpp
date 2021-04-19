@@ -8,16 +8,18 @@ void Game::Load() {
     ObjModel bunnymodel("../../res/models/bunny.obj");
     AddModelToScene(&bunnymodel);
 
-    ObjModel cubemodel("../../res/models/cube.obj");
+    ObjModel cubemodel("../../res/models/sphere.obj");
     AddModelToScene(&cubemodel);
 
     cube = Cube();
+    game_objects["cube"] = &cube;
 
     bunny = Bunny();
-    // printf("b %d\n", bunny.creation_time);
-    // printf("c %d\n", cube.creation_time);
     game_objects["bunny"] = &bunny;
-    game_objects["cube"] = &cube;
+
+    lighting.n_lights += 1;
+    lighting.positions.push_back(cube.light.position);
+    lighting.colors.push_back(cube.light.color);
 
     active_cam = &(bunny.camera);
 
@@ -27,6 +29,12 @@ void Game::Load() {
 }
 
 void Game::Update(double dt) {
+    
+    lighting = LightSet();
+    lighting.n_lights += 1;
+    lighting.positions.push_back(cube.light.position);
+    lighting.colors.push_back(cube.light.color);
+
     // printf("Update iniciado %d\n", game_objects.size());
     KeyState left_button = input.GetKeyState(GLFW_MOUSE_BUTTON_LEFT);
     if (left_button.is_pressed) {
@@ -94,7 +102,7 @@ void Game::Render() {
     {
         GameObject* game_object = it->second;
         glm::mat4 model = Matrix_Identity();
-        game_object->Render(&model, &view, &projection, &default_shader);
+        game_object->Render(&model, &view, &projection, &default_shader, &lighting);
         // printf("%s renderizado\n", it->first.c_str());
     }
 }

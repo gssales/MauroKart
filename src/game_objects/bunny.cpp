@@ -14,7 +14,7 @@ Bunny::Bunny() : GameObject()
     movement_vec = glm::vec3(0.0,0.0,0.0);
     speed = 0.0f;
     acceleration = 0.1f;
-    max_speed = 0.2f;
+    max_speed = 0.05f;
 
 }
 
@@ -25,7 +25,7 @@ void Bunny::Update(double dt) {
     movement_vec = glm::vec3(0.0,0.0,0.0);
     if (input.GetKeyState(GLFW_KEY_W).is_down) {
         accel = true;
-        movement_vec = movement_vec + glm::vec3(1.0,0.0,0.0);
+        movement_vec = movement_vec + glm::vec3(-1.0,0.0,0.0);
     }
     if (input.GetKeyState(GLFW_KEY_A).is_down) {
         accel = true;
@@ -33,7 +33,7 @@ void Bunny::Update(double dt) {
     }
     if (input.GetKeyState(GLFW_KEY_S).is_down) {
         accel = true;
-        movement_vec = movement_vec + glm::vec3(-1.0,0.0,0.0);
+        movement_vec = movement_vec + glm::vec3(1.0,0.0,0.0);
     }
     if (input.GetKeyState(GLFW_KEY_D).is_down) {
         accel = true;
@@ -62,7 +62,7 @@ void Bunny::Update(double dt) {
     // camera.Update();
 }
 
-void Bunny::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader)
+void Bunny::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader, LightSet* lighting)
 {
     GpuProgram s;
     if (!shader.program_id)
@@ -83,6 +83,9 @@ void Bunny::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, Gpu
             glUniformMatrix4fv(s.view_uniform       , 1 , GL_FALSE , glm::value_ptr(*view));
             glUniformMatrix4fv(s.projection_uniform , 1 , GL_FALSE , glm::value_ptr(*projection));
             glUniformMatrix4fv(s.model_uniform      , 1 , GL_FALSE , glm::value_ptr(*model));
+            glUniform1ui(s.n_lights_uniform , lighting->n_lights);
+            glUniform4fv(s.lights_uniform      , 1 , glm::value_ptr(lighting->positions[0]));
+            glUniform3fv(s.colors_uniform      , 1 , glm::value_ptr(lighting->colors[0]));
             DrawVirtualObject(model_name.c_str());
         PopMatrix(*model);
 
