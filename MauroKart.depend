@@ -16,7 +16,7 @@
 	"matrices.h"
 	"game.h"
 
-1618630638 c:\users\gssales\projects\maurokart\include\glad\glad.h
+1618800067 c:\users\gssales\projects\maurokart\include\glad\glad.h
 	<windows.h>
 	<stddef.h>
 	<KHR/khrplatform.h>
@@ -932,9 +932,9 @@
 	<glm/mat4x4.hpp>
 	<glm/vec4.hpp>
 
-1618536066 c:\users\gssales\projects\maurokart\include\input.h
+1618800528 c:\users\gssales\projects\maurokart\include\input.h
 	<map>
-	<GLFW/glfw3.h>
+	"gl.h"
 
 1618709779 c:\users\gssales\projects\maurokart\include\camera.h
 	<cstdio>
@@ -998,10 +998,10 @@
 	<fstream>
 	<sstream>
 
-1618630729 c:\users\gssales\projects\maurokart\include\loaders.h
+1618800385 c:\users\gssales\projects\maurokart\include\loaders.h
 	<sstream>
 	<fstream>
-	<glad/glad.h>
+	"gl.h"
 
 1618779512 source:c:\users\gssales\projects\maurokart\src\loaders.cpp
 	"loaders.h"
@@ -1102,11 +1102,11 @@
 1618604351 source:c:\users\gssales\projects\maurokart\src\scene.cpp
 	"scene.h"
 
-1618630764 c:\users\gssales\projects\maurokart\include\scene.h
+1618800401 c:\users\gssales\projects\maurokart\include\scene.h
 	<cstdlib>
 	<map>
 	<stack>
-	<glad/glad.h>
+	"gl.h"
 	<glm/mat4x4.hpp>
 	"model.h"
 
@@ -1133,12 +1133,12 @@
 1618533725 source:c:\users\gssales\projects\maurokart\src\model.cpp
 	"model.h"
 
-1618794257 c:\users\gssales\projects\maurokart\include\gamestate.h
+1618800516 c:\users\gssales\projects\maurokart\include\gamestate.h
 	<ctime>
 	<map>
 	<vector>
 	<string>
-	<GLFW/glfw3.h>
+	"gl.h"
 	<glm/mat4x4.hpp>
 	<glm/vec3.hpp>
 	<glm/gtc/type_ptr.hpp>
@@ -1161,10 +1161,10 @@
 	"matrices.h"
 	"scene.h"
 
-1618790004 c:\users\gssales\projects\maurokart\include\gpu_program.h
+1618800393 c:\users\gssales\projects\maurokart\include\gpu_program.h
 	<map>
 	<string>
-	<glad/glad.h>
+	"gl.h"
 	"loaders.h"
 
 1618599328 c:\users\gssales\projects\maurokart\include\gameobjects\bunny.h
@@ -1208,4 +1208,8 @@
 1618792833 c:\users\gssales\projects\maurokart\include\lighting\light.h
 	<glm/vec4.hpp>
 	<glm/vec3.hpp>
+
+1618800486 c:\users\gssales\projects\maurokart\include\gl.h
+	<glad/glad.h>
+	<GLFW/glfw3.h>
 

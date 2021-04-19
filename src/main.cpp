@@ -23,8 +23,7 @@
 #include <fstream>
 #include <sstream>
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+#include "gl.h"
 
 // Headers da biblioteca GLM: criação de matrizes e vetores.
 #include <glm/mat4x4.hpp>

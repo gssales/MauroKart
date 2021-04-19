@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <map>
 #include <stack>
-#include <glad/glad.h>
+#include "gl.h"
 #include <glm/mat4x4.hpp>
 
 #include "model.h"

@@ -2,7 +2,7 @@
 #define _INPUT_H
 
 #include <map>
-#include <GLFW/glfw3.h>  // Criação de janelas do sistema operacional
+#include "gl.h" // Criação de janelas do sistema operacional
 
 struct KeyState
 {

@@ -3,7 +3,7 @@
 
 #include <sstream>
 #include <fstream>
-#include <glad/glad.h>
+#include "gl.h"
 
 unsigned int LoadShader(const char* filename, unsigned int shader_id);
 GLuint LoadShader_Vertex(const char* filename);

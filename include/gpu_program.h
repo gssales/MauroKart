@@ -3,7 +3,7 @@
 
 #include <map>
 #include <string>
-#include <glad/glad.h>
+#include "gl.h"
 #include "loaders.h"
 
 extern std::string default_vs_filename;
