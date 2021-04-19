@@ -17,9 +17,12 @@ void Game::Load() {
     bunny = Bunny();
     game_objects["bunny"] = &bunny;
 
+    lighting.positions[lighting.n_lights] = cube.light1.position;
+    lighting.colors[lighting.n_lights] = cube.light1.color;
     lighting.n_lights += 1;
-    lighting.positions.push_back(cube.light.position);
-    lighting.colors.push_back(cube.light.color);
+    lighting.positions[lighting.n_lights] = cube.light2.position;
+    lighting.colors[lighting.n_lights] = cube.light2.color;
+    lighting.n_lights += 1;
 
     active_cam = &(bunny.camera);
 
@@ -31,9 +34,12 @@ void Game::Load() {
 void Game::Update(double dt) {
     
     lighting = LightSet();
+    lighting.positions[lighting.n_lights] = cube.light1.position;
+    lighting.colors[lighting.n_lights] = cube.light1.color;
     lighting.n_lights += 1;
-    lighting.positions.push_back(cube.light.position);
-    lighting.colors.push_back(cube.light.color);
+    lighting.positions[lighting.n_lights] = cube.light2.position;
+    lighting.colors[lighting.n_lights] = cube.light2.color;
+    lighting.n_lights += 1;
 
     // printf("Update iniciado %d\n", game_objects.size());
     KeyState left_button = input.GetKeyState(GLFW_MOUSE_BUTTON_LEFT);

@@ -30,8 +30,8 @@ void PopMatrix(glm::mat4& M);
 class LightSet
 {
 public:
-    std::vector<glm::vec4> positions;
-    std::vector<glm::vec3> colors;
+    glm::vec4 positions[128];
+    glm::vec3 colors[128];
     int n_lights;
 };
 

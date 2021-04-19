@@ -8,7 +8,7 @@ class Cube: public GameObject
 {
 public:
     GpuProgram shader;
-    Light light;
+    Light light1, light2;
     std::string model_name;
     std::string fragment_shader;
 

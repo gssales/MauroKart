@@ -83,9 +83,9 @@ void Bunny::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, Gpu
             glUniformMatrix4fv(s.view_uniform       , 1 , GL_FALSE , glm::value_ptr(*view));
             glUniformMatrix4fv(s.projection_uniform , 1 , GL_FALSE , glm::value_ptr(*projection));
             glUniformMatrix4fv(s.model_uniform      , 1 , GL_FALSE , glm::value_ptr(*model));
-            glUniform1ui(s.n_lights_uniform , lighting->n_lights);
-            glUniform4fv(s.lights_uniform      , 1 , glm::value_ptr(lighting->positions[0]));
-            glUniform3fv(s.colors_uniform      , 1 , glm::value_ptr(lighting->colors[0]));
+            glUniform1i(s.n_lights_uniform , lighting->n_lights);
+            glUniform4fv(s.lights_uniform      , lighting->n_lights , glm::value_ptr(lighting->positions[0]));
+            glUniform3fv(s.colors_uniform      , lighting->n_lights , glm::value_ptr(lighting->colors[0]));
             DrawVirtualObject(model_name.c_str());
         PopMatrix(*model);
 

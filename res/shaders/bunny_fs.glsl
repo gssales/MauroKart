@@ -8,8 +8,8 @@ uniform mat4 view;
 uniform mat4 projection;
 
 uniform int n_lights;
-uniform vec4 lights;
-uniform vec3 colors;
+uniform vec4 lights[128];
+uniform vec3 colors[128];
 
 out vec3 color;
 
@@ -30,26 +30,19 @@ void main()
     // Espectro da luz ambiente
     vec3 Ia = vec3(0.2, 0.2, 0.2);
 
-    // vec3 lambert_diffuse_term = vec4(0.0, 0.0, 0.0);
-    // vec3 phong_specular_term = vec4(0.0, 0.0, 0.0);
-    // for (int i = 0; i < n_lights; i++)
-    // {
-    //     vec4 l = normalize(lights[i] - p);
-    //     vec4 h = normalize(l + v);
-    //     vec3 I = color[i];
-    //     lambert_diffuse_term = lambert_diffuse_term + Kd * I * max(0, dot(n, l));
-    //     phong_specular_term = phong_specular_term + Ks * I * pow(max(0, dot(n, h)), q)
-    // }
+    vec3 lambert_diffuse_term = vec3(0.0, 0.0, 0.0);
+    vec3 phong_specular_term = vec3(0.0, 0.0, 0.0);
+    for (int i = 0; i < n_lights; ++i)
+    {
+        vec4 l = normalize(lights[i] - p);
+        vec4 h = normalize(l + v);
+        vec3 I = colors[i];
+        lambert_diffuse_term = lambert_diffuse_term + Kd * I * max(0, dot(n, l));
+        phong_specular_term = phong_specular_term + Ks * I * pow(max(0, dot(n, h)), q);
+    }
     
-    vec4 l = normalize(lights - p);
-    vec4 h = normalize(l + v);
-    vec3 I = colors;
-
     // Termo ambiente
     vec3 ambient_term = Ka * Ia;
-
-    vec3 lambert_diffuse_term = Kd * I * max(0, dot(n, l));
-    vec3 phong_specular_term = Ks * I * pow(max(0, dot(n, h)), q);
 
     // Cor final do fragmento calculada com uma combinação dos termos difuso,
     // especular, e ambiente. Veja slide 129 do documento Aula_17_e_18_Modelos_de_Iluminacao.pdf.
