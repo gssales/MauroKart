@@ -1172,20 +1172,21 @@
 	<string>
 	"gameobject.h"
 
-1619449218 source:c:\users\gssales\projects\maurokart\src\gpu_program.cpp
+1619450862 source:c:\users\gssales\projects\maurokart\src\gpu_program.cpp
 	"gpu_program.h"
 
 1618602388 c:\users\gssales\projects\maurokart\include\graphics.h
 	<glad/glad.h>
 	<GLFW/glfw3.h>
 
-1619381653 c:\users\gssales\projects\maurokart\include\game.h
+1619450654 c:\users\gssales\projects\maurokart\include\game.h
 	<cstdlib>
 	"camera.h"
 	"gamestate.h"
 	"scene.h"
 	"game_objects/bunny.h"
 	"game_objects/cube.h"
+	"game_objects/kart.h"
 
 1619410302 c:\users\gssales\projects\maurokart\include\game_objects\bunny.h
 	<string>
@@ -1193,7 +1194,7 @@
 	"gamestate.h"
 	"camera.h"
 
-1619381654 source:c:\users\gssales\projects\maurokart\src\game.cpp
+1619451357 source:c:\users\gssales\projects\maurokart\src\game.cpp
 	"game.h"
 
 1619410001 source:c:\users\gssales\projects\maurokart\src\game_objects\bunny.cpp
@@ -1219,6 +1220,13 @@
 	<stb\stb_image.h>
 	"gl.h"
 
-1619408367 source:c:\users\gssales\projects\maurokart\src\texture.cpp
+1619449329 source:c:\users\gssales\projects\maurokart\src\texture.cpp
 	"texture.h"
+
+1619450165 c:\users\gssales\projects\maurokart\include\game_objects\kart.h
+	<string>
+	"gamestate.h"
+
+1619454296 source:c:\users\gssales\projects\maurokart\src\game_objects\kart.cpp
+	"game_objects/kart.h"
 

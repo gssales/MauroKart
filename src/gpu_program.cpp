@@ -1,7 +1,7 @@
 #include "gpu_program.h"
 
-std::string default_vs_filename = "../../res/shaders/shader_vertex.glsl";
-std::string default_fs_filename = "../../res/shaders/shader_fragment.glsl";
+std::string default_vs_filename = "../../res/shaders/default_vs.glsl";
+std::string default_fs_filename = "../../res/shaders/default_fs.glsl";
 
 GpuProgram::GpuProgram(const char* vertex_shader_filename, const char* fragment_shader_filename)
 {
