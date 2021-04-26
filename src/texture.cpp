@@ -3,6 +3,7 @@
 Texture::Texture(const char* image_filename, unsigned int texture_unit)
 {
     printf("Carregando imagem \"%s\"... ", image_filename);
+    stbi_set_flip_vertically_on_load(true);
     int width;
     int height;
     int channels;

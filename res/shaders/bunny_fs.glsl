@@ -49,7 +49,7 @@ void main()
     vec4 h = normalize(l + v);
     vec3 I = vec3(0.5, 0.5, 0.5);
     lambert_diffuse_term = lambert_diffuse_term + Kd * I * max(0, dot(n, l));
-        phong_specular_term = phong_specular_term + Ks * I * pow(max(0, dot(n, h)), q);
+    phong_specular_term = phong_specular_term + Ks * I * pow(max(0, dot(n, h)), q);
     for (int i = 0; i < n_lights; ++i)
     {
         vec4 l = normalize(light_positions[i] - p);
