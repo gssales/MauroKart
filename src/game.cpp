@@ -10,12 +10,18 @@ void Game::Load() {
 
     ObjModel cubemodel("../../res/models/sphere.obj");
     AddModelToScene(&cubemodel);
+    
+    ObjModel kartmodel("../../res/models/kart.obj");
+    AddModelToScene(&kartmodel);
 
     cube = Cube();
     game_objects["cube"] = &cube;
 
     bunny = Bunny();
     game_objects["bunny"] = &bunny;
+
+    kart = Kart();
+    game_objects["kart"] = &kart;
 
     lighting.positions[lighting.n_lights] = cube.light1.position;
     lighting.colors[lighting.n_lights] = cube.light1.color;

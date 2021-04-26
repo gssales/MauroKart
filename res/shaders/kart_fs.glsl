@@ -32,8 +32,8 @@ void main()
     vec4 n = normalize(normal);
     vec4 v = normalize(camera_position - p); // sentido da câmera em relação ao ponto atual
 
-    float U = (position_model.x - bbox_min.x)/(bbox_max.x - bbox_min.x);
-    float V = (position_model.y - bbox_min.y)/(bbox_max.y - bbox_min.y);
+    float U = texcoords.x;
+    float V = texcoords.y;
 
     vec3 Kd = texture(TextureImage0, vec2(U,V)).rgb; // Refletância difusa
     vec3 Ks = vec3(0.078125, 0.058593, 0.0390625); // Refletância especular

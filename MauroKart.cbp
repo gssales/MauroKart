@@ -359,6 +359,7 @@
 		<Unit filename="include/model.h" />
 		<Unit filename="include/scene.h" />
 		<Unit filename="include/stb/stb_image.h" />
+		<Unit filename="include/texture.h" />
 		<Unit filename="include/utils.h" />
 		<Unit filename="res/shaders/shader_fragment.glsl" />
 		<Unit filename="res/shaders/shader_vertex.glsl" />
@@ -378,6 +379,7 @@
 		<Unit filename="src/model.cpp" />
 		<Unit filename="src/scene.cpp" />
 		<Unit filename="src/stb/stb_image.cpp" />
+		<Unit filename="src/texture.cpp" />
 		<Unit filename="src/tiny_obj_loader/tiny_obj_loader.cpp" />
 		<Extensions />
 	</Project>

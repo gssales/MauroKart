@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include "gl.h"
+#include "texture.h"
 #include "loaders.h"
 
 extern std::string default_vs_filename;
@@ -18,9 +19,6 @@ public:
     GLint model_uniform;
     GLint view_uniform;
     GLint projection_uniform;
-    GLint n_lights_uniform;
-    GLint lights_uniform;
-    GLint colors_uniform;
 
     GpuProgram() {}
     GpuProgram(const char* vertex_shader_filename, const char* fragment_shader_filename);

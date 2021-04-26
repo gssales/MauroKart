@@ -2,7 +2,8 @@
 
 std::map<std::string, SceneObject> virtualScene;
 
-void AddModelToScene(ObjModel* model) {
+void AddModelToScene(ObjModel* model)
+{
     GLuint vertex_array_object_id;
     glGenVertexArrays(1, &vertex_array_object_id);
     glBindVertexArray(vertex_array_object_id);
@@ -16,6 +17,12 @@ void AddModelToScene(ObjModel* model) {
     {
         size_t first_index = indices.size();
         size_t num_triangles = model->shapes[shape].mesh.num_face_vertices.size();
+
+        const float minval = std::numeric_limits<float>::min();
+        const float maxval = std::numeric_limits<float>::max();
+
+        glm::vec3 bbox_min = glm::vec3(maxval,maxval,maxval);
+        glm::vec3 bbox_max = glm::vec3(minval,minval,minval);
 
         for (size_t triangle = 0; triangle < num_triangles; ++triangle)
         {
@@ -35,6 +42,13 @@ void AddModelToScene(ObjModel* model) {
                 model_coefficients.push_back( vy ); // Y
                 model_coefficients.push_back( vz ); // Z
                 model_coefficients.push_back( 1.0f ); // W
+
+                bbox_min.x = std::min(bbox_min.x, vx);
+                bbox_min.y = std::min(bbox_min.y, vy);
+                bbox_min.z = std::min(bbox_min.z, vz);
+                bbox_max.x = std::max(bbox_max.x, vx);
+                bbox_max.y = std::max(bbox_max.y, vy);
+                bbox_max.z = std::max(bbox_max.z, vz);
 
                 if ( idx.normal_index != -1 )
                 {
@@ -65,6 +79,9 @@ void AddModelToScene(ObjModel* model) {
         theobject.num_indices    = last_index - first_index + 1; // Número de indices
         theobject.rendering_mode = GL_TRIANGLES;       // Índices correspondem ao tipo de rasterização GL_TRIANGLES.
         theobject.vertex_array_object_id = vertex_array_object_id;
+
+        theobject.bounding_box_min = bbox_min;
+        theobject.bounding_box_max = bbox_max;
 
         virtualScene[model->shapes[shape].name] = theobject;
     }
@@ -119,9 +136,14 @@ void AddModelToScene(ObjModel* model) {
     glBindVertexArray(0);
 }
 
-void DrawVirtualObject(const char* object_name)
+void DrawVirtualObject(const char* object_name, GLuint program_id)
 {
     glBindVertexArray(virtualScene[object_name].vertex_array_object_id);
+    
+    glm::vec3 bbox_min = virtualScene[object_name].bounding_box_min;
+    glm::vec3 bbox_max = virtualScene[object_name].bounding_box_max;
+    glUniform4f(glGetUniformLocation(program_id, "bbox_min"), bbox_min.x, bbox_min.y, bbox_min.z, 1.0f);
+    glUniform4f(glGetUniformLocation(program_id, "bbox_max"), bbox_max.x, bbox_max.y, bbox_max.z, 1.0f);
 
     glDrawElements(
         virtualScene[object_name].rendering_mode,

@@ -1,12 +1,22 @@
 #include "game_objects/bunny.h"
 
+BunnyShader::BunnyShader(const char* vertex_shader_filename, const char* fragment_shader_filename, const char* image_filename) 
+    : GpuProgram(vertex_shader_filename, fragment_shader_filename)
+{
+    bunny_texture = Texture(image_filename, 0);
+    n_lights_uniform = glGetUniformLocation(program_id, "n_lights");
+    light_positions_uniform = glGetUniformLocation(program_id, "light_positions[]");
+    light_colors_uniform = glGetUniformLocation(program_id, "light_colors[]");
+    texture0_uniform = glGetUniformLocation(program_id, "TextureImage0");
+}
+
 // Bunny::Bunny(GameState* game_state) : GameObject(game_state) {
 Bunny::Bunny() : GameObject()
 {
     model_name = "bunny";
-    fragment_shader = "../../res/shaders/bunny_fs.glsl";
+
     if (default_vs_filename.c_str()) {
-        shader = GpuProgram(default_vs_filename.c_str(), "../../res/shaders/bunny_fs.glsl");
+        shader = BunnyShader(default_vs_filename.c_str(), "../../res/shaders/bunny_fs.glsl", "../../res/textures/earth.jpg");
     }
 
     position = glm::vec3(0.0,0.0,0.0);
@@ -64,12 +74,6 @@ void Bunny::Update(double dt) {
 
 void Bunny::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader, LightSet* lighting)
 {
-    GpuProgram s;
-    if (!shader.program_id)
-        s = *default_shader;
-    else
-        s = shader;
-
     *model = *model * Matrix_Translate(position.x, position.y, position.z);
     camera.position = *model * camera.position;
     PushMatrix(*model);
@@ -79,14 +83,15 @@ void Bunny::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, Gpu
               * Matrix_Rotate_X(0.0);
         PushMatrix(*model);
             *model = *model * Matrix_Scale(1.0, 1.0, 1.0);
-            glUseProgram(s.program_id);
-            glUniformMatrix4fv(s.view_uniform       , 1 , GL_FALSE , glm::value_ptr(*view));
-            glUniformMatrix4fv(s.projection_uniform , 1 , GL_FALSE , glm::value_ptr(*projection));
-            glUniformMatrix4fv(s.model_uniform      , 1 , GL_FALSE , glm::value_ptr(*model));
-            glUniform1i(s.n_lights_uniform , lighting->n_lights);
-            glUniform4fv(s.lights_uniform      , lighting->n_lights , glm::value_ptr(lighting->positions[0]));
-            glUniform3fv(s.colors_uniform      , lighting->n_lights , glm::value_ptr(lighting->colors[0]));
-            DrawVirtualObject(model_name.c_str());
+            glUseProgram(shader.program_id);
+            glUniform1i(shader.texture0_uniform         , shader.bunny_texture.texture_unit);
+            glUniformMatrix4fv(shader.view_uniform      , 1 , GL_FALSE , glm::value_ptr(*view));
+            glUniformMatrix4fv(shader.projection_uniform, 1 , GL_FALSE , glm::value_ptr(*projection));
+            glUniformMatrix4fv(shader.model_uniform     , 1 , GL_FALSE , glm::value_ptr(*model));
+            glUniform1i(shader.n_lights_uniform         , lighting->n_lights);
+            glUniform4fv(shader.light_positions_uniform , lighting->n_lights , glm::value_ptr(lighting->positions[0]));
+            glUniform3fv(shader.light_colors_uniform    , lighting->n_lights , glm::value_ptr(lighting->colors[0]));
+            DrawVirtualObject(model_name.c_str(), shader.program_id);
         PopMatrix(*model);
 
         // std::list<BodyPart>::iterator it = part.children.begin();

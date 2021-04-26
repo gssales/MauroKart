@@ -7,12 +7,14 @@
 #include "scene.h"
 #include "game_objects/bunny.h"
 #include "game_objects/cube.h"
+#include "game_objects/kart.h"
 
 class Game : public GameState {
 public:
     std::map<std::string, GameObject*> game_objects;
     GpuProgram default_shader;
     LightSet lighting;
+    Kart kart;
     Bunny bunny;
     Cube cube;
     Camera* active_cam;

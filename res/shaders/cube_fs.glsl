@@ -8,8 +8,8 @@ uniform mat4 view;
 uniform mat4 projection;
 
 uniform int n_lights;
-uniform vec4 lights[128];
-uniform vec3 colors[128];
+uniform vec4 light_positions[128];
+uniform vec3 light_colors[128];
 
 out vec3 color;
 
@@ -34,9 +34,9 @@ void main()
     vec3 phong_specular_term = vec3(0.0, 0.0, 0.0);
     for (int i = 0; i < n_lights; i++)
     {
-        vec4 l = normalize(lights[i] - p);
+        vec4 l = normalize(light_positions[i] - p);
         vec4 h = normalize(l + v);
-        vec3 I = colors[i];
+        vec3 I = light_colors[i];
         lambert_diffuse_term = lambert_diffuse_term + Kd * I * max(0, dot(n, l));
         phong_specular_term = phong_specular_term + Ks * I * pow(max(0, dot(n, h)), q);
     }

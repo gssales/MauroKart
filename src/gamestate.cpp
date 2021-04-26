@@ -2,7 +2,7 @@
 
 Input input;
 
-float g_ScreenRatio = 1.0f;
+float g_ScreenRatio = (float)1280 / 720;
 
 std::stack<glm::mat4>  g_MatrixStack;
 
