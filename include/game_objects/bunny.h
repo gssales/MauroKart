@@ -6,13 +6,25 @@
 #include "gamestate.h"
 #include "camera.h"
 
+class BunnyShader: public GpuProgram
+{
+public:
+    Texture bunny_texture;
+    GLint n_lights_uniform;
+    GLint light_positions_uniform;
+    GLint light_colors_uniform;
+    GLint texture0_uniform;
+
+    BunnyShader() {};
+    BunnyShader(const char* vertex_shader_filename, const char* fragment_shader_filename, const char* image_filename);
+};
+
 class Bunny: public GameObject
 {
 public:
-    GpuProgram shader;
+    BunnyShader shader;
     Camera camera;
     std::string model_name;
-    std::string fragment_shader;
     glm::vec3 movement_vec;
     float speed;
     float acceleration;

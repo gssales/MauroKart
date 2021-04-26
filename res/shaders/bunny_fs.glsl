@@ -2,16 +2,26 @@
 
 in vec4 position_world;
 in vec4 normal;
+in vec4 position_model;
+in vec2 texcoords;
 
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
+uniform vec4 bbox_min;
+uniform vec4 bbox_max;
+
 uniform int n_lights;
-uniform vec4 lights[128];
-uniform vec3 colors[128];
+uniform vec4 light_positions[128];
+uniform vec3 light_colors[128];
+
+uniform sampler2D TextureImage0;
 
 out vec3 color;
+
+#define M_PI   3.14159265358979323846
+#define M_PI_2 1.57079632679489661923
 
 void main()
 {
@@ -22,9 +32,12 @@ void main()
     vec4 n = normalize(normal);
     vec4 v = normalize(camera_position - p); // sentido da câmera em relação ao ponto atual
 
-    vec3 Kd = vec3(0.15625, 0.1171875, 0.078125); // Refletância difusa
+    float U = (position_model.x - bbox_min.x)/(bbox_max.x - bbox_min.x);
+    float V = (position_model.y - bbox_min.y)/(bbox_max.y - bbox_min.y);
+
+    vec3 Kd = texture(TextureImage0, vec2(U,V)).rgb; // Refletância difusa
     vec3 Ks = vec3(0.078125, 0.058593, 0.0390625); // Refletância especular
-    vec3 Ka = vec3(0.078125, 0.058593, 0.0390625); // Refletância ambiente
+    vec3 Ka = Kd/2; // Refletância ambiente
     float q = 80.0; // Expoente especular para o modelo de iluminação de Phong
 
     // Espectro da luz ambiente
@@ -32,11 +45,16 @@ void main()
 
     vec3 lambert_diffuse_term = vec3(0.0, 0.0, 0.0);
     vec3 phong_specular_term = vec3(0.0, 0.0, 0.0);
+    vec4 l = vec4(1.0,1.0,0.0,0.0);
+    vec4 h = normalize(l + v);
+    vec3 I = vec3(0.5, 0.5, 0.5);
+    lambert_diffuse_term = lambert_diffuse_term + Kd * I * max(0, dot(n, l));
+        phong_specular_term = phong_specular_term + Ks * I * pow(max(0, dot(n, h)), q);
     for (int i = 0; i < n_lights; ++i)
     {
-        vec4 l = normalize(lights[i] - p);
+        vec4 l = normalize(light_positions[i] - p);
         vec4 h = normalize(l + v);
-        vec3 I = colors[i];
+        vec3 I = light_colors[i];
         lambert_diffuse_term = lambert_diffuse_term + Kd * I * max(0, dot(n, l));
         phong_specular_term = phong_specular_term + Ks * I * pow(max(0, dot(n, h)), q);
     }

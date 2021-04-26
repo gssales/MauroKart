@@ -4,10 +4,21 @@
 #include <string>
 #include "gamestate.h"
 
+class CubeShader: public GpuProgram
+{
+public:
+    GLint n_lights_uniform;
+    GLint light_positions_uniform;
+    GLint light_colors_uniform;
+
+    CubeShader() {};
+    CubeShader(const char* vertex_shader_filename, const char* fragment_shader_filename);
+};
+
 class Cube: public GameObject
 {
 public:
-    GpuProgram shader;
+    CubeShader shader;
     Light light1, light2;
     std::string model_name;
     std::string fragment_shader;

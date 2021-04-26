@@ -2,16 +2,20 @@
 
 in vec4 position_world;
 in vec4 normal;
+in vec4 position_model;
+in vec2 texcoords;
 
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
-uniform int n_lights;
-uniform vec4 lights[128];
-uniform vec3 colors[128];
+uniform vec4 bbox_min;
+uniform vec4 bbox_max;
 
 out vec3 color;
+
+#define M_PI   3.14159265358979323846
+#define M_PI_2 1.57079632679489661923
 
 void main()
 {

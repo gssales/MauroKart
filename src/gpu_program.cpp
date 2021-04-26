@@ -16,9 +16,6 @@ GpuProgram::GpuProgram(const char* vertex_shader_filename, const char* fragment_
     model_uniform      = glGetUniformLocation(program_id, "model");
     view_uniform       = glGetUniformLocation(program_id, "view");
     projection_uniform = glGetUniformLocation(program_id, "projection");
-    n_lights_uniform   = glGetUniformLocation(program_id, "n_lights");
-    lights_uniform     = glGetUniformLocation(program_id, "lights[]");
-    colors_uniform     = glGetUniformLocation(program_id, "colors[]");
 }
 
 GLuint CreateGpuProgram(GLuint vertex_shader_id, GLuint fragment_shader_id) 
