@@ -31,42 +31,42 @@ Bunny::Bunny() : GameObject()
 void Bunny::Update(double dt) {
     camera.lookat = glm::vec4(position.x, position.y, position.z, 1.0);
     // printf("update %s\n", model_name.c_str() );
-    bool accel = false;
-    movement_vec = glm::vec3(0.0,0.0,0.0);
-    if (input.GetKeyState(GLFW_KEY_W).is_down) {
-        accel = true;
-        movement_vec = movement_vec + glm::vec3(-1.0,0.0,0.0);
-    }
-    if (input.GetKeyState(GLFW_KEY_A).is_down) {
-        accel = true;
-        movement_vec = movement_vec + glm::vec3(0.0,0.0,1.0);
-    }
-    if (input.GetKeyState(GLFW_KEY_S).is_down) {
-        accel = true;
-        movement_vec = movement_vec + glm::vec3(1.0,0.0,0.0);
-    }
-    if (input.GetKeyState(GLFW_KEY_D).is_down) {
-        accel = true;
-        movement_vec = movement_vec + glm::vec3(0.0,0.0,-1.0);
-    }
+    // bool accel = false;
+    // movement_vec = glm::vec3(0.0,0.0,0.0);
+    // if (input.GetKeyState(GLFW_KEY_W).is_down) {
+    //     accel = true;
+    //     movement_vec = movement_vec + glm::vec3(-1.0,0.0,0.0);
+    // }
+    // if (input.GetKeyState(GLFW_KEY_A).is_down) {
+    //     accel = true;
+    //     movement_vec = movement_vec + glm::vec3(0.0,0.0,1.0);
+    // }
+    // if (input.GetKeyState(GLFW_KEY_S).is_down) {
+    //     accel = true;
+    //     movement_vec = movement_vec + glm::vec3(1.0,0.0,0.0);
+    // }
+    // if (input.GetKeyState(GLFW_KEY_D).is_down) {
+    //     accel = true;
+    //     movement_vec = movement_vec + glm::vec3(0.0,0.0,-1.0);
+    // }
 
-    if (glm::length(movement_vec) != 0.0)
-        movement_vec = glm::normalize(movement_vec);
+    // if (glm::length(movement_vec) != 0.0)
+    //     movement_vec = glm::normalize(movement_vec);
 
-    if (accel)
-        speed = std::min((float)(speed + acceleration*dt), max_speed);
-    else
-        speed = std::max((float)(speed - acceleration*dt), 0.0f);
+    // if (accel)
+    //     speed = std::min((float)(speed + acceleration*dt), max_speed);
+    // else
+    //     speed = std::max((float)(speed - acceleration*dt), 0.0f);
 
-    speed = std::min((float)(speed + acceleration*dt), max_speed);
-    position = position + (movement_vec * speed);
+    // speed = std::min((float)(speed + acceleration*dt), max_speed);
+    // position = position + (movement_vec * speed);
 
-    if (input.GetKeyState(GLFW_KEY_E).is_down) {
-        ry += (3.1415/6) * dt;
-    }
-    if (input.GetKeyState(GLFW_KEY_Q).is_down) {
-        ry -= (3.1415/6) * dt;
-    }
+    // if (input.GetKeyState(GLFW_KEY_E).is_down) {
+    //     ry += (3.1415/6) * dt;
+    // }
+    // if (input.GetKeyState(GLFW_KEY_Q).is_down) {
+    //     ry -= (3.1415/6) * dt;
+    // }
     // printf("%f %f %f\n", position.x, position.y, position.z);
 
     // camera.Update();

@@ -3,6 +3,7 @@
 
 #include <string>
 #include "gamestate.h"
+#include "camera.h"
 
 class KartShader: public GpuProgram
 {
@@ -21,7 +22,13 @@ class Kart: public GameObject
 {
 public:
     KartShader shader;
+    Camera camera;
     std::string model_name;
+    glm::vec3 movement_vec;
+    float speed;
+    float acceleration;
+    float max_speed;
+    float ry = 0.0f;
 
     Kart();
     void Update(double dt);

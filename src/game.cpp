@@ -10,7 +10,7 @@ void Game::Load() {
 
     ObjModel cubemodel("../../res/models/sphere.obj");
     AddModelToScene(&cubemodel);
-    
+
     ObjModel kartmodel("../../res/models/kart.obj");
     AddModelToScene(&kartmodel);
 
@@ -30,15 +30,15 @@ void Game::Load() {
     lighting.colors[lighting.n_lights] = cube.light2.color;
     lighting.n_lights += 1;
 
-    active_cam = &(bunny.camera);
+    active_cam = &(kart.camera);
 
     active_cam->free = false;
-    active_cam->distance = 2.5;
+    active_cam->distance = 5;
     printf("load finalizado %d\n", game_objects.size());
 }
 
 void Game::Update(double dt) {
-    
+
     lighting = LightSet();
     lighting.positions[lighting.n_lights] = cube.light1.position;
     lighting.colors[lighting.n_lights] = cube.light1.color;
