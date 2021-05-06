@@ -8,7 +8,9 @@
 
                TRABALHO FINAL
 
-    Autor: Guilherme Souza Sales 301220
+    Autores: 
+        Guilherme Souza Sales 301220 e
+        Matheus Severo Madeira 275621
 */
 
 // padrões de C
