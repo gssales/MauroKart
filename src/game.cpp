@@ -8,14 +8,14 @@ void Game::Load() {
     ObjModel bunnymodel("../../res/models/bunny.obj");
     AddModelToScene(&bunnymodel);
 
-    ObjModel cubemodel("../../res/models/sphere.obj");
-    AddModelToScene(&cubemodel);
+    ObjModel spheremodel("../../res/models/sphere.obj");
+    AddModelToScene(&spheremodel);
 
     ObjModel kartmodel("../../res/models/kart.obj");
     AddModelToScene(&kartmodel);
 
-    cube = Cube();
-    game_objects["cube"] = &cube;
+    sphere = Sphere();
+    game_objects["sphere"] = &sphere;
 
     bunny = Bunny();
     game_objects["bunny"] = &bunny;
@@ -23,11 +23,11 @@ void Game::Load() {
     kart = Kart();
     game_objects["kart"] = &kart;
 
-    lighting.positions[lighting.n_lights] = cube.light1.position;
-    lighting.colors[lighting.n_lights] = cube.light1.color;
+    lighting.positions[lighting.n_lights] = sphere.light1.position;
+    lighting.colors[lighting.n_lights] = sphere.light1.color;
     lighting.n_lights += 1;
-    lighting.positions[lighting.n_lights] = cube.light2.position;
-    lighting.colors[lighting.n_lights] = cube.light2.color;
+    lighting.positions[lighting.n_lights] = sphere.light2.position;
+    lighting.colors[lighting.n_lights] = sphere.light2.color;
     lighting.n_lights += 1;
 
     active_cam = &(kart.camera);
@@ -40,11 +40,11 @@ void Game::Load() {
 void Game::Update(double dt) {
 
     lighting = LightSet();
-    lighting.positions[lighting.n_lights] = cube.light1.position;
-    lighting.colors[lighting.n_lights] = cube.light1.color;
+    lighting.positions[lighting.n_lights] = sphere.light1.position;
+    lighting.colors[lighting.n_lights] = sphere.light1.color;
     lighting.n_lights += 1;
-    lighting.positions[lighting.n_lights] = cube.light2.position;
-    lighting.colors[lighting.n_lights] = cube.light2.color;
+    lighting.positions[lighting.n_lights] = sphere.light2.position;
+    lighting.colors[lighting.n_lights] = sphere.light2.color;
     lighting.n_lights += 1;
 
     // printf("Update iniciado %d\n", game_objects.size());

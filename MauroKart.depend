@@ -1185,7 +1185,7 @@
 	"gamestate.h"
 	"scene.h"
 	"game_objects/bunny.h"
-	"game_objects/cube.h"
+	"game_objects/sphere.h"
 	"game_objects/kart.h"
 
 1619410302 c:\users\gssales\projects\maurokart\include\game_objects\bunny.h
@@ -1200,12 +1200,12 @@
 1619410001 source:c:\users\gssales\projects\maurokart\src\game_objects\bunny.cpp
 	"game_objects/bunny.h"
 
-1619410396 c:\users\gssales\projects\maurokart\include\game_objects\cube.h
+1619410396 c:\users\gssales\projects\maurokart\include\game_objects\sphere.h
 	<string>
 	"gamestate.h"
 
-1619410451 source:c:\users\gssales\projects\maurokart\src\game_objects\cube.cpp
-	"game_objects/cube.h"
+1619410451 source:c:\users\gssales\projects\maurokart\src\game_objects\sphere.cpp
+	"game_objects/sphere.h"
 
 1619381654 c:\users\gssales\projects\maurokart\include\lighting\light.h
 	<glm/vec4.hpp>
@@ -1798,16 +1798,16 @@
 	<glm/mat4x4.hpp>
 	<glm/vec4.hpp>
 
-1620263360 source:c:\users\gracky\ufrgs\maurokart\src\game.cpp
+1621109252 source:c:\users\gracky\ufrgs\maurokart\src\game.cpp
 	"game.h"
 
-1620254913 c:\users\gracky\ufrgs\maurokart\include\game.h
+1621109252 c:\users\gracky\ufrgs\maurokart\include\game.h
 	<cstdlib>
 	"camera.h"
 	"gamestate.h"
 	"scene.h"
 	"game_objects/bunny.h"
-	"game_objects/cube.h"
+	"game_objects/sphere.h"
 	"game_objects/kart.h"
 
 1620254913 c:\users\gracky\ufrgs\maurokart\include\gamestate.h
@@ -2202,7 +2202,7 @@
 	"gamestate.h"
 	"camera.h"
 
-1620254913 c:\users\gracky\ufrgs\maurokart\include\game_objects\cube.h
+1621109334 c:\users\gracky\ufrgs\maurokart\include\game_objects\sphere.h
 	<string>
 	"gamestate.h"
 
@@ -2214,8 +2214,8 @@
 1620261462 source:c:\users\gracky\ufrgs\maurokart\src\game_objects\bunny.cpp
 	"game_objects/bunny.h"
 
-1620254914 source:c:\users\gracky\ufrgs\maurokart\src\game_objects\cube.cpp
-	"game_objects/cube.h"
+1621109275 source:c:\users\gracky\ufrgs\maurokart\src\game_objects\sphere.cpp
+	"game_objects/sphere.h"
 
 1620254914 source:c:\users\gracky\ufrgs\maurokart\src\gamestate.cpp
 	"gamestate.h"
@@ -2237,7 +2237,7 @@
 1620254914 source:c:\users\gracky\ufrgs\maurokart\src\loaders.cpp
 	"loaders.h"
 
-1620254914 source:c:\users\gracky\ufrgs\maurokart\src\main.cpp
+1620270055 source:c:\users\gracky\ufrgs\maurokart\src\main.cpp
 	<cmath>
 	<cstdio>
 	<cstdlib>
@@ -2274,6 +2274,6 @@
 1620254914 source:c:\users\gracky\ufrgs\maurokart\src\tiny_obj_loader\tiny_obj_loader.cpp
 	"tiny_obj_loader.h"
 
-1620258337 source:c:\users\gracky\ufrgs\maurokart\src\game_objects\kart.cpp
+1620265908 source:c:\users\gracky\ufrgs\maurokart\src\game_objects\kart.cpp
 	"game_objects/kart.h"
 

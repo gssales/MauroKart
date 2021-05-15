@@ -1,6 +1,6 @@
-#include "game_objects/cube.h"
+#include "game_objects/sphere.h"
 
-CubeShader::CubeShader(const char* vertex_shader_filename, const char* fragment_shader_filename)
+SphereShader::SphereShader(const char* vertex_shader_filename, const char* fragment_shader_filename)
     : GpuProgram(vertex_shader_filename, fragment_shader_filename)
 {
     n_lights_uniform = glGetUniformLocation(program_id, "n_lights");
@@ -8,11 +8,11 @@ CubeShader::CubeShader(const char* vertex_shader_filename, const char* fragment_
     light_colors_uniform = glGetUniformLocation(program_id, "light_colors[]");
 }
 
-Cube::Cube() : GameObject()
+Sphere::Sphere() : GameObject()
 {
     model_name = "sphere";
     if (default_vs_filename.c_str()) {
-        shader = CubeShader(default_vs_filename.c_str(), "../../res/shaders/cube_fs.glsl");
+        shader = SphereShader(default_vs_filename.c_str(), "../../res/shaders/sphere_fs.glsl");
     }
 
     position = glm::vec3(0.0,0.0,0.0);
@@ -21,12 +21,12 @@ Cube::Cube() : GameObject()
     light2.color = glm::vec3(0.0f, 0.0f, 1.0f);
 }
 
-void Cube::Update(double dt) {
+void Sphere::Update(double dt) {
     light1.position = glm::vec4(position.x, position.y, position.z-2.0, 1.0f);
     light2.position = glm::vec4(position.x+2.0, position.y, position.z, 1.0f);
 }
 
-void Cube::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader, LightSet* lighting)
+void Sphere::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader, LightSet* lighting)
 {
     *model = *model * Matrix_Translate(position.x, position.y, position.z);
     PushMatrix(*model);
@@ -48,6 +48,6 @@ void Cube::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuP
     PopMatrix(*model);
 }
 
-void Cube::Destroy() {
+void Sphere::Destroy() {
 
 }
