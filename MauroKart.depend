@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1619390689 source:c:\users\gssales\projects\maurokart\src\main.cpp
+1621203869 source:c:\users\gssales\projects\maurokart\src\main.cpp
 	<cmath>
 	<cstdio>
 	<cstdlib>
@@ -927,7 +927,7 @@
 	"utils.h"
 	"matrices.h"
 
-1619381654 c:\users\gssales\projects\maurokart\include\matrices.h
+1621203804 c:\users\gssales\projects\maurokart\include\matrices.h
 	<glm/mat4x4.hpp>
 	<glm/vec4.hpp>
 
@@ -935,19 +935,19 @@
 	<map>
 	"gl.h"
 
-1619381653 c:\users\gssales\projects\maurokart\include\camera.h
+1621203869 c:\users\gssales\projects\maurokart\include\camera.h
 	<cstdio>
 	<glm/mat4x4.hpp>
 	<glm/vec4.hpp>
 
-1619381654 source:c:\users\gssales\projects\maurokart\src\camera.cpp
+1621203804 source:c:\users\gssales\projects\maurokart\src\camera.cpp
 	"camera.h"
 	"matrices.h"
 
 1619381654 source:c:\users\gssales\projects\maurokart\src\input.cpp
 	"input.h"
 
-1619381654 source:c:\users\gssales\projects\maurokart\src\matrices.cpp
+1621203804 source:c:\users\gssales\projects\maurokart\src\matrices.cpp
 	"matrices.h"
 	<cstdio>
 	<cstdlib>
@@ -961,10 +961,10 @@
 	<windows.h>
 	<dlfcn.h>
 
-1616178812 source:c:\users\gssales\projects\maurokart\src\stb\stb_image.cpp
+1620488273 source:c:\users\gssales\projects\maurokart\src\stb\stb_image.cpp
 	"stb/stb_image.h"
 
-1616122874 c:\users\gssales\projects\maurokart\include\stb\stb_image.h
+1620488273 c:\users\gssales\projects\maurokart\include\stb\stb_image.h
 	"stb_image.h"
 	<stdio.h>
 	<stdarg.h>
@@ -1098,10 +1098,10 @@
 1600011606 c:\users\gssales\projects\maurokart\include\glm\ext\scalar_uint_sized.hpp
 	"../detail/setup.hpp"
 
-1619409906 source:c:\users\gssales\projects\maurokart\src\scene.cpp
+1621203804 source:c:\users\gssales\projects\maurokart\src\scene.cpp
 	"scene.h"
 
-1619410061 c:\users\gssales\projects\maurokart\include\scene.h
+1621203804 c:\users\gssales\projects\maurokart\include\scene.h
 	<cstdlib>
 	<algorithm>
 	<map>
@@ -1110,7 +1110,7 @@
 	<glm/mat4x4.hpp>
 	"model.h"
 
-1619381654 c:\users\gssales\projects\maurokart\include\model.h
+1621203804 c:\users\gssales\projects\maurokart\include\model.h
 	<stdlib.h>
 	<tiny_obj_loader.h>
 	<glm/vec4.hpp>
@@ -1130,10 +1130,10 @@
 	<fstream>
 	<sstream>
 
-1619381654 source:c:\users\gssales\projects\maurokart\src\model.cpp
+1621203804 source:c:\users\gssales\projects\maurokart\src\model.cpp
 	"model.h"
 
-1619381653 c:\users\gssales\projects\maurokart\include\gamestate.h
+1621203804 c:\users\gssales\projects\maurokart\include\gamestate.h
 	<ctime>
 	<map>
 	<vector>
@@ -1148,7 +1148,7 @@
 	"scene.h"
 	"lighting/light.h"
 
-1619381662 source:c:\users\gssales\projects\maurokart\src\gamestate.cpp
+1621203804 source:c:\users\gssales\projects\maurokart\src\gamestate.cpp
 	"gamestate.h"
 
 1618600931 c:\users\gssales\projects\maurokart\include\gameobject.h
@@ -1161,7 +1161,7 @@
 	"matrices.h"
 	"scene.h"
 
-1619410102 c:\users\gssales\projects\maurokart\include\gpu_program.h
+1621203804 c:\users\gssales\projects\maurokart\include\gpu_program.h
 	<map>
 	<string>
 	"gl.h"
@@ -1172,14 +1172,14 @@
 	<string>
 	"gameobject.h"
 
-1619450862 source:c:\users\gssales\projects\maurokart\src\gpu_program.cpp
+1621203804 source:c:\users\gssales\projects\maurokart\src\gpu_program.cpp
 	"gpu_program.h"
 
 1618602388 c:\users\gssales\projects\maurokart\include\graphics.h
 	<glad/glad.h>
 	<GLFW/glfw3.h>
 
-1619450654 c:\users\gssales\projects\maurokart\include\game.h
+1621203869 c:\users\gssales\projects\maurokart\include\game.h
 	<cstdlib>
 	"camera.h"
 	"gamestate.h"
@@ -1187,27 +1187,29 @@
 	"game_objects/bunny.h"
 	"game_objects/sphere.h"
 	"game_objects/kart.h"
+	"game_objects/bench.h"
 
-1619410302 c:\users\gssales\projects\maurokart\include\game_objects\bunny.h
+1621203804 c:\users\gssales\projects\maurokart\include\game_objects\bunny.h
 	<string>
 	<algorithm>
 	"gamestate.h"
 	"camera.h"
 
-1619451357 source:c:\users\gssales\projects\maurokart\src\game.cpp
+1621203869 source:c:\users\gssales\projects\maurokart\src\game.cpp
 	"game.h"
 
-1619410001 source:c:\users\gssales\projects\maurokart\src\game_objects\bunny.cpp
+1621203869 source:c:\users\gssales\projects\maurokart\src\game_objects\bunny.cpp
 	"game_objects/bunny.h"
 
-1619410396 c:\users\gssales\projects\maurokart\include\game_objects\sphere.h
+1621203869 c:\users\gssales\projects\maurokart\include\game_objects\sphere.h
 	<string>
 	"gamestate.h"
 
-1619410451 source:c:\users\gssales\projects\maurokart\src\game_objects\sphere.cpp
+1621203869 source:c:\users\gssales\projects\maurokart\src\game_objects\sphere.cpp
 	"game_objects/sphere.h"
+	<cmath>
 
-1619381654 c:\users\gssales\projects\maurokart\include\lighting\light.h
+1621203804 c:\users\gssales\projects\maurokart\include\lighting\light.h
 	<glm/vec4.hpp>
 	<glm/vec3.hpp>
 
@@ -1215,19 +1217,20 @@
 	<glad/glad.h>
 	<GLFW/glfw3.h>
 
-1619408372 c:\users\gssales\projects\maurokart\include\texture.h
+1621203804 c:\users\gssales\projects\maurokart\include\texture.h
 	<cstdlib>
 	<stb\stb_image.h>
 	"gl.h"
 
-1619449329 source:c:\users\gssales\projects\maurokart\src\texture.cpp
+1621203804 source:c:\users\gssales\projects\maurokart\src\texture.cpp
 	"texture.h"
 
-1619450165 c:\users\gssales\projects\maurokart\include\game_objects\kart.h
+1621203804 c:\users\gssales\projects\maurokart\include\game_objects\kart.h
 	<string>
 	"gamestate.h"
+	"camera.h"
 
-1619454296 source:c:\users\gssales\projects\maurokart\src\game_objects\kart.cpp
+1621203804 source:c:\users\gssales\projects\maurokart\src\game_objects\kart.cpp
 	"game_objects/kart.h"
 
 1620254914 source:c:\users\gracky\ufrgs\maurokart\src\camera.cpp
@@ -2406,4 +2409,13 @@
 	<algorithm>
 	"gamestate.h"
 	"camera.h"
+
+1621204133 c:\users\gssales\projects\maurokart\include\game_objects\bench.h
+	<string>
+	<algorithm>
+	"gamestate.h"
+	"camera.h"
+
+1621203869 source:c:\users\gssales\projects\maurokart\src\game_objects\bench.cpp
+	"game_objects/bench.h"
 

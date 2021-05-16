@@ -20,6 +20,7 @@ Bench::Bench() : GameObject()
     }
 
     position = glm::vec3(0.0,0.0,0.0);
+    scale = 0.02f;
 }
 
 void Bench::Update(double dt) {
@@ -36,7 +37,7 @@ void Bench::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, Gpu
               * Matrix_Rotate_Y(0.0)
               * Matrix_Rotate_X(0.0);
         PushMatrix(*model);
-            *model = *model * Matrix_Scale(1.0, 1.0, 1.0);
+            *model = *model * Matrix_Scale(scale, scale, scale);
             glUseProgram(shader.program_id);
             glUniform1i(shader.texture0_uniform         , shader.bench_texture.texture_unit);
             glUniformMatrix4fv(shader.view_uniform      , 1 , GL_FALSE , glm::value_ptr(*view));

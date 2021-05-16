@@ -25,6 +25,7 @@ public:
     BenchShader shader;
     Camera camera;
     std::string model_name;
+    float scale = 1.0f;
 
     Bench();
     void Update(double dt);
