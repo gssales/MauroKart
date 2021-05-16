@@ -26,6 +26,7 @@ public:
     glm::vec3 bezier_p1;
     glm::vec3 bezier_p2;
     glm::vec3 bezier_p3;
+    glm::vec3 bezier_p4;
     float time_passed;
 
     Sphere();

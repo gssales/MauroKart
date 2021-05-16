@@ -22,9 +22,14 @@ Sphere::Sphere() : GameObject()
     time_passed = 0.0f;
 
     movement_vec = glm::vec3(0.0,0.0,0.0);
-    bezier_p1 = position + glm::vec3(-4.0, 5.0, 0.0);
-    bezier_p2 = position + glm::vec3(0.0, 0.0, 0.0);
-    bezier_p3 = position + glm::vec3(4.0, 5.0, 0.0);
+    
+    float bezier_0 = 4.0;
+    float bezier_1 = 5.0;
+    bezier_p1 = position + glm::vec3(-bezier_0, bezier_1, 0.0);
+    bezier_p2 = position + glm::vec3(-bezier_0, 0.0, 0.0);
+    bezier_p3 = position + glm::vec3(bezier_0, 0.0, 0.0);
+    bezier_p4 = position + glm::vec3(bezier_0, bezier_1, 0.0);
+
     light1.color = glm::vec3(1.0f, 0.0f, 0.0f);
     light2.color = glm::vec3(0.0f, 0.0f, 1.0f);
 }
@@ -35,11 +40,12 @@ void Sphere::Update(double dt) {
     time_passed += dt;
     float sinusoidal_time_passed = (sin(time_passed) + 1) * 0.5;
 
-    glm::vec3 term1 = ((float) pow((1 - sinusoidal_time_passed), 2)) * bezier_p1;
-    glm::vec3 term2 = 2 * (1 - sinusoidal_time_passed) * sinusoidal_time_passed * bezier_p2;
-    glm::vec3 term3 = ((float) pow(sinusoidal_time_passed, 2)) * bezier_p3;
+    glm::vec3 term1 = ((float) pow((1 - sinusoidal_time_passed), 3)) * bezier_p1;
+    glm::vec3 term2 = 3 * ((float) pow((1 - sinusoidal_time_passed), 2)) * sinusoidal_time_passed * bezier_p2;
+    glm::vec3 term3 = 3 * (1 - sinusoidal_time_passed) * ((float) pow(sinusoidal_time_passed, 2)) * bezier_p3;
+    glm::vec3 term4 = ((float) pow(sinusoidal_time_passed, 3)) * bezier_p4;
     
-    movement_vec = term1 + term2 + term3;
+    movement_vec = term1 + term2 + term3 + term4;
     position = movement_vec;
 }
 
