@@ -22,6 +22,11 @@ public:
     Light light1, light2;
     std::string model_name;
     std::string fragment_shader;
+    glm::vec3 movement_vec;
+    glm::vec3 bezier_p1;
+    glm::vec3 bezier_p2;
+    glm::vec3 bezier_p3;
+    float time_passed;
 
     Sphere();
     void Update(double dt);

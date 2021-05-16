@@ -1234,7 +1234,7 @@
 	"camera.h"
 	"matrices.h"
 
-1620254913 c:\users\gracky\ufrgs\maurokart\include\camera.h
+1621124251 c:\users\gracky\ufrgs\maurokart\include\camera.h
 	<cstdio>
 	<glm/mat4x4.hpp>
 	<glm/vec4.hpp>
@@ -1798,7 +1798,7 @@
 	<glm/mat4x4.hpp>
 	<glm/vec4.hpp>
 
-1621109252 source:c:\users\gracky\ufrgs\maurokart\src\game.cpp
+1621124140 source:c:\users\gracky\ufrgs\maurokart\src\game.cpp
 	"game.h"
 
 1621109252 c:\users\gracky\ufrgs\maurokart\include\game.h
@@ -2202,7 +2202,7 @@
 	"gamestate.h"
 	"camera.h"
 
-1621109334 c:\users\gracky\ufrgs\maurokart\include\game_objects\sphere.h
+1621128744 c:\users\gracky\ufrgs\maurokart\include\game_objects\sphere.h
 	<string>
 	"gamestate.h"
 
@@ -2211,11 +2211,13 @@
 	"gamestate.h"
 	"camera.h"
 
-1620261462 source:c:\users\gracky\ufrgs\maurokart\src\game_objects\bunny.cpp
+1621128215 source:c:\users\gracky\ufrgs\maurokart\src\game_objects\bunny.cpp
 	"game_objects/bunny.h"
 
-1621109275 source:c:\users\gracky\ufrgs\maurokart\src\game_objects\sphere.cpp
+1621128917 source:c:\users\gracky\ufrgs\maurokart\src\game_objects\sphere.cpp
 	"game_objects/sphere.h"
+	<cmath>
+	<glm/gtx/string_cast.hpp>
 
 1620254914 source:c:\users\gracky\ufrgs\maurokart\src\gamestate.cpp
 	"gamestate.h"
@@ -2274,6 +2276,125 @@
 1620254914 source:c:\users\gracky\ufrgs\maurokart\src\tiny_obj_loader\tiny_obj_loader.cpp
 	"tiny_obj_loader.h"
 
-1620265908 source:c:\users\gracky\ufrgs\maurokart\src\game_objects\kart.cpp
+1621128220 source:c:\users\gracky\ufrgs\maurokart\src\game_objects\kart.cpp
 	"game_objects/kart.h"
+
+1620254913 c:\users\gracky\ufrgs\maurokart\include\glm\gtx\string_cast.hpp
+	"../glm.hpp"
+	"../gtc/type_precision.hpp"
+	"../gtc/quaternion.hpp"
+	"../gtx/dual_quaternion.hpp"
+	<string>
+	<cmath>
+	"string_cast.inl"
+
+1620254913 c:\users\gracky\ufrgs\maurokart\include\glm\glm.hpp
+	"detail/_fixes.hpp"
+	"detail/setup.hpp"
+	<cmath>
+	<climits>
+	<cfloat>
+	<limits>
+	<cassert>
+	"fwd.hpp"
+	"vec2.hpp"
+	"vec3.hpp"
+	"vec4.hpp"
+	"mat2x2.hpp"
+	"mat2x3.hpp"
+	"mat2x4.hpp"
+	"mat3x2.hpp"
+	"mat3x3.hpp"
+	"mat3x4.hpp"
+	"mat4x2.hpp"
+	"mat4x3.hpp"
+	"mat4x4.hpp"
+	"trigonometric.hpp"
+	"exponential.hpp"
+	"common.hpp"
+	"packing.hpp"
+	"geometric.hpp"
+	"matrix.hpp"
+	"vector_relational.hpp"
+	"integer.hpp"
+
+1620254913 c:\users\gracky\ufrgs\maurokart\include\glm\fwd.hpp
+	"detail/qualifier.hpp"
+
+1620254913 c:\users\gracky\ufrgs\maurokart\include\glm\packing.hpp
+	"./ext/vector_uint2.hpp"
+	"./ext/vector_float2.hpp"
+	"./ext/vector_float4.hpp"
+	"detail/func_packing.inl"
+
+1620254913 c:\users\gracky\ufrgs\maurokart\include\glm\detail\func_packing.inl
+	"../common.hpp"
+	"type_half.hpp"
+	"func_packing_simd.inl"
+
+1620254913 c:\users\gracky\ufrgs\maurokart\include\glm\detail\type_half.hpp
+	"setup.hpp"
+	"type_half.inl"
+
+1620254913 c:\users\gracky\ufrgs\maurokart\include\glm\detail\type_half.inl
+
+1620254913 c:\users\gracky\ufrgs\maurokart\include\glm\detail\func_packing_simd.inl
+
+1620254913 c:\users\gracky\ufrgs\maurokart\include\glm\integer.hpp
+	"detail/qualifier.hpp"
+	"common.hpp"
+	"vector_relational.hpp"
+	"detail/func_integer.inl"
+
+1620254913 c:\users\gracky\ufrgs\maurokart\include\glm\detail\func_integer.inl
+	"_vectorize.hpp"
+	<intrin.h>
+	<limits>
+	"func_integer_simd.inl"
+
+1620254913 c:\users\gracky\ufrgs\maurokart\include\glm\detail\func_integer_simd.inl
+	"../simd/integer.h"
+
+1620254913 c:\users\gracky\ufrgs\maurokart\include\glm\simd\integer.h
+
+1620254913 c:\users\gracky\ufrgs\maurokart\include\glm\gtc\type_precision.hpp
+	"../gtc/quaternion.hpp"
+	"../gtc/vec1.hpp"
+	"../ext/scalar_int_sized.hpp"
+	"../ext/scalar_uint_sized.hpp"
+	"../detail/type_vec2.hpp"
+	"../detail/type_vec3.hpp"
+	"../detail/type_vec4.hpp"
+	"../detail/type_mat2x2.hpp"
+	"../detail/type_mat2x3.hpp"
+	"../detail/type_mat2x4.hpp"
+	"../detail/type_mat3x2.hpp"
+	"../detail/type_mat3x3.hpp"
+	"../detail/type_mat3x4.hpp"
+	"../detail/type_mat4x2.hpp"
+	"../detail/type_mat4x3.hpp"
+	"../detail/type_mat4x4.hpp"
+	"type_precision.inl"
+
+1620254913 c:\users\gracky\ufrgs\maurokart\include\glm\ext\scalar_int_sized.hpp
+	"../detail/setup.hpp"
+
+1620254913 c:\users\gracky\ufrgs\maurokart\include\glm\ext\scalar_uint_sized.hpp
+	"../detail/setup.hpp"
+
+1620254913 c:\users\gracky\ufrgs\maurokart\include\glm\gtc\type_precision.inl
+
+1620254913 c:\users\gracky\ufrgs\maurokart\include\glm\gtx\dual_quaternion.hpp
+	"../glm.hpp"
+	"../gtc/constants.hpp"
+	"../gtc/quaternion.hpp"
+	"dual_quaternion.inl"
+
+1620254913 c:\users\gracky\ufrgs\maurokart\include\glm\gtx\dual_quaternion.inl
+	"../geometric.hpp"
+	<limits>
+
+1620254913 c:\users\gracky\ufrgs\maurokart\include\glm\gtx\string_cast.inl
+	<cstdarg>
+	<cstdio>
 

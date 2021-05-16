@@ -1,4 +1,7 @@
 #include "game_objects/sphere.h"
+#include <cmath>
+
+using std::string;
 
 SphereShader::SphereShader(const char* vertex_shader_filename, const char* fragment_shader_filename)
     : GpuProgram(vertex_shader_filename, fragment_shader_filename)
@@ -15,8 +18,13 @@ Sphere::Sphere() : GameObject()
         shader = SphereShader(default_vs_filename.c_str(), "../../res/shaders/sphere_fs.glsl");
     }
 
-    position = glm::vec3(0.0,0.0,0.0);
+    position = glm::vec3(4.0,0.0,-5.0);
+    time_passed = 0.0f;
 
+    movement_vec = glm::vec3(0.0,0.0,0.0);
+    bezier_p1 = position + glm::vec3(-4.0, 5.0, 0.0);
+    bezier_p2 = position + glm::vec3(0.0, 0.0, 0.0);
+    bezier_p3 = position + glm::vec3(4.0, 5.0, 0.0);
     light1.color = glm::vec3(1.0f, 0.0f, 0.0f);
     light2.color = glm::vec3(0.0f, 0.0f, 1.0f);
 }
@@ -24,6 +32,15 @@ Sphere::Sphere() : GameObject()
 void Sphere::Update(double dt) {
     light1.position = glm::vec4(position.x, position.y, position.z-2.0, 1.0f);
     light2.position = glm::vec4(position.x+2.0, position.y, position.z, 1.0f);
+    time_passed += dt;
+    float sinusoidal_time_passed = (sin(time_passed) + 1) * 0.5;
+
+    glm::vec3 term1 = ((float) pow((1 - sinusoidal_time_passed), 2)) * bezier_p1;
+    glm::vec3 term2 = 2 * (1 - sinusoidal_time_passed) * sinusoidal_time_passed * bezier_p2;
+    glm::vec3 term3 = ((float) pow(sinusoidal_time_passed, 2)) * bezier_p3;
+    
+    movement_vec = term1 + term2 + term3;
+    position = movement_vec;
 }
 
 void Sphere::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader, LightSet* lighting)
