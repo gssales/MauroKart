@@ -14,6 +14,9 @@ void Game::Load() {
     ObjModel kartmodel("../../res/models/kart.obj");
     AddModelToScene(&kartmodel);
 
+    ObjModel benchmodel("../../res/models/bench.obj");
+    AddModelToScene(&benchmodel);
+
     sphere = Sphere();
     game_objects["sphere"] = &sphere;
 
@@ -22,6 +25,9 @@ void Game::Load() {
 
     kart = Kart();
     game_objects["kart"] = &kart;
+
+    bench = Bench();
+    game_objects["bench"] = &bench;
 
     lighting.positions[lighting.n_lights] = sphere.light1.position;
     lighting.colors[lighting.n_lights] = sphere.light1.color;
@@ -33,7 +39,7 @@ void Game::Load() {
     active_cam = &(kart.camera);
 
     active_cam->free = false;
-    active_cam->distance = 5;
+    active_cam->distance = 13;
     printf("load finalizado %d\n", game_objects.size());
 }
 
