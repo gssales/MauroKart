@@ -36,10 +36,10 @@ void Game::Load() {
     lighting.colors[lighting.n_lights] = sphere.light2.color;
     lighting.n_lights += 1;
 
-    active_cam = &(kart.camera);
+    active_cam = &(bench.camera);
 
     active_cam->free = false;
-    active_cam->distance = 13;
+    active_cam->distance = 5;
     printf("load finalizado %d\n", game_objects.size());
 }
 

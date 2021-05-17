@@ -25,7 +25,6 @@ Bunny::Bunny() : GameObject()
     speed = 0.0f;
     acceleration = 0.1f;
     max_speed = 0.05f;
-
 }
 
 void Bunny::Update(double dt) {

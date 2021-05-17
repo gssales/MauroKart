@@ -4,7 +4,7 @@
 BenchShader::BenchShader(bool build)
     : GpuProgram(default_vs_filename.c_str(), "../../res/shaders/bench_fs.glsl")
 {
-    bench_texture = Texture("../../res/textures/bench.jpg", 2);
+    bench_texture = Texture("../../res/textures/wood.jpg", 2);
     n_lights_uniform = glGetUniformLocation(program_id, "n_lights");
     light_positions_uniform = glGetUniformLocation(program_id, "light_positions[]");
     light_colors_uniform = glGetUniformLocation(program_id, "light_colors[]");
@@ -19,8 +19,8 @@ Bench::Bench() : GameObject()
         shader = BenchShader(true);
     }
 
-    position = glm::vec3(0.0,0.0,0.0);
-    scale = 0.02f;
+    position = glm::vec3(-5.0,0.0,-5.0);
+    scale = 0.25f;
 }
 
 void Bench::Update(double dt) {
@@ -35,7 +35,7 @@ void Bench::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, Gpu
         *model = *model
               * Matrix_Rotate_Z(0.0)
               * Matrix_Rotate_Y(0.0)
-              * Matrix_Rotate_X(0.0);
+              * Matrix_Rotate_X(-1.57079632679);
         PushMatrix(*model);
             *model = *model * Matrix_Scale(scale, scale, scale);
             glUseProgram(shader.program_id);
@@ -48,15 +48,6 @@ void Bench::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, Gpu
             glUniform3fv(shader.light_colors_uniform    , lighting->n_lights , glm::value_ptr(lighting->colors[0]));
             DrawVirtualObject(model_name.c_str(), shader.program_id);
         PopMatrix(*model);
-
-        // std::list<BodyPart>::iterator it = part.children.begin();
-        // while (it != part.children.end())
-        // {
-        //     PushMatrix(model);
-        //         ModelBodyPartMatrix(*it, model, model_uniform, render_as_black_uniform);
-        //     PopMatrix(model);
-        //     it++;
-        // }
     PopMatrix(*model);
 }
 
