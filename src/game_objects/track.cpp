@@ -55,16 +55,16 @@ void Track::Destroy() {
 
 }
 
-glm::mat4 Bench::ComputeTransform() {
+glm::mat4 Track::ComputeTransform() {
     return Matrix_Identity()
         * Matrix_Translate(position.x, position.y, position.z)
         * Matrix_Rotate_Z(0.0)
         * Matrix_Rotate_Y(0.0)
         * Matrix_Rotate_X(0.0)
-        * Matrix_Scale(scale, scale, scale);
+        * Matrix_Scale(1.0,1.0,1.0);
 }
 
-SphereShape Bench::GetSphereShape()
+SphereShape Track::GetSphereShape()
 {
     glm::mat4 transform = ComputeTransform();
     SphereShape s;
@@ -73,7 +73,7 @@ SphereShape Bench::GetSphereShape()
     return s;
 }
 
-OBBShape Bench::GetOBBShape()
+OBBShape Track::GetOBBShape()
 {
     glm::mat4 transform = ComputeTransform();
     OBBShape s;
@@ -90,7 +90,7 @@ OBBShape Bench::GetOBBShape()
     return s;
 }
 
-PlaneShape Bench::GetPlaneShape()
+PlaneShape Track::GetPlaneShape()
 {
     PlaneShape s;
     return s;
