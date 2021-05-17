@@ -3,7 +3,7 @@
 KartShader::KartShader(bool build)
     : GpuProgram(default_vs_filename.c_str(), "../../res/shaders/kart_fs.glsl")
 {
-    kart_texture0 = Texture("../../res/textures/kart1.png", 1);
+    kart_texture0 = Texture("../../res/textures/kart1.png", 2);
     n_lights_uniform = glGetUniformLocation(program_id, "n_lights");
     light_positions_uniform = glGetUniformLocation(program_id, "light_positions[]");
     light_colors_uniform = glGetUniformLocation(program_id, "light_colors[]");
@@ -29,7 +29,7 @@ Kart::Kart() : GameObject()
         wheel_shader = WheelShader(true);
     }
 
-    position = glm::vec4(0.0,0.0,0.0,1.0);
+    position = glm::vec4(0.0,0.4,0.0,1.0);
 
     movement_vec = glm::vec4(0.0,0.0,0.0,0.0);
     speed = 0.0f;

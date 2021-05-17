@@ -13,6 +13,7 @@
 #include "game_objects/man.h"
 #include "game_objects/plane.h"
 #include "physics/collisions.h"
+#include "game_objects/track.h"
 
 class Game : public GameState {
 public:
@@ -28,6 +29,7 @@ public:
 
     Cube cube1, cube2, cube3, cube4, cube5;
 
+    Track track;
     Camera* active_cam;
     double g_LastCursorPosX, g_LastCursorPosY;
 

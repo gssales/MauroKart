@@ -1,7 +1,7 @@
 #include "game_objects/man.h"
 
 ManShader::ManShader(bool build)
-    : GpuProgram(default_vs_filename.c_str(), "../../res/shaders/man_fs.glsl")
+    : GpuProgram(default_vs_filename.c_str(), "../../res/shaders/sphere_fs.glsl")
 {
     n_lights_uniform = glGetUniformLocation(program_id, "n_lights");
     light_positions_uniform = glGetUniformLocation(program_id, "light_positions[]");
@@ -36,13 +36,12 @@ void Man::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuPr
     PushMatrix(*model);
         *model = *model * Matrix_Scale(0.8f, 1.0f, 0.2f);
         glUseProgram(shader.program_id);
-        // glUniform1i(shader.texture0_uniform         , shader.man_texture.texture_unit);
-        glUniformMatrix4fv(shader.view_uniform      , 1 , GL_FALSE , glm::value_ptr(*view));
-        glUniformMatrix4fv(shader.projection_uniform, 1 , GL_FALSE , glm::value_ptr(*projection));
-        glUniformMatrix4fv(shader.model_uniform     , 1 , GL_FALSE , glm::value_ptr(*model));
-        glUniform1i(shader.n_lights_uniform         , lighting->n_lights);
-        glUniform4fv(shader.light_positions_uniform , lighting->n_lights , glm::value_ptr(lighting->positions[0]));
-        glUniform3fv(shader.light_colors_uniform    , lighting->n_lights , glm::value_ptr(lighting->colors[0]));
+        glUniformMatrix4fv(shader.view_uniform       , 1 , GL_FALSE , glm::value_ptr(*view));
+        glUniformMatrix4fv(shader.projection_uniform , 1 , GL_FALSE , glm::value_ptr(*projection));
+        glUniformMatrix4fv(shader.model_uniform      , 1 , GL_FALSE , glm::value_ptr(*model));
+        glUniform1i(shader.n_lights_uniform , lighting->n_lights);
+        glUniform4fv(shader.light_positions_uniform      , lighting->n_lights , glm::value_ptr(lighting->positions[0]));
+        glUniform3fv(shader.light_colors_uniform      , lighting->n_lights , glm::value_ptr(lighting->colors[0]));
         DrawVirtualObject(model_name.c_str(), shader.program_id);
     PopMatrix(*model);
 
