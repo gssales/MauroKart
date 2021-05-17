@@ -13,6 +13,7 @@
 #include "game_objects/man.h"
 #include "game_objects/plane.h"
 #include "physics/collisions.h"
+#include "game_objects/track.h"
 
 class Game : public GameState {
 public:
@@ -25,6 +26,12 @@ public:
     Bench bench;
     Man man;
     Plane plane;
+
+    Cube cube1, cube2, cube3, cube4, cube5;
+
+    Cube borda1, borda2, borda3, borda4;
+
+    Track track;
     Camera* active_cam;
     double g_LastCursorPosX, g_LastCursorPosY;
 

@@ -14,14 +14,23 @@ void Game::Load() {
     ObjModel kartmodel("../../res/models/kart.obj");
     AddModelToScene(&kartmodel);
 
+    ObjModel wheelmodel("../../res/models/wheel.obj");
+    AddModelToScene(&wheelmodel);
+
     ObjModel benchmodel("../../res/models/bench.obj");
     AddModelToScene(&benchmodel);
 
     ObjModel boxmodel("../../res/models/box.obj");
     AddModelToScene(&boxmodel);
+
+    ObjModel crystalmodel("../../res/models/crystal.obj");
+    AddModelToScene(&crystalmodel);
     
     ObjModel planemodel("../../res/models/plane.obj");
     AddModelToScene(&planemodel);
+
+    ObjModel trackmodel("../../res/models/track.obj");
+    AddModelToScene(&trackmodel);
 
     sphere = Sphere();
     game_objects["sphere"] = &sphere;
@@ -37,11 +46,31 @@ void Game::Load() {
 
     man = Man();
     game_objects["man"] = &man;
-    
+
+    cube1 = Cube();
+    cube2 = Cube();
+    cube3 = Cube();
+    cube4 = Cube();
+    cube5 = Cube();
+    game_objects["cube1"] = &cube1;
+    game_objects["cube2"] = &cube2;
+    game_objects["cube3"] = &cube3;
+    game_objects["cube4"] = &cube4;
+    game_objects["cube5"] = &cube5;
+
+    cube1.position = glm::vec4(0.0,1.0,-50.0,1.0);
+    cube2.position = glm::vec4(20.0,1.0,-70.0,1.0);
+    cube3.position = glm::vec4(40.0,1.0,-50.0,1.0);
+    cube4.position = glm::vec4(40.0,1.0,0.0,1.0);
+    cube5.position = glm::vec4(20.0,1.0,20.0,1.0);
+
     plane = Plane();
     plane.s = 100.0f;
     plane.position.y -= 1.0f;
     game_objects["plane"] = &plane;
+
+    track = Track();
+    game_objects["track"] = &track;
 
     lighting.positions[lighting.n_lights] = sphere.light1.position;
     lighting.colors[lighting.n_lights] = sphere.light1.color;
@@ -51,6 +80,8 @@ void Game::Load() {
     lighting.n_lights += 1;
 
     active_cam = &(kart.camera);
+    active_cam->phi = 3.141592f/8;
+    active_cam->distance = 15.0f;
 
     active_cam->free = false;
     active_cam->distance = 5;
@@ -65,6 +96,36 @@ void Game::Update(double dt) {
     lighting.positions[lighting.n_lights] = sphere.light2.position;
     lighting.colors[lighting.n_lights] = sphere.light2.color;
     lighting.n_lights += 1;
+    
+    if (!cube1.dead) {
+        lighting.positions[lighting.n_lights] = cube1.light.position;
+        lighting.colors[lighting.n_lights] = cube1.light.color;
+        lighting.n_lights += 1;
+    }
+    
+    if (!cube2.dead) {
+        lighting.positions[lighting.n_lights] = cube2.light.position;
+        lighting.colors[lighting.n_lights] = cube2.light.color;
+        lighting.n_lights += 1;
+    }
+    
+    if (!cube3.dead) {
+        lighting.positions[lighting.n_lights] = cube3.light.position;
+        lighting.colors[lighting.n_lights] = cube3.light.color;
+        lighting.n_lights += 1;
+    }
+    
+    if (!cube4.dead) {
+        lighting.positions[lighting.n_lights] = cube4.light.position;
+        lighting.colors[lighting.n_lights] = cube4.light.color;
+        lighting.n_lights += 1;
+    }
+    
+    if (!cube5.dead) {
+        lighting.positions[lighting.n_lights] = cube5.light.position;
+        lighting.colors[lighting.n_lights] = cube5.light.color;
+        lighting.n_lights += 1;
+    }
 
     KeyState left_button = input.GetKeyState(GLFW_MOUSE_BUTTON_LEFT);
     if (left_button.is_pressed) {
@@ -80,7 +141,11 @@ void Game::Update(double dt) {
         active_cam->phi += dy * dt * 0.1;
 
         float phimax = 3.141592f/2;
-        float phimin = -phimax;
+        float phimin = 3.141592f/8;
+        if (active_cam->free) {
+            phimax = phimin;
+            phimin = -phimax;
+        }
 
         if (active_cam->phi > phimax)
             active_cam->phi = phimax;
@@ -134,6 +199,42 @@ void Game::Update(double dt) {
         kart.touch_ground = true;
     else
         kart.touch_ground = false;
+
+
+    if (!cube1.dead) {
+        SphereShape crystal1 = cube1.GetSphereShape();
+        bool success = Collide_OBB_Sphere(c, kart_shape, crystal1);
+        if (success)
+            cube1.dead = true;
+    }
+
+    if (!cube2.dead) {
+        SphereShape crystal2 = cube2.GetSphereShape();
+        bool success = Collide_OBB_Sphere(c, kart_shape, crystal2);
+        if (success)
+            cube2.dead = true;
+    }
+
+    if (!cube3.dead) {
+        SphereShape crystal3 = cube3.GetSphereShape();
+        bool success = Collide_OBB_Sphere(c, kart_shape, crystal3);
+        if (success)
+            cube3.dead = true;
+    }
+
+    if (!cube4.dead) {
+        SphereShape crystal4 = cube4.GetSphereShape();
+        success = Collide_OBB_Sphere(c, kart_shape, crystal4);
+        if (success)
+            cube4.dead = true;
+    }
+
+    if (!cube5.dead) {
+        SphereShape crystal5 = cube5.GetSphereShape();
+        success = Collide_OBB_Sphere(c, kart_shape, crystal5);
+        if (success)
+            cube5.dead = true;
+    }
 }
 
 void Game::Render() {

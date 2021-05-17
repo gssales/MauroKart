@@ -18,10 +18,24 @@ public:
     KartShader(bool build);
 };
 
+class WheelShader: public GpuProgram
+{
+public:
+    Texture wheel_texture0;
+    GLint n_lights_uniform;
+    GLint light_positions_uniform;
+    GLint light_colors_uniform;
+    GLint texture0_uniform;
+
+    WheelShader() {};
+    WheelShader(bool build);
+};
+
 class Kart: public GameObject
 {
 public:
     KartShader shader;
+    WheelShader wheel_shader;
     Camera camera;
     std::string model_name;
     glm::vec4 movement_vec;
@@ -32,6 +46,7 @@ public:
     float rx = 0.0f;
     float ry = 0.0f;
     float rz = 0.0f;
+    float turning = 0.0;
 
     double cooldown_camera = 0.0;
 
