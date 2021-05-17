@@ -14,7 +14,7 @@ BenchShader::BenchShader(bool build)
 Bench::Bench() : GameObject()
 {
     model_name = "bench";
-
+    shape_type = OBB_SHAPE;
     if (default_vs_filename.c_str()) {
         shader = BenchShader(true);
     }
@@ -62,4 +62,45 @@ void Bench::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, Gpu
 
 void Bench::Destroy() {
 
+}
+
+glm::mat4 Bench::ComputeTransform() {
+    return Matrix_Identity() 
+        * Matrix_Translate(position.x, position.y, position.z)
+        * Matrix_Rotate_Z(0.0)
+        * Matrix_Rotate_Y(0.0)
+        * Matrix_Rotate_X(0.0)
+        * Matrix_Scale(scale, scale, scale);
+}
+
+SphereShape Bench::GetSphereShape()
+{
+    glm::mat4 transform = ComputeTransform();
+    SphereShape s;
+    s.point = transform * s.point;
+    s.radius = this->scale;
+    return s;
+}
+
+OBBShape Bench::GetOBBShape()
+{
+    glm::mat4 transform = ComputeTransform();
+    OBBShape s;
+    s.center = transform * s.center;
+    s.axis.x = normalize(transform * s.axis.x);
+    s.axis.y = normalize(transform * s.axis.y);
+    s.axis.z = normalize(transform * s.axis.z);
+    s.rotation.alpha = 0.0;
+    s.rotation.beta = 0.0;
+    s.rotation.gamma = 0.0;
+    s.half_length.x = s.half_length.x * this->scale;
+    s.half_length.y = s.half_length.y * this->scale;
+    s.half_length.z = s.half_length.z * this->scale;
+    return s;
+}
+
+PlaneShape Bench::GetPlaneShape()
+{
+    PlaneShape s;
+    return s;
 }
