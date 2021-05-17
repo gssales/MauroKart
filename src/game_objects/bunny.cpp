@@ -19,7 +19,7 @@ Bunny::Bunny() : GameObject()
         shader = BunnyShader(default_vs_filename.c_str(), "../../res/shaders/bunny_fs.glsl", "../../res/textures/earth.jpg");
     }
 
-    position = glm::vec3(0.0,0.0,0.0);
+    position = glm::vec3(-4.0,0.0,0.0);
 
     movement_vec = glm::vec3(0.0,0.0,0.0);
     speed = 0.0f;

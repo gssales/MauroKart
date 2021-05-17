@@ -777,7 +777,7 @@ namespace gtc
 			i.y + vec<4, T, Q>(i1.y, i2.y, i3.y, T(1))) +
 			i.x + vec<4, T, Q>(i1.x, i2.x, i3.x, T(1)));
 
-		// Gradients: 7x7x6 points over a cube, mapped onto a 4-cross polytope
+		// Gradients: 7x7x6 points over a sphere, mapped onto a 4-cross polytope
 		// 7*7*6 = 294, which is close to the ring size 17*17 = 289.
 		vec<4, T, Q> ip = vec<4, T, Q>(T(1) / T(294), T(1) / T(49), T(1) / T(7), T(0));
 

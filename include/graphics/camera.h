@@ -22,7 +22,7 @@ public:
 
     bool perspective = true;
     float field_of_view = 3.141592 / 3.0f;
-    float nearplane = -0.1f, farplane = -10.0f;
+    float nearplane = -0.1f, farplane = -100.0f;
 
     void Update();
     glm::mat4 View();

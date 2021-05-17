@@ -9,7 +9,7 @@
 - [ ] No mínimo a aplicação deve incluir objetos com modelos de iluminação difusa (Lambert) e Blinn-Phong.
 - [ ] No mínimo a aplicação deve incluir um objeto com os seguintes modelos de interpolação para iluminação: Gouraud, Phong.
 - [ ] No mínimo dois objetos virtuais da aplicação devem ter as cores definidas atráves de textura em imagens (mínimo duas imagens distintas).
-- [ ] No mínimo um objeto virtual da aplicação deve ter a movimentação definida através de uma curca de Bezier cúbica. Esse objeto deve se movimentar de forma suave ao longo do espaço em um caminho curvo.
+- [X] No mínimo um objeto virtual da aplicação deve ter a movimentação definida através de uma curca de Bezier cúbica. Esse objeto deve se movimentar de forma suave ao longo do espaço em um caminho curvo.
 - [X] Todas as movimentações de objetos (incluindo a câmera) devem ser computadas baseado no tempo (isto é, movimentações devem ocorrer sempre na mesma velocidade independente da velocidade da CPU onde o programa está sendo executado).
 
 ---

@@ -6,8 +6,9 @@
 #include "gamestates/gamestate.h"
 #include "scene.h"
 #include "game_objects/bunny.h"
-#include "game_objects/cube.h"
+#include "game_objects/sphere.h"
 #include "game_objects/kart.h"
+#include "game_objects/bench.h"
 
 class Game : public GameState {
 public:
@@ -16,7 +17,8 @@ public:
     LightSet lighting;
     Kart kart;
     Bunny bunny;
-    Cube cube;
+    Sphere sphere;
+    Bench bench;
     Camera* active_cam;
     double g_LastCursorPosX, g_LastCursorPosY;
 

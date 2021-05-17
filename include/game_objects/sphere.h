@@ -3,17 +3,32 @@
 
 #include <string>
 #include "gamestates/gamestate.h"
-#include "game_objects/cube.h"
+#include "graphics/camera.h"
+
+class SphereShader: public GpuProgram
+{
+public:
+    GLint n_lights_uniform;
+    GLint light_positions_uniform;
+    GLint light_colors_uniform;
+
+    SphereShader() {};
+    SphereShader(const char* vertex_shader_filename, const char* fragment_shader_filename);
+};
 
 class Sphere: public GameObject
 {
 public:
-    CubeShader shader;
+    SphereShader shader;
+    Light light1, light2, light3;
     std::string model_name;
+    std::string fragment_shader;
     glm::vec3 movement_vec;
-    float speed;
-    float acceleration;
-    float max_speed;
+    glm::vec3 bezier_p1;
+    glm::vec3 bezier_p2;
+    glm::vec3 bezier_p3;
+    glm::vec3 bezier_p4;
+    float time_passed;
 
     Sphere();
     void Update(double dt);
