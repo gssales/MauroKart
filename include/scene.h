@@ -26,4 +26,6 @@ extern std::map<std::string, SceneObject> virtualScene;
 void AddModelToScene(ObjModel *model);
 void DrawVirtualObject(const char* object_name, GLuint program_id);
 
+void Print_SceneObject(SceneObject o);
+
 #endif // _SCENE_H
