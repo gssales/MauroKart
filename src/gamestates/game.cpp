@@ -14,6 +14,9 @@ void Game::Load() {
     ObjModel kartmodel("../../res/models/kart.obj");
     AddModelToScene(&kartmodel);
 
+    ObjModel wheelmodel("../../res/models/wheel.obj");
+    AddModelToScene(&wheelmodel);
+
     ObjModel benchmodel("../../res/models/bench.obj");
     AddModelToScene(&benchmodel);
 
@@ -37,7 +40,7 @@ void Game::Load() {
 
     man = Man();
     game_objects["man"] = &man;
-    
+
     plane = Plane();
     plane.s = 100.0f;
     plane.position.y -= 1.0f;

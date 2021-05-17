@@ -10,12 +10,23 @@ KartShader::KartShader(bool build)
     texture0_uniform = glGetUniformLocation(program_id, "TextureImage0");
 }
 
+WheelShader::WheelShader(bool build)
+    : GpuProgram(default_vs_filename.c_str(), "../../res/shaders/kart_fs.glsl")
+{
+    wheel_texture0 = Texture("../../res/textures/wheel.png", 4);
+    n_lights_uniform = glGetUniformLocation(program_id, "n_lights");
+    light_positions_uniform = glGetUniformLocation(program_id, "light_positions[]");
+    light_colors_uniform = glGetUniformLocation(program_id, "light_colors[]");
+    texture0_uniform = glGetUniformLocation(program_id, "TextureImage0");
+}
+
 Kart::Kart() : GameObject()
 {
     model_name = "kart";
     shape_type = OBB_SHAPE;
     if (default_vs_filename.c_str()) {
         shader = KartShader(true);
+        wheel_shader = WheelShader(true);
     }
 
     position = glm::vec4(0.0,0.0,0.0,1.0);
@@ -46,22 +57,29 @@ void Kart::Update(double dt)
         cooldown_camera = 1.0;
     }
 
+    bool is_turning = false;
     if (input.GetKeyState(GLFW_KEY_A).is_down)
     {
+        is_turning = true;
         float new_ry = ry + (3.1415/4)*dt;
         if (new_ry >= 2*3.1415)
             ry = 0.0;
         else
             ry = new_ry;
+        turning = 1.0;
     }
     if (input.GetKeyState(GLFW_KEY_D).is_down)
     {
+        is_turning = true;
         float new_ry = ry - (3.1415/4)*dt;
         if (new_ry <= 0.0)
             ry = 2*3.1415;
         else
             ry = new_ry;
+        turning = -1.0;
     }
+    if (!is_turning)
+        turning = 0.0;
 
     if (input.GetKeyState(GLFW_KEY_W).is_down)
     {
@@ -80,15 +98,6 @@ void Kart::Update(double dt)
     glm::mat4 transform = Matrix_Identity() * Matrix_Rotate_Y(ry);
 
     movement_vec = transform * glm::vec4(0.0,0.0,-1.0,0.0);
-
-    // if (input.GetKeyState(GLFW_KEY_SPACE).is_down) {
-    //     accel = true;
-    //     movement_vec = movement_vec + glm::vec3(0.0,2.0,0.0);
-    // }
-    // if (input.GetKeyState(GLFW_KEY_LEFT_SHIFT).is_down) {
-    //     accel = true;
-    //     movement_vec = movement_vec + glm::vec3(0.0,-1.0,0.0);
-    // }
 
     // if (!touch_ground)
     //     speed = speed + 1.0*dt;
@@ -126,15 +135,41 @@ void Kart::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuP
             glUniform3fv(shader.light_colors_uniform     , lighting->n_lights , glm::value_ptr(lighting->colors[0]));
             DrawVirtualObject(model_name.c_str(), shader.program_id);
         PopMatrix(*model);
+        
+        glUseProgram(wheel_shader.program_id);
+        glUniform1i(wheel_shader.texture0_uniform          , wheel_shader.wheel_texture0.texture_unit);
+        glUniformMatrix4fv(wheel_shader.view_uniform       , 1 , GL_FALSE , glm::value_ptr(*view));
+        glUniformMatrix4fv(wheel_shader.projection_uniform , 1 , GL_FALSE , glm::value_ptr(*projection));
+        glUniform1i(wheel_shader.n_lights_uniform          , lighting->n_lights);
+        glUniform4fv(wheel_shader.light_positions_uniform  , lighting->n_lights , glm::value_ptr(lighting->positions[0]));
+        glUniform3fv(wheel_shader.light_colors_uniform     , lighting->n_lights , glm::value_ptr(lighting->colors[0]));
 
-        // std::list<BodyPart>::iterator it = part.children.begin();
-        // while (it != part.children.end())
-        // {
-        //     PushMatrix(model);
-        //         ModelBodyPartMatrix(*it, model, model_uniform, render_as_black_uniform);
-        //     PopMatrix(model);
-        //     it++;
-        // }
+        PushMatrix(*model);
+            *model = *model * Matrix_Translate(-0.8, 0.0, -0.4);
+            *model = *model * Matrix_Rotate_Y(0.5 * turning);
+            *model = *model * Matrix_Scale(0.75, 0.75, 0.75);
+            glUniformMatrix4fv(wheel_shader.model_uniform      , 1 , GL_FALSE , glm::value_ptr(*model));
+            DrawVirtualObject("wheel", wheel_shader.program_id);
+        PopMatrix(*model);
+        PushMatrix(*model);
+            *model = *model * Matrix_Translate(0.8, 0.0, -0.4);
+            *model = *model * Matrix_Rotate_Y(0.5 * turning);
+            *model = *model * Matrix_Scale(0.75, 0.75, 0.75);
+            glUniformMatrix4fv(wheel_shader.model_uniform      , 1 , GL_FALSE , glm::value_ptr(*model));
+            DrawVirtualObject("wheel", wheel_shader.program_id);
+        PopMatrix(*model);
+
+        PushMatrix(*model);
+        *model = *model * Matrix_Translate(-0.8, 0.0, 1.6);
+            glUniformMatrix4fv(wheel_shader.model_uniform      , 1 , GL_FALSE , glm::value_ptr(*model));
+            DrawVirtualObject("wheel", wheel_shader.program_id);
+        PopMatrix(*model);
+        PushMatrix(*model);
+        *model = *model * Matrix_Translate(0.8, 0.0, 1.6);
+            glUniformMatrix4fv(wheel_shader.model_uniform      , 1 , GL_FALSE , glm::value_ptr(*model));
+            DrawVirtualObject("wheel", wheel_shader.program_id);
+        PopMatrix(*model);
+
     PopMatrix(*model);
 }
 
