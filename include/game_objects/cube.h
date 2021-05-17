@@ -19,13 +19,14 @@ public:
 class Cube: public GameObject
 {
 public:
-    CubeShader shader;
-    Light light1, light2, light3;
+    GpuProgram shader;
+    Light light;
     std::string model_name;
     float rx = 0.0f;
     float ry = 0.0f;
     float rz = 0.0f;
     float s = 1.0f;
+    bool grow = false;
 
     Cube();
     void Update(double dt);

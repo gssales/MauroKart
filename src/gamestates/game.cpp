@@ -22,6 +22,9 @@ void Game::Load() {
 
     ObjModel boxmodel("../../res/models/box.obj");
     AddModelToScene(&boxmodel);
+
+    ObjModel crystalmodel("../../res/models/crystal.obj");
+    AddModelToScene(&crystalmodel);
     
     ObjModel planemodel("../../res/models/plane.obj");
     AddModelToScene(&planemodel);
@@ -40,6 +43,23 @@ void Game::Load() {
 
     man = Man();
     game_objects["man"] = &man;
+
+    cube1 = Cube();
+    cube2 = Cube();
+    cube3 = Cube();
+    cube4 = Cube();
+    cube5 = Cube();
+    game_objects["cube1"] = &cube1;
+    game_objects["cube2"] = &cube2;
+    game_objects["cube3"] = &cube3;
+    game_objects["cube4"] = &cube4;
+    game_objects["cube5"] = &cube5;
+
+    cube1.position.x += 5.0;
+    cube2.position.x += 7.0;
+    cube3.position.x += 9.0;
+    cube4.position.x += 11.0;
+    cube5.position.x += 13.0;
 
     plane = Plane();
     plane.s = 100.0f;
@@ -70,6 +90,36 @@ void Game::Update(double dt) {
     lighting.positions[lighting.n_lights] = sphere.light2.position;
     lighting.colors[lighting.n_lights] = sphere.light2.color;
     lighting.n_lights += 1;
+    
+    if (!cube1.dead) {
+        lighting.positions[lighting.n_lights] = cube1.light.position;
+        lighting.colors[lighting.n_lights] = cube1.light.color;
+        lighting.n_lights += 1;
+    }
+    
+    if (!cube2.dead) {
+        lighting.positions[lighting.n_lights] = cube2.light.position;
+        lighting.colors[lighting.n_lights] = cube2.light.color;
+        lighting.n_lights += 1;
+    }
+    
+    if (!cube3.dead) {
+        lighting.positions[lighting.n_lights] = cube3.light.position;
+        lighting.colors[lighting.n_lights] = cube3.light.color;
+        lighting.n_lights += 1;
+    }
+    
+    if (!cube4.dead) {
+        lighting.positions[lighting.n_lights] = cube4.light.position;
+        lighting.colors[lighting.n_lights] = cube4.light.color;
+        lighting.n_lights += 1;
+    }
+    
+    if (!cube5.dead) {
+        lighting.positions[lighting.n_lights] = cube5.light.position;
+        lighting.colors[lighting.n_lights] = cube5.light.color;
+        lighting.n_lights += 1;
+    }
 
     KeyState left_button = input.GetKeyState(GLFW_MOUSE_BUTTON_LEFT);
     if (left_button.is_pressed) {
@@ -143,6 +193,42 @@ void Game::Update(double dt) {
         kart.touch_ground = true;
     else
         kart.touch_ground = false;
+
+
+    if (!cube1.dead) {
+        SphereShape crystal1 = cube1.GetSphereShape();
+        bool success = Collide_OBB_Sphere(c, kart_shape, crystal1);
+        if (success)
+            cube1.dead = true;
+    }
+
+    if (!cube2.dead) {
+        SphereShape crystal2 = cube2.GetSphereShape();
+        bool success = Collide_OBB_Sphere(c, kart_shape, crystal2);
+        if (success)
+            cube2.dead = true;
+    }
+
+    if (!cube3.dead) {
+        SphereShape crystal3 = cube3.GetSphereShape();
+        bool success = Collide_OBB_Sphere(c, kart_shape, crystal3);
+        if (success)
+            cube3.dead = true;
+    }
+
+    if (!cube4.dead) {
+        SphereShape crystal4 = cube4.GetSphereShape();
+        success = Collide_OBB_Sphere(c, kart_shape, crystal4);
+        if (success)
+            cube4.dead = true;
+    }
+
+    if (!cube5.dead) {
+        SphereShape crystal5 = cube5.GetSphereShape();
+        success = Collide_OBB_Sphere(c, kart_shape, crystal5);
+        if (success)
+            cube5.dead = true;
+    }
 }
 
 void Game::Render() {

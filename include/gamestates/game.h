@@ -25,6 +25,9 @@ public:
     Bench bench;
     Man man;
     Plane plane;
+
+    Cube cube1, cube2, cube3, cube4, cube5;
+
     Camera* active_cam;
     double g_LastCursorPosX, g_LastCursorPosY;
 

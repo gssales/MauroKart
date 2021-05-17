@@ -1231,7 +1231,7 @@
 	"gamestates/gamestate.h"
 	"graphics/camera.h"
 
-1621289771 source:c:\users\gssales\projects\maurokart\src\game_objects\kart.cpp
+1621290305 source:c:\users\gssales\projects\maurokart\src\game_objects\kart.cpp
 	"game_objects/kart.h"
 
 1620254914 source:c:\users\gracky\ufrgs\maurokart\src\camera.cpp
@@ -2518,7 +2518,7 @@
 1621280115 source:c:\users\gssales\projects\maurokart\src\physics\shapes.cpp
 	"physics/shapes.h"
 
-1621280115 c:\users\gssales\projects\maurokart\include\game_objects\cube.h
+1621292076 c:\users\gssales\projects\maurokart\include\game_objects\cube.h
 	<string>
 	"gamestates/gamestate.h"
 	"graphics/camera.h"
@@ -2526,13 +2526,13 @@
 1621280115 source:c:\users\gssales\projects\maurokart\src\game_objects\plane.cpp
 	"game_objects/plane.h"
 
-1621280115 source:c:\users\gssales\projects\maurokart\src\game_objects\cube.cpp
+1621292408 source:c:\users\gssales\projects\maurokart\src\game_objects\cube.cpp
 	"game_objects/cube.h"
 
-1621290260 source:c:\users\gssales\projects\maurokart\src\gamestates\game.cpp
+1621292500 source:c:\users\gssales\projects\maurokart\src\gamestates\game.cpp
 	"gamestates/game.h"
 
-1621289254 c:\users\gssales\projects\maurokart\include\gamestates\game.h
+1621291288 c:\users\gssales\projects\maurokart\include\gamestates\game.h
 	<cstdlib>
 	<algorithm>
 	"graphics/camera.h"
