@@ -95,6 +95,10 @@ float norm(glm::vec4 v)
     return sqrt( vx*vx + vy*vy + vz*vz );
 }
 
+glm::vec4 normalize(glm::vec4 v) {
+    return v / norm(v);
+}
+
 glm::mat4 Matrix_Rotate(float angle, glm::vec4 axis)
 {
     float c = cos(angle);
@@ -131,6 +135,22 @@ glm::vec4 crossproduct(glm::vec4 u, glm::vec4 v)
     );
 }
 
+glm::vec3 crossproduct(glm::vec3 u, glm::vec3 v)
+{
+    float u1 = u.x;
+    float u2 = u.y;
+    float u3 = u.z;
+    float v1 = v.x;
+    float v2 = v.y;
+    float v3 = v.z;
+
+    return glm::vec3(
+        u2*v3 - u3*v2, // Primeiro coeficiente
+        u3*v1 - u1*v3, // Segundo coeficiente
+        u1*v2 - u2*v1
+    );
+}
+
 float dotproduct(glm::vec4 u, glm::vec4 v)
 {
     float u1 = u.x;
@@ -144,7 +164,7 @@ float dotproduct(glm::vec4 u, glm::vec4 v)
 
     if ( u4 != 0.0f || v4 != 0.0f )
     {
-        fprintf(stderr, "ERROR: Produto escalar não definido para pontos.\n");
+        fprintf(stderr, "ERROR: Produto escalar nï¿½o definido para pontos.\n");
         std::exit(EXIT_FAILURE);
     }
 

@@ -83,6 +83,8 @@ glm::mat4 Matrix_Rotate_Z(float angle);
 // definidos em uma base ortonormal qualquer.
 float norm(glm::vec4 v);
 
+glm::vec4 normalize(glm::vec4 v);
+
 // Matriz R de "rotação de um ponto" em relação à origem do sistema de
 // coordenadas e em torno do eixo definido pelo vetor 'axis'. Esta matriz pode
 // ser definida pela fórmula de Rodrigues. Lembre-se que o vetor que define o
@@ -92,6 +94,7 @@ glm::mat4 Matrix_Rotate(float angle, glm::vec4 axis);
 // Produto vetorial entre dois vetores u e v definidos em um sistema de
 // coordenadas ortonormal.
 glm::vec4 crossproduct(glm::vec4 u, glm::vec4 v);
+glm::vec3 crossproduct(glm::vec3 u, glm::vec3 v);
 
 // Produto escalar entre dois vetores u e v definidos em um sistema de
 // coordenadas ortonormal.
