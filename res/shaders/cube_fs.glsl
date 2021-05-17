@@ -22,16 +22,20 @@ void main()
     vec4 n = normalize(normal);
     vec4 v = normalize(camera_position - p); // sentido da câmera em relação ao ponto atual
     
-    vec3 Kd = vec3(1.0, 1.0, 1.0); // Refletância difusa
-    vec3 Ks = vec3(1.0, 1.0, 1.0); // Refletância especular
-    vec3 Ka = vec3(0.0, 0.15, 0.4); // Refletância ambiente
+    vec3 Kd = vec3(0.8, 0.8, 0.8); // Refletância difusa
+    vec3 Ks = vec3(0.5, 0.5, 0.5); // Refletância especular
+    vec3 Ka = vec3(0.2, 0.2, 0.2); // Refletância ambiente
     float q = 120.0; // Expoente especular para o modelo de iluminação de Phong
     
     // Espectro da luz ambiente
     vec3 Ia = vec3(0.2, 0.2, 0.2);
+    
+    vec4 l = vec4(1.0,1.0,0.0,0.0);
+    vec3 I = vec3(0.5, 0.5, 0.5);
 
-    vec3 lambert_diffuse_term = vec3(0.0, 0.0, 0.0);
-    vec3 phong_specular_term = vec3(0.0, 0.0, 0.0);
+    vec4 h = normalize(l + v);
+    vec3 lambert_diffuse_term = Kd * I * max(0, dot(n, l));
+    vec3 phong_specular_term = Ks * I * pow(max(0, dot(n, h)), q);
     for (int i = 0; i < n_lights; i++)
     {
         vec4 l = normalize(light_positions[i] - p);

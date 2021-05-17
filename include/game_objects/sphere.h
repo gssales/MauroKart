@@ -1,38 +1,21 @@
-#ifndef _KART_H
-#define _KART_H
+#ifndef _SPHERE_H
+#define _SPHERE_H
 
 #include <string>
 #include "gamestates/gamestate.h"
-#include "graphics/camera.h"
+#include "game_objects/cube.h"
 
-class KartShader: public GpuProgram
+class Sphere: public GameObject
 {
 public:
-    Texture kart_texture0;
-    GLint n_lights_uniform;
-    GLint light_positions_uniform;
-    GLint light_colors_uniform;
-    GLint texture0_uniform;
-
-    KartShader() {};
-    KartShader(bool build);
-};
-
-class Kart: public GameObject
-{
-public:
-    KartShader shader;
-    Camera camera;
+    CubeShader shader;
     std::string model_name;
     glm::vec3 movement_vec;
     float speed;
     float acceleration;
     float max_speed;
-    float rx = 0.0f;
-    float ry = 0.0f;
-    float rz = 0.0f;
 
-    Kart();
+    Sphere();
     void Update(double dt);
     void Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader, LightSet* lighting);
     void Destroy();
@@ -42,4 +25,4 @@ public:
     PlaneShape GetPlaneShape();
 };
 
-#endif // _KART_H
+#endif // _SPHERE_H

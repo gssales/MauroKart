@@ -15,7 +15,6 @@
 #include "graphics/light.h"
 #include "graphics/gpu_program.h"
 #include "physics/shapes.h"
-#include "physics/physics.h"
 
 extern Input input;
 extern float g_ScreenRatio;
@@ -42,6 +41,7 @@ class GameState;
 class GameObject
 {
 public:
+    ShapeType shape_type;
     int creation_time;
     glm::vec3 position;
     bool dead = false;
@@ -50,6 +50,10 @@ public:
     virtual void Update(double dt) = 0;
     virtual void Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader, LightSet* lighting) = 0;
     virtual void Destroy() = 0;
+    virtual glm::mat4 ComputeTransform() = 0;
+    virtual SphereShape GetSphereShape() = 0;
+    virtual OBBShape GetOBBShape() = 0;
+    virtual PlaneShape GetPlaneShape() = 0;
 };
 
 class GameState

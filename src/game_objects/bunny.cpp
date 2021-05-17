@@ -1,6 +1,6 @@
 #include "game_objects/bunny.h"
 
-BunnyShader::BunnyShader(const char* vertex_shader_filename, const char* fragment_shader_filename, const char* image_filename) 
+BunnyShader::BunnyShader(const char* vertex_shader_filename, const char* fragment_shader_filename, const char* image_filename)
     : GpuProgram(vertex_shader_filename, fragment_shader_filename)
 {
     bunny_texture = Texture(image_filename, 0);
@@ -14,7 +14,7 @@ BunnyShader::BunnyShader(const char* vertex_shader_filename, const char* fragmen
 Bunny::Bunny() : GameObject()
 {
     model_name = "bunny";
-
+    shape_type = SPHERE_SHAPE;
     if (default_vs_filename.c_str()) {
         shader = BunnyShader(default_vs_filename.c_str(), "../../res/shaders/bunny_fs.glsl", "../../res/textures/earth.jpg");
     }
@@ -107,4 +107,34 @@ void Bunny::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, Gpu
 
 void Bunny::Destroy() {
 
+}
+
+glm::mat4 Bunny::ComputeTransform() {
+    return Matrix_Identity()
+        * Matrix_Translate(position.x, position.y, position.z)
+        * Matrix_Rotate_Z(0.0)
+        * Matrix_Rotate_Y(ry)
+        * Matrix_Rotate_X(0.0)
+        * Matrix_Scale(1.0, 1.0, 1.0);
+}
+
+SphereShape Bunny::GetSphereShape()
+{
+    glm::mat4 transform = ComputeTransform();
+    SphereShape s;
+    s.point = s.point * transform;
+    s.radius = 1;
+    return s;
+}
+
+OBBShape Bunny::GetOBBShape()
+{
+    OBBShape s;
+    return s;
+}
+
+PlaneShape Bunny::GetPlaneShape()
+{
+    PlaneShape s;
+    return s;
 }

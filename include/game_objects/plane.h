@@ -1,33 +1,23 @@
-#ifndef _CUBE_H
-#define _CUBE_H
+#ifndef _PLANE_H
+#define _PLANE_H
 
+#include <algorithm>
 #include <string>
 #include "gamestates/gamestate.h"
-#include "graphics/camera.h"
+#include "game_objects/cube.h"
 
-class CubeShader: public GpuProgram
-{
-public:
-    GLint n_lights_uniform;
-    GLint light_positions_uniform;
-    GLint light_colors_uniform;
-
-    CubeShader() {};
-    CubeShader(const char* vertex_shader_filename, const char* fragment_shader_filename);
-};
-
-class Cube: public GameObject
+class Plane: public GameObject
 {
 public:
     CubeShader shader;
-    Light light1, light2, light3;
     std::string model_name;
+    std::string fragment_shader;
     float rx = 0.0f;
     float ry = 0.0f;
     float rz = 0.0f;
     float s = 1.0f;
 
-    Cube();
+    Plane();
     void Update(double dt);
     void Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader, LightSet* lighting);
     void Destroy();
@@ -37,4 +27,4 @@ public:
     PlaneShape GetPlaneShape();
 };
 
-#endif // _CUBE_H
+#endif // _PLANE_H

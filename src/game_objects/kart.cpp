@@ -13,17 +13,19 @@ KartShader::KartShader(bool build)
 Kart::Kart() : GameObject()
 {
     model_name = "kart";
-
+    shape_type = OBB_SHAPE;
     if (default_vs_filename.c_str()) {
         shader = KartShader(true);
     }
 
-    position = glm::vec3(0.0,0.0,-2.0);
+    position = glm::vec3(0.0,0.0,0.0);
 
     movement_vec = glm::vec3(0.0,0.0,0.0);
     speed = 0.0f;
     acceleration = 0.1f;
     max_speed = 0.05f;
+    
+    camera.farplane = 100.0f;
 }
 
 void Kart::Update(double dt)
@@ -46,6 +48,14 @@ void Kart::Update(double dt)
     if (input.GetKeyState(GLFW_KEY_D).is_down) {
         accel = true;
         movement_vec = movement_vec + glm::vec3(1.0,0.0,0.0);
+    }
+    if (input.GetKeyState(GLFW_KEY_SPACE).is_down) {
+        accel = true;
+        movement_vec = movement_vec + glm::vec3(0.0,1.0,0.0);
+    }
+    if (input.GetKeyState(GLFW_KEY_LEFT_SHIFT).is_down) {
+        accel = true;
+        movement_vec = movement_vec + glm::vec3(0.0,-1.0,0.0);
     }
 
     if (glm::length(movement_vec) != 0.0)
@@ -74,7 +84,7 @@ void Kart::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuP
     PushMatrix(*model);
         *model = *model
               * Matrix_Rotate_Z(0.0)
-              * Matrix_Rotate_Y(0.0)
+              * Matrix_Rotate_Y(ry)
               * Matrix_Rotate_X(0.0);
         PushMatrix(*model);
             *model = *model * Matrix_Scale(1.0, 1.0, 1.0);
@@ -103,4 +113,45 @@ void Kart::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuP
 void Kart::Destroy()
 {
 
+}
+
+glm::mat4 Kart::ComputeTransform() {
+    return Matrix_Identity() 
+        * Matrix_Translate(position.x, position.y, position.z)
+        * Matrix_Rotate_Z(rz)
+        * Matrix_Rotate_Y(ry)
+        * Matrix_Rotate_X(rx)
+        * Matrix_Scale(1.0, 1.0, 1.0);
+}
+
+SphereShape Kart::GetSphereShape()
+{
+    glm::mat4 transform = ComputeTransform();
+    SphereShape s;
+    s.point = s.point * transform;
+    s.radius = std::sqrt(2.0);
+    return s;
+}
+
+OBBShape Kart::GetOBBShape()
+{
+    glm::mat4 transform = ComputeTransform();
+    OBBShape s;
+    s.center = transform * s.center;
+    s.axis.x = normalize(transform * s.axis.x);
+    s.axis.y = normalize(transform * s.axis.y);
+    s.axis.z = normalize(transform * s.axis.z);
+    s.rotation.alpha = rx;
+    s.rotation.beta = ry;
+    s.rotation.gamma = rz;
+    s.half_length.x = 2.0;
+    s.half_length.y = 1.5;
+    s.half_length.z = 1.2;
+    return s;
+}
+
+PlaneShape Kart::GetPlaneShape()
+{
+    PlaneShape s;
+    return s;
 }
