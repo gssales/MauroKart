@@ -29,6 +29,8 @@ public:
 
     Cube cube1, cube2, cube3, cube4, cube5;
 
+    Cube borda1, borda2, borda3, borda4;
+
     Track track;
     Camera* active_cam;
     double g_LastCursorPosX, g_LastCursorPosY;

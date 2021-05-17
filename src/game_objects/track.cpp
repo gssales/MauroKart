@@ -19,7 +19,7 @@ Track::Track() : GameObject()
         shader = TrackShader(true);
     }
 
-    position = glm::vec4(20.0,-1.0,-30.0,1.0);
+    position = glm::vec4(20.0,-2.0,-30.0,1.0);
     scale = 1.0f;
 }
 

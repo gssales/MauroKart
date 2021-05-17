@@ -58,11 +58,11 @@ void Game::Load() {
     game_objects["cube4"] = &cube4;
     game_objects["cube5"] = &cube5;
 
-    cube1.position.x += 5.0;
-    cube2.position.x += 7.0;
-    cube3.position.x += 9.0;
-    cube4.position.x += 11.0;
-    cube5.position.x += 13.0;
+    cube1.position = glm::vec4(0.0,1.0,-50.0,1.0);
+    cube2.position = glm::vec4(20.0,1.0,-70.0,1.0);
+    cube3.position = glm::vec4(40.0,1.0,-50.0,1.0);
+    cube4.position = glm::vec4(40.0,1.0,0.0,1.0);
+    cube5.position = glm::vec4(20.0,1.0,20.0,1.0);
 
     plane = Plane();
     plane.s = 100.0f;
