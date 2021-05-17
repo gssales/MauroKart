@@ -1,10 +1,9 @@
 #include "game_objects/bench.h"
 
-
 BenchShader::BenchShader(bool build)
     : GpuProgram(default_vs_filename.c_str(), "../../res/shaders/bench_fs.glsl")
 {
-    bench_texture = Texture("../../res/textures/wood.jpg", 2);
+    bench_texture = Texture("../../res/textures/wood.jpg", 3);
     n_lights_uniform = glGetUniformLocation(program_id, "n_lights");
     light_positions_uniform = glGetUniformLocation(program_id, "light_positions[]");
     light_colors_uniform = glGetUniformLocation(program_id, "light_colors[]");
@@ -19,8 +18,8 @@ Bench::Bench() : GameObject()
         shader = BenchShader(true);
     }
 
-    position = glm::vec4(0.0,0.0,0.0,1.0);
-    scale = 0.02f;
+    position = glm::vec4(-5.0,0.0,-5.0,1.0);
+    scale = 0.19f;
 }
 
 void Bench::Update(double dt) {
@@ -35,7 +34,7 @@ void Bench::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, Gpu
         *model = *model
               * Matrix_Rotate_Z(0.0)
               * Matrix_Rotate_Y(0.0)
-              * Matrix_Rotate_X(0.0);
+              * Matrix_Rotate_X(-1.57079632679);
         PushMatrix(*model);
             *model = *model * Matrix_Scale(scale, scale, scale);
             glUseProgram(shader.program_id);
@@ -65,7 +64,7 @@ void Bench::Destroy() {
 }
 
 glm::mat4 Bench::ComputeTransform() {
-    return Matrix_Identity() 
+    return Matrix_Identity()
         * Matrix_Translate(position.x, position.y, position.z)
         * Matrix_Rotate_Z(0.0)
         * Matrix_Rotate_Y(0.0)

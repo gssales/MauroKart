@@ -23,6 +23,9 @@ void Game::Load() {
     ObjModel planemodel("../../res/models/plane.obj");
     AddModelToScene(&planemodel);
 
+    ObjModel trackmodel("../../res/models/track.obj");
+    AddModelToScene(&trackmodel);
+
     sphere = Sphere();
     game_objects["sphere"] = &sphere;
 
@@ -42,6 +45,9 @@ void Game::Load() {
     plane.s = 100.0f;
     plane.position.y -= 1.0f;
     game_objects["plane"] = &plane;
+
+    track = Track();
+    game_objects["track"] = &track;
 
     lighting.positions[lighting.n_lights] = sphere.light1.position;
     lighting.colors[lighting.n_lights] = sphere.light1.color;

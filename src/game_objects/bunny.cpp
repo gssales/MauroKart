@@ -3,7 +3,7 @@
 BunnyShader::BunnyShader(const char* vertex_shader_filename, const char* fragment_shader_filename, const char* image_filename)
     : GpuProgram(vertex_shader_filename, fragment_shader_filename)
 {
-    bunny_texture = Texture(image_filename, 0);
+    bunny_texture = Texture(image_filename, 1);
     n_lights_uniform = glGetUniformLocation(program_id, "n_lights");
     light_positions_uniform = glGetUniformLocation(program_id, "light_positions[]");
     light_colors_uniform = glGetUniformLocation(program_id, "light_colors[]");
@@ -16,7 +16,7 @@ Bunny::Bunny() : GameObject()
     model_name = "bunny";
     shape_type = SPHERE_SHAPE;
     if (default_vs_filename.c_str()) {
-        shader = BunnyShader(default_vs_filename.c_str(), "../../res/shaders/bunny_fs.glsl", "../../res/textures/skin.jpg");
+        shader = BunnyShader(default_vs_filename.c_str(), "../../res/shaders/bunny_fs.glsl", "../../res/textures/earth.jpg");
     }
 
     position = glm::vec4(-4.0,0.0,0.0,1.0);

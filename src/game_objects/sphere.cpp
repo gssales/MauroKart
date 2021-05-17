@@ -15,22 +15,22 @@ Sphere::Sphere() : GameObject()
 {
     model_name = "sphere";
     shape_type = SPHERE_SHAPE;
-    
+
     if (default_vs_filename.c_str()) {
         shader = SphereShader(default_vs_filename.c_str(), "../../res/shaders/sphere_fs.glsl");
     }
 
-    position = glm::vec4(4.0,0.0,-5.0,1.0);
+    position = glm::vec4(-2.0,0.0,-30.0,1.0);
     time_passed = 0.0f;
 
     movement_vec = glm::vec4(0.0,0.0,0.0,0.0);
     
-    float bezier_0 = 4.0;
-    float bezier_1 = 5.0;
-    bezier_p1 = position + glm::vec4(-bezier_0, bezier_1, 0.0, 0.0);
-    bezier_p2 = position + glm::vec4(-bezier_0, 0.0, 0.0, 0.0);
-    bezier_p3 = position + glm::vec4(bezier_0, 0.0, 0.0, 0.0);
-    bezier_p4 = position + glm::vec4(bezier_0, bezier_1, 0.0, 0.0);
+    float bezier_0 = 10.0;
+    float bezier_1 = 12.5;
+    bezier_p1 = position + glm::vec4(-bezier_0, 1.0, 0.0,1.0);
+    bezier_p2 = position + glm::vec4(-bezier_0, bezier_1, 0.0,1.0);
+    bezier_p3 = position + glm::vec4(bezier_0, bezier_1, 0.0,1.0);
+    bezier_p4 = position + glm::vec4(bezier_0, 1.0, 0.0,1.0);
 
     light1.color = glm::vec3(0.0f, 1.0f, 0.0f);
     light2.color = glm::vec3(1.0f, 0.0f, 0.0f);
@@ -84,7 +84,7 @@ void Sphere::Destroy() {
 }
 
 glm::mat4 Sphere::ComputeTransform() {
-    return Matrix_Identity() 
+    return Matrix_Identity()
         * Matrix_Translate(position.x, position.y, position.z)
         * Matrix_Rotate_Z(0.0)
         * Matrix_Rotate_Y(0.0)
