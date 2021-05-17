@@ -33,7 +33,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "matrices.h"
-#include "game.h"
+#include "gamestates/game.h"
 
 // S.O. callbacks
 void ErrorCallback(int error, const char* description);

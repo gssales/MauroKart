@@ -2,7 +2,8 @@
 #define _CUBE_H
 
 #include <string>
-#include "gamestate.h"
+#include "gamestates/gamestate.h"
+#include "graphics/camera.h"
 
 class CubeShader: public GpuProgram
 {

@@ -1,4 +1,4 @@
-#include "game.h"
+#include "gamestates/game.h"
 
 void Game::Load() {
     printf("Load iniciado\n");

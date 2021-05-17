@@ -8,7 +8,7 @@
 #include "gl.h"
 #include <glm/mat4x4.hpp>
 
-#include "model.h"
+#include "graphics/model.h"
 
 struct SceneObject
 {

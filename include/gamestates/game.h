@@ -2,8 +2,8 @@
 #define _GAME_H
 
 #include <cstdlib>
-#include "camera.h"
-#include "gamestate.h"
+#include "graphics/camera.h"
+#include "gamestates/gamestate.h"
 #include "scene.h"
 #include "game_objects/bunny.h"
 #include "game_objects/cube.h"
@@ -25,4 +25,4 @@ public:
     void Render();
 };
 
-#endif // _GAMESTATE_H
+#endif // _GAME_H

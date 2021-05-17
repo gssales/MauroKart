@@ -11,9 +11,11 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "matrices.h"
 #include "input.h"
-#include "gpu_program.h"
 #include "scene.h"
-#include "lighting/light.h"
+#include "graphics/light.h"
+#include "graphics/gpu_program.h"
+#include "physics/shapes.h"
+#include "physics/physics.h"
 
 extern Input input;
 extern float g_ScreenRatio;
@@ -40,7 +42,6 @@ class GameState;
 class GameObject
 {
 public:
-    GameState *game_state;
     int creation_time;
     glm::vec3 position;
     bool dead = false;

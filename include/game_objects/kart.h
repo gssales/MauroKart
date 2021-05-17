@@ -2,8 +2,8 @@
 #define _KART_H
 
 #include <string>
-#include "gamestate.h"
-#include "camera.h"
+#include "gamestates/gamestate.h"
+#include "graphics/camera.h"
 
 class KartShader: public GpuProgram
 {

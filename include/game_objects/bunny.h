@@ -3,8 +3,8 @@
 
 #include <string>
 #include <algorithm>
-#include "gamestate.h"
-#include "camera.h"
+#include "gamestates/gamestate.h"
+#include "graphics/camera.h"
 
 class BunnyShader: public GpuProgram
 {
