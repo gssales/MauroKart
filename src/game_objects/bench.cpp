@@ -20,7 +20,7 @@ Bench::Bench() : GameObject()
     }
 
     position = glm::vec3(-5.0,0.0,-5.0);
-    scale = 0.25f;
+    scale = 0.19f;
 }
 
 void Bench::Update(double dt) {

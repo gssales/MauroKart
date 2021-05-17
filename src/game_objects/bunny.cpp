@@ -16,7 +16,7 @@ Bunny::Bunny() : GameObject()
     model_name = "bunny";
 
     if (default_vs_filename.c_str()) {
-        shader = BunnyShader(default_vs_filename.c_str(), "../../res/shaders/bunny_fs.glsl", "../../res/textures/earth.jpg");
+        shader = BunnyShader(default_vs_filename.c_str(), "../../res/shaders/bunny_fs.glsl", "../../res/textures/skin.jpg");
     }
 
     position = glm::vec3(-4.0,0.0,0.0);

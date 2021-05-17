@@ -17,6 +17,9 @@ void Game::Load() {
     ObjModel benchmodel("../../res/models/bench.obj");
     AddModelToScene(&benchmodel);
 
+    ObjModel boxmodel("../../res/models/box.obj");
+    AddModelToScene(&boxmodel);
+
     sphere = Sphere();
     game_objects["sphere"] = &sphere;
 
@@ -29,6 +32,9 @@ void Game::Load() {
     bench = Bench();
     game_objects["bench"] = &bench;
 
+    man = Man();
+    game_objects["man"] = &man;
+
     lighting.positions[lighting.n_lights] = sphere.light1.position;
     lighting.colors[lighting.n_lights] = sphere.light1.color;
     lighting.n_lights += 1;
@@ -36,7 +42,7 @@ void Game::Load() {
     lighting.colors[lighting.n_lights] = sphere.light2.color;
     lighting.n_lights += 1;
 
-    active_cam = &(bench.camera);
+    active_cam = &(kart.camera);
 
     active_cam->free = false;
     active_cam->distance = 5;
