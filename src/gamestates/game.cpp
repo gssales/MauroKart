@@ -54,6 +54,8 @@ void Game::Load() {
     lighting.n_lights += 1;
 
     active_cam = &(kart.camera);
+    active_cam->phi = 3.141592f/8;
+    active_cam->distance = 15.0f;
 
     active_cam->free = false;
     active_cam->distance = 5;
@@ -83,7 +85,11 @@ void Game::Update(double dt) {
         active_cam->phi += dy * dt * 0.1;
 
         float phimax = 3.141592f/2;
-        float phimin = -phimax;
+        float phimin = 3.141592f/8;
+        if (active_cam->free) {
+            phimax = phimin;
+            phimin = -phimax;
+        }
 
         if (active_cam->phi > phimax)
             active_cam->phi = phimax;

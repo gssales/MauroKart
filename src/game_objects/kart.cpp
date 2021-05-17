@@ -41,15 +41,6 @@ Kart::Kart() : GameObject()
 
 void Kart::Update(double dt)
 {
-    if (camera.free)
-    {
-        camera.position = glm::vec4(position.x, position.y+0.7, position.z+0.5, 1.0);
-    }
-    else
-    {
-        camera.lookat = glm::vec4(position.x, position.y, position.z, 1.0);
-    }
-
     cooldown_camera = std::max(cooldown_camera-dt, 0.0);
     if (cooldown_camera <= 0 && input.GetKeyState(GLFW_KEY_V).is_down)
     {
@@ -96,22 +87,28 @@ void Kart::Update(double dt)
             speed = std::min((float)(speed + 0.5*dt), 0.0f);
 
     glm::mat4 transform = Matrix_Identity() * Matrix_Rotate_Y(ry);
-
     movement_vec = transform * glm::vec4(0.0,0.0,-1.0,0.0);
 
-    // if (!touch_ground)
-    //     speed = speed + 1.0*dt;
-    printf("%f\n", speed);
+    if (!touch_ground)
+        movement_vec += glm::vec4(0.0,-1.0,0.0,0.0);
+    else
+        movement_vec.y = 0.0;
 
-    // speed = std::min((float)(speed + acceleration*dt), max_speed);
     position = position + (movement_vec * speed);
 
-    // if (input.GetKeyState(GLFW_KEY_E).is_down) {
-    //     ry += (3.1415/6) * dt;
-    // }
-    // if (input.GetKeyState(GLFW_KEY_Q).is_down) {
-    //     ry -= (3.1415/6) * dt;
-    // }
+    if (camera.free)
+    {
+        glm::mat4 rotate = Matrix_Identity() * Matrix_Rotate_Y(2*3.1415 + ry);
+        glm::vec4 camera_pos = position + rotate * glm::vec4(0.0, 1.0, 1.0, 0.0);
+        camera.position = position + rotate * glm::vec4(0.0, 1.0, 1.0, 0.0);
+        // camera.view_vector = rotate * glm::vec4(0.0, 0.0, -1.0, 0.0);
+        camera.theta = 3.1415 + ry; 
+    }
+    else
+    {
+        camera.lookat = glm::vec4(position.x, position.y, position.z, 1.0);
+        camera.theta = ry; 
+    }
 }
 
 void Kart::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader, LightSet* lighting)
