@@ -3,8 +3,8 @@
 
 #include <string>
 #include <algorithm>
-#include "gamestate.h"
-#include "camera.h"
+#include "gamestates/gamestate.h"
+#include "graphics/camera.h"
 
 class ManShader: public GpuProgram
 {
@@ -31,6 +31,10 @@ public:
     void Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader, LightSet* lighting);
     void Destroy();
     float MinMax(float x, float min, float max);
+    glm::mat4 ComputeTransform();
+    SphereShape GetSphereShape();
+    OBBShape GetOBBShape();
+    PlaneShape GetPlaneShape();
 };
 
 #endif // _MAN_H

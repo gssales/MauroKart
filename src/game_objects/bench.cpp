@@ -4,7 +4,7 @@
 BenchShader::BenchShader(bool build)
     : GpuProgram(default_vs_filename.c_str(), "../../res/shaders/bench_fs.glsl")
 {
-    bench_texture = Texture("../../res/textures/bench.jpg", 2);
+    bench_texture = Texture("../../res/textures/wood.jpg", 2);
     n_lights_uniform = glGetUniformLocation(program_id, "n_lights");
     light_positions_uniform = glGetUniformLocation(program_id, "light_positions[]");
     light_colors_uniform = glGetUniformLocation(program_id, "light_colors[]");

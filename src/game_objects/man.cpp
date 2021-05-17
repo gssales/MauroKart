@@ -16,7 +16,7 @@ Man::Man() : GameObject()
         shader = ManShader(true);
     }
 
-    position = glm::vec3(-5.0,1.7,-4.5);
+    position = glm::vec4(-5.0,1.7,-4.5,1.0);
     scale = 0.5f;
     time_passed = 0.0f;
 }
@@ -278,4 +278,31 @@ void Man::Destroy() {
 float Man::MinMax(float x, float min, float max) {
     return x * (max - min) + min;
     // return (x - min) / max - min;
+}
+
+glm::mat4 Man::ComputeTransform() {
+    return Matrix_Identity() 
+        * Matrix_Translate(position.x, position.y, position.z)
+        * Matrix_Rotate_Z(0.0)
+        * Matrix_Rotate_Y(0.0)
+        * Matrix_Rotate_X(0.0)
+        * Matrix_Scale(scale, scale, scale);
+}
+
+SphereShape Man::GetSphereShape()
+{
+    SphereShape s;
+    return s;
+}
+
+OBBShape Man::GetOBBShape()
+{
+    OBBShape s;
+    return s;
+}
+
+PlaneShape Man::GetPlaneShape()
+{
+    PlaneShape s;
+    return s;
 }
