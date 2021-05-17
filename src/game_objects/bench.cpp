@@ -19,12 +19,12 @@ Bench::Bench() : GameObject()
         shader = BenchShader(true);
     }
 
-    position = glm::vec3(0.0,0.0,0.0);
+    position = glm::vec4(0.0,0.0,0.0,1.0);
     scale = 0.02f;
 }
 
 void Bench::Update(double dt) {
-    camera.lookat = glm::vec4(position.x, position.y, position.z, 1.0);
+    camera.lookat = position;
 }
 
 void Bench::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader, LightSet* lighting)

@@ -2,6 +2,7 @@
 #define _GAME_H
 
 #include <cstdlib>
+#include <algorithm>
 #include "graphics/camera.h"
 #include "gamestates/gamestate.h"
 #include "scene.h"
@@ -9,6 +10,8 @@
 #include "game_objects/sphere.h"
 #include "game_objects/kart.h"
 #include "game_objects/bench.h"
+#include "game_objects/plane.h"
+#include "physics/collisions.h"
 
 class Game : public GameState {
 public:
@@ -19,6 +22,7 @@ public:
     Bunny bunny;
     Sphere sphere;
     Bench bench;
+    Plane plane;
     Camera* active_cam;
     double g_LastCursorPosX, g_LastCursorPosY;
 

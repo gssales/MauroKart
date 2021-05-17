@@ -9,7 +9,7 @@ Plane::Plane() : GameObject()
         shader = CubeShader(default_vs_filename.c_str(), "../../res/shaders/cube_fs.glsl");
     }
 
-    position = glm::vec3(0.0,0.0,0.0);
+    position = glm::vec4(0.0,0.0,0.0,1.0);
     printf("Plane load finished\n");
 }
 

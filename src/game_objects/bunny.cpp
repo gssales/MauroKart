@@ -19,9 +19,9 @@ Bunny::Bunny() : GameObject()
         shader = BunnyShader(default_vs_filename.c_str(), "../../res/shaders/bunny_fs.glsl", "../../res/textures/earth.jpg");
     }
 
-    position = glm::vec3(-4.0,0.0,0.0);
+    position = glm::vec4(-4.0,0.0,0.0,1.0);
 
-    movement_vec = glm::vec3(0.0,0.0,0.0);
+    movement_vec = glm::vec4(0.0,0.0,0.0,0.0);
     speed = 0.0f;
     acceleration = 0.1f;
     max_speed = 0.05f;
@@ -29,7 +29,7 @@ Bunny::Bunny() : GameObject()
 }
 
 void Bunny::Update(double dt) {
-    camera.lookat = glm::vec4(position.x, position.y, position.z, 1.0);
+    camera.lookat = position;
     // printf("update %s\n", model_name.c_str() );
     // bool accel = false;
     // movement_vec = glm::vec3(0.0,0.0,0.0);

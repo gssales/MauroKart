@@ -24,13 +24,16 @@ public:
     KartShader shader;
     Camera camera;
     std::string model_name;
-    glm::vec3 movement_vec;
+    glm::vec4 movement_vec;
+    bool touch_ground = false;
     float speed;
     float acceleration;
     float max_speed;
     float rx = 0.0f;
     float ry = 0.0f;
     float rz = 0.0f;
+
+    double cooldown_camera = 0.0;
 
     Kart();
     void Update(double dt);

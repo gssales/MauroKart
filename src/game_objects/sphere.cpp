@@ -20,17 +20,17 @@ Sphere::Sphere() : GameObject()
         shader = SphereShader(default_vs_filename.c_str(), "../../res/shaders/sphere_fs.glsl");
     }
 
-    position = glm::vec3(4.0,0.0,-5.0);
+    position = glm::vec4(4.0,0.0,-5.0,1.0);
     time_passed = 0.0f;
 
-    movement_vec = glm::vec3(0.0,0.0,0.0);
+    movement_vec = glm::vec4(0.0,0.0,0.0,0.0);
     
     float bezier_0 = 4.0;
     float bezier_1 = 5.0;
-    bezier_p1 = position + glm::vec3(-bezier_0, bezier_1, 0.0);
-    bezier_p2 = position + glm::vec3(-bezier_0, 0.0, 0.0);
-    bezier_p3 = position + glm::vec3(bezier_0, 0.0, 0.0);
-    bezier_p4 = position + glm::vec3(bezier_0, bezier_1, 0.0);
+    bezier_p1 = position + glm::vec4(-bezier_0, bezier_1, 0.0, 0.0);
+    bezier_p2 = position + glm::vec4(-bezier_0, 0.0, 0.0, 0.0);
+    bezier_p3 = position + glm::vec4(bezier_0, 0.0, 0.0, 0.0);
+    bezier_p4 = position + glm::vec4(bezier_0, bezier_1, 0.0, 0.0);
 
     light1.color = glm::vec3(0.0f, 1.0f, 0.0f);
     light2.color = glm::vec3(1.0f, 0.0f, 0.0f);
@@ -51,7 +51,9 @@ void Sphere::Update(double dt) {
     glm::vec3 term4 = ((float) pow(sinusoidal_time_passed, 3)) * bezier_p4;
     
     movement_vec = term1 + term2 + term3 + term4;
-    position = movement_vec;
+    position.x = movement_vec.x;
+    position.y = movement_vec.y;
+    position.z = movement_vec.z;
 }
 
 void Sphere::Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader, LightSet* lighting)

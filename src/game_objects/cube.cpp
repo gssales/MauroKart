@@ -16,7 +16,7 @@ Cube::Cube() : GameObject()
         shader = CubeShader(default_vs_filename.c_str(), "../../res/shaders/cube_fs.glsl");
     }
 
-    position = glm::vec3(0.0,0.0,0.0);
+    position = glm::vec4(0.0,0.0,0.0,1.0);
 
     light1.color = glm::vec3(0.0f, 1.0f, 0.0f);
     light2.color = glm::vec3(1.0f, 0.0f, 0.0f);

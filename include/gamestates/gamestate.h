@@ -43,7 +43,7 @@ class GameObject
 public:
     ShapeType shape_type;
     int creation_time;
-    glm::vec3 position;
+    glm::vec4 position;
     bool dead = false;
 
     GameObject();
