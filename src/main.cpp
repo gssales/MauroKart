@@ -33,7 +33,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "matrices.h"
-#include "game.h"
+#include "gamestates/game.h"
 
 // S.O. callbacks
 void ErrorCallback(int error, const char* description);
@@ -66,7 +66,7 @@ int main()
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     GLFWwindow* window;
-    window = glfwCreateWindow(1280, 720, "MauroKart -- by gssales", NULL, NULL);
+    window = glfwCreateWindow(1280, 720, "MauroKart -- by gssales & msmadeira", NULL, NULL);
     if (!window)
     {
         glfwTerminate();

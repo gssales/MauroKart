@@ -1,4 +1,4 @@
-#include "gamestate.h"
+#include "gamestates/gamestate.h"
 
 Input input;
 

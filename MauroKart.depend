@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1621203869 source:c:\users\gssales\projects\maurokart\src\main.cpp
+1621279273 source:c:\users\gssales\projects\maurokart\src\main.cpp
 	<cmath>
 	<cstdio>
 	<cstdlib>
@@ -13,7 +13,7 @@
 	<glm/vec4.hpp>
 	<glm/gtc/type_ptr.hpp>
 	"matrices.h"
-	"game.h"
+	"gamestates/game.h"
 
 1619381653 c:\users\gssales\projects\maurokart\include\glad\glad.h
 	<windows.h>
@@ -927,7 +927,7 @@
 	"utils.h"
 	"matrices.h"
 
-1621203804 c:\users\gssales\projects\maurokart\include\matrices.h
+1621204378 c:\users\gssales\projects\maurokart\include\matrices.h
 	<glm/mat4x4.hpp>
 	<glm/vec4.hpp>
 
@@ -947,7 +947,7 @@
 1619381654 source:c:\users\gssales\projects\maurokart\src\input.cpp
 	"input.h"
 
-1621203804 source:c:\users\gssales\projects\maurokart\src\matrices.cpp
+1621204378 source:c:\users\gssales\projects\maurokart\src\matrices.cpp
 	"matrices.h"
 	<cstdio>
 	<cstdlib>
@@ -1098,17 +1098,17 @@
 1600011606 c:\users\gssales\projects\maurokart\include\glm\ext\scalar_uint_sized.hpp
 	"../detail/setup.hpp"
 
-1621203804 source:c:\users\gssales\projects\maurokart\src\scene.cpp
+1621225363 source:c:\users\gssales\projects\maurokart\src\scene.cpp
 	"scene.h"
 
-1621203804 c:\users\gssales\projects\maurokart\include\scene.h
+1621204378 c:\users\gssales\projects\maurokart\include\scene.h
 	<cstdlib>
 	<algorithm>
 	<map>
 	<stack>
 	"gl.h"
 	<glm/mat4x4.hpp>
-	"model.h"
+	"graphics/model.h"
 
 1621203804 c:\users\gssales\projects\maurokart\include\model.h
 	<stdlib.h>
@@ -1189,23 +1189,24 @@
 	"game_objects/kart.h"
 	"game_objects/bench.h"
 
-1621203804 c:\users\gssales\projects\maurokart\include\game_objects\bunny.h
+1621204378 c:\users\gssales\projects\maurokart\include\game_objects\bunny.h
 	<string>
 	<algorithm>
-	"gamestate.h"
-	"camera.h"
+	"gamestates/gamestate.h"
+	"graphics/camera.h"
 
 1621203869 source:c:\users\gssales\projects\maurokart\src\game.cpp
 	"game.h"
 
-1621203869 source:c:\users\gssales\projects\maurokart\src\game_objects\bunny.cpp
+1621278338 source:c:\users\gssales\projects\maurokart\src\game_objects\bunny.cpp
 	"game_objects/bunny.h"
 
-1621203869 c:\users\gssales\projects\maurokart\include\game_objects\sphere.h
+1621226622 c:\users\gssales\projects\maurokart\include\game_objects\sphere.h
 	<string>
-	"gamestate.h"
+	"gamestates/gamestate.h"
+	"graphics/camera.h"
 
-1621203869 source:c:\users\gssales\projects\maurokart\src\game_objects\sphere.cpp
+1621278577 source:c:\users\gssales\projects\maurokart\src\game_objects\sphere.cpp
 	"game_objects/sphere.h"
 	<cmath>
 
@@ -1225,12 +1226,12 @@
 1621203804 source:c:\users\gssales\projects\maurokart\src\texture.cpp
 	"texture.h"
 
-1621203804 c:\users\gssales\projects\maurokart\include\game_objects\kart.h
+1621277980 c:\users\gssales\projects\maurokart\include\game_objects\kart.h
 	<string>
-	"gamestate.h"
-	"camera.h"
+	"gamestates/gamestate.h"
+	"graphics/camera.h"
 
-1621203804 source:c:\users\gssales\projects\maurokart\src\game_objects\kart.cpp
+1621279174 source:c:\users\gssales\projects\maurokart\src\game_objects\kart.cpp
 	"game_objects/kart.h"
 
 1620254914 source:c:\users\gracky\ufrgs\maurokart\src\camera.cpp
@@ -2411,14 +2412,138 @@
 	"gamestate.h"
 	"camera.h"
 
-1621204133 c:\users\gssales\projects\maurokart\include\game_objects\bench.h
+1621227615 c:\users\gssales\projects\maurokart\include\game_objects\bench.h
 	<string>
 	<algorithm>
-	"gamestate.h"
-	"camera.h"
+	"gamestates/gamestate.h"
+	"graphics/camera.h"
 
-1621203869 source:c:\users\gssales\projects\maurokart\src\game_objects\bench.cpp
+1621278319 source:c:\users\gssales\projects\maurokart\src\game_objects\bench.cpp
 	"game_objects/bench.h"
+
+1621112273 source:c:\users\gssales\projects\maurokart\src\gamestates\gamestate.cpp
+	"gamestates/gamestate.h"
+
+1621278160 c:\users\gssales\projects\maurokart\include\gamestates\gamestate.h
+	<ctime>
+	<map>
+	<vector>
+	<string>
+	"gl.h"
+	<glm/mat4x4.hpp>
+	<glm/vec3.hpp>
+	<glm/gtc/type_ptr.hpp>
+	"matrices.h"
+	"input.h"
+	"scene.h"
+	"graphics/light.h"
+	"graphics/gpu_program.h"
+	"physics/shapes.h"
+
+1621110527 c:\users\gssales\projects\maurokart\include\graphics\model.h
+	<stdlib.h>
+	<tiny_obj_loader.h>
+	<glm/vec4.hpp>
+	"matrices.h"
+
+1619381654 c:\users\gssales\projects\maurokart\include\graphics\light.h
+	<glm/vec4.hpp>
+	<glm/vec3.hpp>
+
+1621110531 c:\users\gssales\projects\maurokart\include\graphics\gpu_program.h
+	<map>
+	<string>
+	"gl.h"
+	"texture.h"
+	"loaders.h"
+
+1621110520 c:\users\gssales\projects\maurokart\include\graphics\texture.h
+	<cstdlib>
+	<stb\stb_image.h>
+	"gl.h"
+
+1621216012 c:\users\gssales\projects\maurokart\include\physics\shapes.h
+	<cstdio>
+	<glm/vec4.hpp>
+	"matrices.h"
+
+1621221186 source:c:\users\gssales\projects\maurokart\src\gamestates\teste.cpp
+	"gamestates/teste.h"
+
+1621220770 c:\users\gssales\projects\maurokart\include\gamestates\teste.h
+	<cstdlib>
+	"graphics/camera.h"
+	"gamestates/gamestate.h"
+	"scene.h"
+	"game_objects/cube.h"
+	"game_objects/sphere.h"
+	"game_objects/plane.h"
+	"game_objects/kart.h"
+	"physics/collisions.h"
+
+1621226410 c:\users\gssales\projects\maurokart\include\graphics\camera.h
+	<cstdio>
+	<glm/mat4x4.hpp>
+	<glm/vec4.hpp>
+
+1621137058 c:\users\gssales\projects\maurokart\include\game_objects\plane.h
+	<algorithm>
+	<string>
+	"gamestates/gamestate.h"
+	"game_objects/cube.h"
+
+1621132661 c:\users\gssales\projects\maurokart\include\physics\collisions.h
+	<algorithm>
+	<glm/vec4.hpp>
+	<glm/mat4x4.hpp>
+	"physics/shapes.h"
+	"matrices.h"
+
+1621112263 source:c:\users\gssales\projects\maurokart\src\graphics\camera.cpp
+	"graphics/camera.h"
+	"matrices.h"
+
+1621112297 source:c:\users\gssales\projects\maurokart\src\graphics\gpu_program.cpp
+	"graphics/gpu_program.h"
+
+1621112330 source:c:\users\gssales\projects\maurokart\src\graphics\model.cpp
+	"graphics/model.h"
+
+1621112366 source:c:\users\gssales\projects\maurokart\src\graphics\texture.cpp
+	"graphics/texture.h"
+
+1621224505 source:c:\users\gssales\projects\maurokart\src\physics\collisions.cpp
+	"physics/collisions.h"
+
+1621220856 source:c:\users\gssales\projects\maurokart\src\physics\shapes.cpp
+	"physics/shapes.h"
+
+1621227331 c:\users\gssales\projects\maurokart\include\game_objects\cube.h
+	<string>
+	"gamestates/gamestate.h"
+	"graphics/camera.h"
+
+1621278306 source:c:\users\gssales\projects\maurokart\src\game_objects\plane.cpp
+	"game_objects/plane.h"
+
+1621278347 source:c:\users\gssales\projects\maurokart\src\game_objects\cube.cpp
+	"game_objects/cube.h"
+
+1621278411 source:c:\users\gssales\projects\maurokart\src\gamestates\game.cpp
+	"gamestates/game.h"
+
+1621229047 c:\users\gssales\projects\maurokart\include\gamestates\game.h
+	<cstdlib>
+	<algorithm>
+	"graphics/camera.h"
+	"gamestates/gamestate.h"
+	"scene.h"
+	"game_objects/bunny.h"
+	"game_objects/sphere.h"
+	"game_objects/kart.h"
+	"game_objects/bench.h"
+	"game_objects/plane.h"
+	"physics/collisions.h"
 
 1621270223 c:\users\gracky\ufrgs\maurokart\include\game_objects\man.h
 	<string>

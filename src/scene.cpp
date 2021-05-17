@@ -84,6 +84,8 @@ void AddModelToScene(ObjModel* model)
         theobject.bounding_box_max = bbox_max;
 
         virtualScene[model->shapes[shape].name] = theobject;
+
+        // Print_SceneObject(theobject);
     }
 
     GLuint VBO_model_coefficients_id;
@@ -153,4 +155,10 @@ void DrawVirtualObject(const char* object_name, GLuint program_id)
     );
 
     glBindVertexArray(0);
+}
+
+void Print_SceneObject(SceneObject o)
+{
+    printf("\n%s\n", o.name.c_str());
+    printf("num indices\t%d\n", o.num_indices);
 }

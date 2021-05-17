@@ -1,4 +1,4 @@
-#include "texture.h"
+#include "graphics/texture.h"
 
 Texture::Texture(const char* image_filename, unsigned int texture_unit)
 {

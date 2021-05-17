@@ -1,4 +1,4 @@
-#include "gpu_program.h"
+#include "graphics/gpu_program.h"
 
 std::string default_vs_filename = "../../res/shaders/default_vs.glsl";
 std::string default_fs_filename = "../../res/shaders/default_fs.glsl";
@@ -18,7 +18,7 @@ GpuProgram::GpuProgram(const char* vertex_shader_filename, const char* fragment_
     projection_uniform = glGetUniformLocation(program_id, "projection");
 }
 
-GLuint CreateGpuProgram(GLuint vertex_shader_id, GLuint fragment_shader_id) 
+GLuint CreateGpuProgram(GLuint vertex_shader_id, GLuint fragment_shader_id)
 {
     GLuint program_id = glCreateProgram();
 

@@ -1,36 +1,33 @@
-#ifndef _SPHERE_H
-#define _SPHERE_H
+#ifndef _CUBE_H
+#define _CUBE_H
 
 #include <string>
 #include "gamestates/gamestate.h"
 #include "graphics/camera.h"
 
-class SphereShader: public GpuProgram
+class CubeShader: public GpuProgram
 {
 public:
     GLint n_lights_uniform;
     GLint light_positions_uniform;
     GLint light_colors_uniform;
 
-    SphereShader() {};
-    SphereShader(const char* vertex_shader_filename, const char* fragment_shader_filename);
+    CubeShader() {};
+    CubeShader(const char* vertex_shader_filename, const char* fragment_shader_filename);
 };
 
-class Sphere: public GameObject
+class Cube: public GameObject
 {
 public:
-    SphereShader shader;
+    CubeShader shader;
     Light light1, light2, light3;
     std::string model_name;
-    std::string fragment_shader;
-    glm::vec3 movement_vec;
-    glm::vec3 bezier_p1;
-    glm::vec3 bezier_p2;
-    glm::vec3 bezier_p3;
-    glm::vec3 bezier_p4;
-    float time_passed;
+    float rx = 0.0f;
+    float ry = 0.0f;
+    float rz = 0.0f;
+    float s = 1.0f;
 
-    Sphere();
+    Cube();
     void Update(double dt);
     void Render(glm::mat4* model, glm::mat4* view, glm::mat4* projection, GpuProgram* default_shader, LightSet* lighting);
     void Destroy();
@@ -40,4 +37,4 @@ public:
     PlaneShape GetPlaneShape();
 };
 
-#endif // _SPHERE_H
+#endif // _CUBE_H

@@ -1,4 +1,4 @@
-#include "model.h"
+#include "graphics/model.h"
 
 ObjModel::ObjModel(const char* filename, const char* basepath, bool triangulate)
 {
@@ -14,7 +14,7 @@ ObjModel::ObjModel(const char* filename, const char* basepath, bool triangulate)
         throw std::runtime_error("Erro ao carregar modelo.");
 
     this->ComputeNormals();
-    
+
     printf("OK.\n");
 }
 
