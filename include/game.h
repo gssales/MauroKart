@@ -8,6 +8,8 @@
 #include "game_objects/bunny.h"
 #include "game_objects/sphere.h"
 #include "game_objects/kart.h"
+#include "game_objects/bench.h"
+#include "game_objects/man.h"
 
 class Game : public GameState {
 public:
@@ -17,6 +19,8 @@ public:
     Kart kart;
     Bunny bunny;
     Sphere sphere;
+    Bench bench;
+    Man man;
     Camera* active_cam;
     double g_LastCursorPosX, g_LastCursorPosY;
 

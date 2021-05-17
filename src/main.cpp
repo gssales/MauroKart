@@ -8,7 +8,7 @@
 
                TRABALHO FINAL
 
-    Autores: 
+    Autores:
         Guilherme Souza Sales 301220 e
         Matheus Severo Madeira 275621
 */
@@ -96,7 +96,7 @@ int main()
     printf("GPU: %s, %s, OpenGL %s, GLSL %s\n", vendor, renderer, glversion, glslversion);
 
     glEnable(GL_DEPTH_TEST);
-    
+
     glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);
     glFrontFace(GL_CCW);

@@ -16,16 +16,15 @@ Bunny::Bunny() : GameObject()
     model_name = "bunny";
 
     if (default_vs_filename.c_str()) {
-        shader = BunnyShader(default_vs_filename.c_str(), "../../res/shaders/bunny_fs.glsl", "../../res/textures/earth.jpg");
+        shader = BunnyShader(default_vs_filename.c_str(), "../../res/shaders/bunny_fs.glsl", "../../res/textures/skin.jpg");
     }
 
-    position = glm::vec3(0.0,0.0,0.0);
+    position = glm::vec3(-4.0,0.0,0.0);
 
     movement_vec = glm::vec3(0.0,0.0,0.0);
     speed = 0.0f;
     acceleration = 0.1f;
     max_speed = 0.05f;
-
 }
 
 void Bunny::Update(double dt) {

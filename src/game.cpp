@@ -14,6 +14,12 @@ void Game::Load() {
     ObjModel kartmodel("../../res/models/kart.obj");
     AddModelToScene(&kartmodel);
 
+    ObjModel benchmodel("../../res/models/bench.obj");
+    AddModelToScene(&benchmodel);
+
+    ObjModel boxmodel("../../res/models/box.obj");
+    AddModelToScene(&boxmodel);
+
     sphere = Sphere();
     game_objects["sphere"] = &sphere;
 
@@ -22,6 +28,12 @@ void Game::Load() {
 
     kart = Kart();
     game_objects["kart"] = &kart;
+
+    bench = Bench();
+    game_objects["bench"] = &bench;
+
+    man = Man();
+    game_objects["man"] = &man;
 
     lighting.positions[lighting.n_lights] = sphere.light1.position;
     lighting.colors[lighting.n_lights] = sphere.light1.color;
