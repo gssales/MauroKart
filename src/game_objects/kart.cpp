@@ -13,7 +13,7 @@ KartShader::KartShader(bool build)
 WheelShader::WheelShader(bool build)
     : GpuProgram(default_vs_filename.c_str(), "../../res/shaders/kart_fs.glsl")
 {
-    wheel_texture0 = Texture("../../res/textures/wheel.png", 4);
+    wheel_texture0 = Texture("../../res/textures/wheel.png", 5);
     n_lights_uniform = glGetUniformLocation(program_id, "n_lights");
     light_positions_uniform = glGetUniformLocation(program_id, "light_positions[]");
     light_colors_uniform = glGetUniformLocation(program_id, "light_colors[]");
